@@ -2,9 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 24px;
+            line-height: 1.33;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
+            border: #aa4aac solid 1px !important;
+            color: #aa4aac;
+            background: transparent;
+        }
+        .btn-primary {
+            font-size: 13px;
+            color: white;
+            letter-spacing: 2px;
+            border: 2px transparent;
+            border-radius: 40px;
+            background: transparent linear-gradient(to right, #973b99, #d56ed6);
+            transition: all 0.3s ease 0s;
+            width: 160px;
+        }
+
+    </style>
 </head>
 <body>
-$END$
+
+<section id="team" class="pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
