@@ -11,7 +11,7 @@
     <!--        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
           rel="stylesheet"/>
-    и
+
     <link href="css/styles.css" rel="stylesheet"/>
 
     <style>
@@ -26,6 +26,37 @@
             background: url("assets/img/background2.png");
             background-repeat: no-repeat;
             height: 70%;
+
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 24px;
+            line-height: 1.33;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
+            border: #aa4aac solid 1px !important;
+            color: #aa4aac;
+            background: transparent;
+        }
+        .btn-primary.btn-lg {
+            font-size: 13px;
+            color: white;
+            letter-spacing: 2px;
+            border: 2px transparent;
+            border-radius: 40px;
+            background: transparent linear-gradient(to right, #973b99, #d56ed6);
+            transition: all 0.3s ease 0s;
 
         }
 
@@ -100,101 +131,270 @@
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container">
-        <h2 class="text-center mt-0">Наш ассортимент</h2>
-        <hr class="divider my-4"/>
+        <h2 class="text-center mt-0 mb-5    ">Наш ассортимент</h2>
         <div class="row">
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Sturdy Themes</h3>
-                    <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Up to Date</h3>
-                    <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Ready to Publish</h3>
-                    <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="mt-5">
-                    <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-                    <h3 class="h4 mb-2">Made with Love</h3>
-                    <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
+
+        </div>
+        <div class="row mt-5">
+
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-4 ">
+                <div class=" card border-white"
+                     style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);">
+                    <div class="card-body text-center ">
+                        <p><img class=" img-fluid" src="static/donut.png" alt="card image"></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="text-left">Малиновая сладость</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="text-right">100₽</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6 class="text-left">100г</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-justify">
+                                <small>
+                                    Пончик с шоколадно-ореховой начинкой и глазурью из белого шоколада
+                                </small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row row-eq-height">
+                            <div class="col text-left my-auto">
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
+                                </button>
+                                <span style="margin-left: 5px; margin-right: 5px"> 1 </span>
+                                <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button"  class="btn btn-primary btn-lg ">В корзину</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 <!-- Portfolio-->
-<div id="portfolio">
-    <div class="container-fluid p-0">
-        <div class="row no-gutters">
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt=""/>
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt=""/>
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt=""/>
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt=""/>
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt=""/>
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg">
-                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt=""/>
-                    <div class="portfolio-box-caption p-3">
-                        <div class="project-category text-white-50">Category</div>
-                        <div class="project-name">Project Name</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Call to action-->
 <section class="page-section bg-dark text-white">
     <div class="container text-center">
