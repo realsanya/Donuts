@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserRepositoryJdbc implements UserRepository {
-    final String INSERT_USERS_SQL = "INSERT INTO user_table" + "(user_id, first_name, last_name," +
-            "address, username, password, email) VALUES" + "(int, varchar, varchar , varchar , varchar , varchar , varchar );";
+    final String INSERT_USERS_SQL = "INSERT INTO user_table" + "( first_name, last_name," +
+            "address, username, password, email) VALUES" + "(?, ? , ? , ? , ? , ? );";
     private static final String URL = "jdbc:mysql://localhost:3306/db";
     private static final String USER = "root";
     private static final String PASSWORD = "realsanya";
@@ -37,13 +37,12 @@ public class UserRepositoryJdbc implements UserRepository {
 
             Connection connection = DBConnection.createConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
-            preparedStatement.setLong(1,1);
-            preparedStatement.setString(2, user.getFirst_name());
-            preparedStatement.setString(3, user.getLast_name());
-            preparedStatement.setString(4, user.getAddress());
-            preparedStatement.setString(5, user.getUsername());
-            preparedStatement.setString(6, user.getPassword());
-            preparedStatement.setString(7, user.getEmail());
+            preparedStatement.setString(1, user.getFirst_name());
+            preparedStatement.setString(2, user.getLast_name());
+            preparedStatement.setString(3, user.getAddress());
+            preparedStatement.setString(4, user.getUsername());
+            preparedStatement.setString(5, user.getPassword());
+            preparedStatement.setString(6, user.getEmail());
 
             System.out.println(preparedStatement);
             result = preparedStatement.executeUpdate();

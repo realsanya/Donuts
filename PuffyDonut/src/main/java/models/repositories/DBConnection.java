@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-    final static String URL = "jdbc:mysql://localhost:3306/db";
+    final static String URL = "jdbc:mysql://localhost:3306/db?serverTimezone=UTC";
     final static String USERNAME = "root";
     final static String PASSWORD = "realsanya";
 
@@ -15,14 +15,6 @@ public class DBConnection {
 
         try
         {
-            try
-            {
-                Class.forName("mysql-connector-java");
-            }
-            catch (ClassNotFoundException e)
-            {
-                throw new IllegalStateException(e);
-            }
             con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Printing connection object " + con);
         }
