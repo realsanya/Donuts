@@ -10085,15 +10085,24 @@ hr.light {
 }
 
 
-header.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
+.masthead {
   background: url("../assets/img/background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
+.btn-primary.btn-lg {
+  font-size: 10px;
+  color: white;
+  letter-spacing: 2px;
+  border: 2px transparent;
+  border-radius: 40px;
+  background: transparent linear-gradient(to right, #973b99, #d56ed6);
+  transition: all 0.3s ease 0s;
+
+}
+
 header.masthead h1 {
   font-size: 2.25rem;
 }
@@ -10101,7 +10110,6 @@ header.masthead h1 {
   header.masthead {
     height: 100vh;
     min-height: 40rem;
-    padding-top: 4.5rem;
     padding-bottom: 0;
   }
   header.masthead p {
