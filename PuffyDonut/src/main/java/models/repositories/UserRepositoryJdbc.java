@@ -2,10 +2,7 @@ package models.repositories;
 
 import models.entities.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class UserRepositoryJdbc implements UserRepository {
@@ -27,14 +24,6 @@ public class UserRepositoryJdbc implements UserRepository {
 
     public void save(User user) {
         try {
-//            String first_name = user.getFirst_name();
-//            String last_name = user.getLast_name();
-//            String address = user.getAddress();
-//            String username = user.getUsername();
-//            String password = user.getPassword();
-//            String email = user.getEmail();
-
-
             Connection connection = DBConnection.createConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
             preparedStatement.setString(1, user.getFirst_name());
@@ -46,14 +35,43 @@ public class UserRepositoryJdbc implements UserRepository {
 
             System.out.println(preparedStatement);
             result = preparedStatement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-
-
     }
 
     public void update(User entity) {
-
     }
+
+    public String authenticateUser(User user) {
+        String userName = user.getUsername();
+        String password = user.getPassword();
+
+        Connection con = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        String userNameDB = "";
+        String passwordDB = "";
+
+        try {
+            con = DBConnection.createConnection();
+            statement = con.createStatement();
+            resultSet = statement.executeQuery("SELECT username,password FROM user_table");
+
+            while (resultSet.next()) {
+                userNameDB = resultSet.getString("username");
+                passwordDB = resultSet.getString("password");
+
+                if (userName.equals(userNameDB) && password.equals(passwordDB)) {
+                    return "SUCCESS";
+                }
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+        return "Invalid user credentials";
+    }
+
+
 }

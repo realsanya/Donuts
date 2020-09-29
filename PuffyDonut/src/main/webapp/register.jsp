@@ -13,7 +13,7 @@
 <body>
     <div align="center">
         <h1>User Register</h1>
-        <form action="${pageContext.request.contextPath}/user" method="post">
+        <form action="${pageContext.request.contextPath}/register" method="post">
             <table style="width: 80%">
                 <tr>
                     <td>First Name</td>
