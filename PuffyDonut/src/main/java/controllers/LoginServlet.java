@@ -26,15 +26,15 @@ public class LoginServlet extends HttpServlet {
 
         if (userValidate.equals("SUCCESS")) {
             request.setAttribute("username", username);
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            request.getRequestDispatcher("views/register.jsp").forward(request, response);
         } else {
             request.setAttribute("errMessage", userValidate);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("views/login.jsp").forward(request, response);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/login.jsp");
         requestDispatcher.forward(request, response);
     }
 }

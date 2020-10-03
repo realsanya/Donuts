@@ -8,7 +8,7 @@ import java.util.List;
 public class UserRepositoryJdbc implements UserRepository {
     final String INSERT_USERS_SQL = "INSERT INTO user_table" + "( first_name, last_name," +
             "address, username, password, email) VALUES" + "(?, ? , ? , ? , ? , ? );";
-    private static final String URL = "jdbc:mysql://localhost:3306/db";
+    private static final String URL = "jdbc:mysql://localhost:3306/db?serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "realsanya";
     int result = 0;
@@ -47,23 +47,19 @@ public class UserRepositoryJdbc implements UserRepository {
         String userName = user.getUsername();
         String password = user.getPassword();
 
-        Connection con = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        String userNameDB = "";
+        String usernameDB = "";
         String passwordDB = "";
 
         try {
-            con = DBConnection.createConnection();
-            statement = con.createStatement();
-            resultSet = statement.executeQuery("SELECT username,password FROM user_table");
+            Connection connection = DBConnection.createConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT username,password FROM user_table");
 
             while (resultSet.next()) {
-                userNameDB = resultSet.getString("username");
+                usernameDB = resultSet.getString("username");
                 passwordDB = resultSet.getString("password");
 
-                if (userName.equals(userNameDB) && password.equals(passwordDB)) {
+                if (userName.equals(usernameDB) && password.equals(passwordDB)) {
                     return "SUCCESS";
                 }
             }
