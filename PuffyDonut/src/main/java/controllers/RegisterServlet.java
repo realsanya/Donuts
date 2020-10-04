@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class RegisterServlet extends HttpServlet {
     private UserRepositoryJdbc userRepositoryJdbc = new UserRepositoryJdbc();
@@ -21,16 +23,26 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        User user = new User();
-        user.setFirst_name(first_name);
-        user.setLast_name(last_name);
-        user.setAddress(address);
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
+            byte[] bytes = messageDigest.digest(password.getBytes());
+            StringBuilder builder = new StringBuilder();
+            for (byte b : bytes) {
+                builder.append(b);
+            }
 
-        userRepositoryJdbc.save(user);
+            User user = new User();
+            user.setFirst_name(first_name);
+            user.setLast_name(last_name);
+            user.setAddress(address);
+            user.setUsername(username);
+            user.setPassword(builder.toString());
+            user.setEmail(email);
 
+            userRepositoryJdbc.save(user);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
+        }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("registerdetails.jsp");
         requestDispatcher.forward(request, response);
 
