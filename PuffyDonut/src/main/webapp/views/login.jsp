@@ -85,8 +85,8 @@
                                 <form action="${pageContext.request.contextPath}/login" method="post"
                                       onsubmit="return validate()" autocomplete="off">
                                     <div class="form-group">
-                                        <span class="text-black-50">Логин</span>
-                                        <input type="text" class="form-control" name="username">
+                                        <span class="text-black-50">Email</span>
+                                        <input type="text" class="form-control" name="email">
                                     </div>
                                     <div class="form-group">
                                         <span class="text-black-50">Пароль</span>

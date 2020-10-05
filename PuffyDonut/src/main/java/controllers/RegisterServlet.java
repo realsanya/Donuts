@@ -19,7 +19,6 @@ public class RegisterServlet extends HttpServlet {
         String first_name = request.getParameter("first_name");
         String last_name = request.getParameter("last_name");
         String address = request.getParameter("address");
-        String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
@@ -35,7 +34,6 @@ public class RegisterServlet extends HttpServlet {
             user.setFirst_name(first_name);
             user.setLast_name(last_name);
             user.setAddress(address);
-            user.setUsername(username);
             user.setPassword(builder.toString());
             user.setEmail(email);
 

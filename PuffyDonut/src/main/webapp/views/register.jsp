@@ -89,11 +89,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <span class="text-black-50">Логин</span>
-                                        <input type="text" class="form-control" name="username">
-                                    </div>
-
-                                    <div class="form-group">
                                         <span class="text-black-50">Пароль</span>
                                         <input type="password" class="form-control" name="password">
                                     </div>

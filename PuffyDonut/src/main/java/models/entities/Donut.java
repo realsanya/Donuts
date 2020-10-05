@@ -4,22 +4,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Donut {
-    private Long id;
+    private int id;
     private String name;
     private String description;
     private String image;
     private Float price;
     private Boolean availability;
-    private Integer quantity;
-    private Integer weight;
+    private int quantity;
+    private int weight;
     private String tag;
 
     public Donut() {
 
     }
 
-    public Donut(Long id, String name, String description, String image, Float price,
-                 Boolean availability, Integer quantity, Integer weight, String tag) {
+    public Donut(int id, String name, String description, String image, Float price,
+                 Boolean availability, int quantity, int weight, String tag) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -33,7 +33,7 @@ public class Donut {
 
     public Donut(ResultSet resultSet) {
         try {
-            this.id = resultSet.getLong("product_id");
+            this.id = resultSet.getInt("product_id");
             this.name = resultSet.getString("product_name");
             this.description = resultSet.getString("product_description");
             this.image = resultSet.getString("image");
@@ -61,4 +61,41 @@ public class Donut {
                 ", tag='" + tag + '\'' +
                 '}';
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Boolean getAvailability() {
+        return availability;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
 }

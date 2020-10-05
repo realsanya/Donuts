@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,7 +18,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         MessageDigest messageDigest = null;
@@ -33,14 +34,15 @@ public class LoginServlet extends HttpServlet {
             builder.append(b);
         }
 
+
         User user = new User();
-        user.setUsername(username);
+        user.setEmail(email);
         user.setPassword(builder.toString());
 
         String userValidate = userRepositoryJdbc.authenticateUser(user);
 
         if (userValidate.equals("SUCCESS")) {
-            request.setAttribute("username", username);
+            request.setAttribute("email", email);
             request.getRequestDispatcher("views/register.jsp").forward(request, response);
         } else {
             request.setAttribute("errMessage", userValidate);
@@ -51,5 +53,11 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/login.jsp");
         requestDispatcher.forward(request, response);
+
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("email", email);
+        httpSession.setAttribute("password", password);
     }
 }
