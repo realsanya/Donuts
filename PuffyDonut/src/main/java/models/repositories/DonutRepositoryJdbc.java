@@ -7,26 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DonutRepositoryJdbc implements DonutRepository {
-    private final String SQL_SELECT_ALL = "SELECT * FROM user";
-    private final String SQL_SELECT_BY_ID = "SELECT * FROM donut WHERE id= ";
-    private Connection connection;
+    private final String SQL_SELECT_BY_ID = "SELECT * FROM product WHERE id= ";
+    private final String SQL_SELECT_ALL = "SELECT * FROM product";
+    private final String SQL_SELECT_ALL_BY_WEIGHT = "SELECT * FROM product WHERE weight= ";
+    private final String SQL_SELECT_ALL_BY_TAG = "SELECT * FROM product WHERE tag= ";
 
-    public DonutRepositoryJdbc(Connection connection) {
-        this.connection = connection;
-    }
-
-
-    public List<Donut> findAllByTag(String tag) {
-        return null;
-    }
-
-    public List<Donut> findAllByWeight(int weight) {
+    public Donut findById(Long id) {
+        try {
+            Connection connection = DBConnection.createConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT_BY_ID + id);
+            if (resultSet.next()) {
+                return new Donut(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
         return null;
     }
 
     public List<Donut> findAll() {
         ArrayList<Donut> donuts = new ArrayList<Donut>();
         try {
+            Connection connection = DBConnection.createConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL);
 
@@ -39,41 +42,43 @@ public class DonutRepositoryJdbc implements DonutRepository {
         return donuts;
     }
 
-    public Donut findById(Long id) {
+    public List<Donut> findAllByTag(String tag) {
+        ArrayList<Donut> donuts = new ArrayList<Donut>();
         try {
+            Connection connection = DBConnection.createConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_BY_ID + id);
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_BY_TAG + tag);
+
             if (resultSet.next()) {
-                return new Donut(resultSet);
+                donuts.add(new Donut(resultSet));
             }
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        return null;
+        return donuts;
+    }
+
+    public List<Donut> findAllByWeight(int weight) {
+        ArrayList<Donut> donuts = new ArrayList<Donut>();
+        try {
+            Connection connection = DBConnection.createConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_BY_WEIGHT + weight);
+
+            if (resultSet.next()) {
+                donuts.add(new Donut(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+        return donuts;
     }
 
     public void save(Donut entity) {
-        //TODO запрос к бд пересмотреть
-        try {
-            PreparedStatement preparedStatement = null;
-            preparedStatement = connection.prepareStatement(
-                    "INSERT INTO product (product_name, product_description, image, " +
-                            "price, availability,quantity, weight, tag) VALUES ('%s','%s','%s','%d', '%s', '%d', '%d', '%s')");
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
+        throw new IllegalStateException();
     }
 
     public void update(Donut entity) {
-        //TODO запрос к бд пересмотреть
-        try {
-            Statement statement = connection.createStatement();
-//            statement.execute("ALTER TABLE product" + " product_name = " + entity.product_name() +
-//                    ", last_name = " + entity.getLastName() + ", age = " + entity.getAge() +
-//                    ", group_number = " + entity.getGroupNumber() +
-//                    " WHERE id = " + entity.getId() + "");
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
+        throw new IllegalStateException();
     }
 }

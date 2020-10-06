@@ -6,11 +6,8 @@ import java.sql.*;
 import java.util.List;
 
 public class UserRepositoryJdbc implements UserRepository {
-    final String INSERT_USERS_SQL = "INSERT INTO user_table" + "( first_name, last_name," +
+    final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
             "address, password, email) VALUES" + "(?, ? , ? , ? , ? );";
-    private static final String URL = "jdbc:mysql://localhost:3306/db?serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "realsanya";
     int result = 0;
 
 
@@ -25,7 +22,7 @@ public class UserRepositoryJdbc implements UserRepository {
     public void save(User user) {
         try {
             Connection connection = DBConnection.createConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_USERS);
             preparedStatement.setString(1, user.getFirst_name());
             preparedStatement.setString(2, user.getLast_name());
             preparedStatement.setString(3, user.getAddress());

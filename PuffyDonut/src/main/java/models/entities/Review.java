@@ -17,6 +17,18 @@ public class Review {
         this.date = date;
     }
 
+    public Review(ResultSet resultSet) {
+        try {
+            this.id = resultSet.getInt("id");
+            //TODO
+//            this.user_id = resultSet.getInt("user_id");
+            this.text = resultSet.getString("text");
+            this.date = resultSet.getDate("date");
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
     public int getId() {
         return id;
     }
