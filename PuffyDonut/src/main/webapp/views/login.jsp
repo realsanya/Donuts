@@ -39,6 +39,25 @@
     </script>
 </head>
 <body>
+
+<!--remember me-->
+<%
+    String email = "", password = "", remember = "";
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("cookieEmail")) {
+                email = cookie.getValue();
+            } else if (cookie.getName().equals("cookiePassword")) {
+                password = cookie.getValue();
+            } else if (cookie.getName().equals("cookieRemember")) {
+                remember = cookie.getValue();
+            }
+        }
+    }
+%>
+
+
 <nav class="navbar navbar-expand-lg navbar-light  py-3" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">PUFFY DONUT.</a>
@@ -86,21 +105,24 @@
                                       onsubmit="return validate()" autocomplete="off">
                                     <div class="form-group">
                                         <span class="text-black-50">Email</span>
-                                        <input type="text" class="form-control" name="email">
-                                    </div>
-                                    <div class="form-group">
-                                        <span class="text-black-50">Пароль</span>
-                                        <input type="password" class="form-control" name="password">
-                                    </div>
+                                        <input type="text" class="form-control" name="email" value=<%= email%>
+                                                </div>
+                                        <div class="form-group">
+                                            <span class="text-black-50">Пароль</span>
+                                            <input type="password" class="form-control" name="password"
+                                                   value=<%= password%>
+                                                           </div>
 
-                                    <div class="form-group">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Запомнить меня?</label>
-                                    </div>
+                                            <div class="form-group">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                                       name="remember" value=<%= remember%>>
+                                                <label class="form-check-label" for="exampleCheck1">Запомнить
+                                                    меня?</label>
+                                            </div>
 
-                                    <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
-                                            type="submit">Войти в аккаунт
-                                    </button>
+                                            <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
+                                                    type="submit">Войти в аккаунт
+                                            </button>
                                 </form>
                             </div>
                         </div>

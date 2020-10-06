@@ -5,10 +5,7 @@ import models.repositories.UserRepositoryJdbc;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -20,6 +17,8 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String remember = request.getParameter("remember");//TODO
+
 
         MessageDigest messageDigest = null;
         try {
@@ -40,6 +39,13 @@ public class LoginServlet extends HttpServlet {
         user.setPassword(builder.toString());
 
         String userValidate = userRepositoryJdbc.authenticateUser(user);
+
+        Cookie cookieEmail = new Cookie("cookieEmail", email);
+        Cookie cookiePassword = new Cookie("cookiePassword", password);
+        Cookie cookieRemember = new Cookie("cookieRemember", remember);
+        response.addCookie(cookieEmail);
+        response.addCookie(cookiePassword);
+        response.addCookie(cookieRemember);
 
         if (userValidate.equals("SUCCESS")) {
             request.setAttribute("email", email);
