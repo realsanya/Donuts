@@ -24,18 +24,41 @@
     <link href="../css/styles.css" rel="stylesheet"/>
 
     <script>
-        function validate() {
-            var username = document.form.username.value;
-            var password = document.form.password.value;
+        jQuery.validator.addMethod(
+            'regexp',
+            function (value, element, regexp) {
+                var re = new RegExp(regexp);
+                return this.optional(element) || re.test(value);
+            },
+            "Please check your input."
+        );
 
-            if (username == null || username == "") {
-                alert("Username cannot be blank");
-                return false;
-            } else if (password == null || password == "") {
-                alert("Password cannot be blank");
-                return false;
+        $("#loginForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 4,
+                    regexp: '^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'
+                }
+            },
+            messages: {
+                email: {
+                    required: "Поле обязательно для заполнения!"
+                },
+                password: {
+                    required: "Поле обязательно для заполнения!",
+                    minlength: jQuery.validator.format("Длина пароля должна быть больше 5 символов"),
+                    regexp: 'Пароль должен содержатькак минимум один числовой символ один буквенный символ'
+                }
+            },
+            submitHandler: function () {
+                alert("Валидация успешна!");
             }
-        }
+        });
     </script>
 </head>
 <body>
@@ -102,27 +125,28 @@
                             <div class="card-body">
                                 <h3 class="mb-4 text-black-80 mt-0 font-weight-bold">АВТОРИЗАЦИЯ</h3>
                                 <form action="${pageContext.request.contextPath}/login" method="post"
-                                      onsubmit="return validate()" autocomplete="off">
+                                      id="loginForm" role="form">
                                     <div class="form-group">
                                         <span class="text-black-50">Email</span>
-                                        <input type="text" class="form-control" name="email" value=<%= email%>
+                                        <input type="email" class="form-control" name="email" value=<%= email%>
                                                 </div>
                                         <div class="form-group">
                                             <span class="text-black-50">Пароль</span>
                                             <input type="password" class="form-control" name="password"
-                                                   value=<%= password%>
-                                                           </div>
+                                                   value="1" <%= "1".equals(remember) ? "checked= '/checked" : ""%>
+                                                   checked="checked"/>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                                                       name="remember" value=<%= remember%>>
-                                                <label class="form-check-label" for="exampleCheck1">Запомнить
-                                                    меня?</label>
-                                            </div>
+                                        <div class="form-group">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                                   name="remember" value=<%= remember%>>
+                                            <label class="form-check-label" for="exampleCheck1">Запомнить
+                                                меня?</label>
+                                        </div>
 
-                                            <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
-                                                    type="submit">Войти в аккаунт
-                                            </button>
+                                        <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
+                                                type="submit">Войти в аккаунт
+                                        </button>
                                 </form>
                             </div>
                         </div>
