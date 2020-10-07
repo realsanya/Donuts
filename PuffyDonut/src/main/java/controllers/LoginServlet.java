@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 
         if (userValidate.equals("SUCCESS")) {
             request.setAttribute("email", email);
-            request.getRequestDispatcher("views/register.jsp").forward(request, response);
+            request.getRequestDispatcher("views/profile.jsp").forward(request, response);
         } else {
             request.setAttribute("errMessage", userValidate);
             request.getRequestDispatcher("views/login.jsp").forward(request, response);

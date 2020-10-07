@@ -37,6 +37,7 @@ public class UserRepositoryJdbc implements UserRepository {
     }
 
     public void update(User entity) {
+        throw new IllegalStateException();
     }
 
     public String authenticateUser(User user) {

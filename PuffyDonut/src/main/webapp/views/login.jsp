@@ -52,7 +52,7 @@
                 password: {
                     required: "Поле обязательно для заполнения!",
                     minlength: jQuery.validator.format("Длина пароля должна быть больше 5 символов"),
-                    regexp: 'Пароль должен содержатькак минимум один числовой символ один буквенный символ'
+                    regexp: 'Пароль должен содержать как минимум один числовой символ один буквенный символ'
                 }
             },
             submitHandler: function () {
@@ -130,23 +130,25 @@
                                         <span class="text-black-50">Email</span>
                                         <input type="email" class="form-control" name="email" value=<%= email%>
                                                 </div>
-                                        <div class="form-group">
-                                            <span class="text-black-50">Пароль</span>
-                                            <input type="password" class="form-control" name="password"
-                                                   value="1" <%= "1".equals(remember) ? "checked= '/checked" : ""%>
-                                                   checked="checked"/>
-                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="text-black-50">Пароль</span>
+                                        <input type="password" class="form-control" name="password"
+                                               value="1" <%= "1".equals(remember) ? "checked= '/checked" : ""%>
+                                               checked="checked"/>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                                                   name="remember" value=<%= remember%>>
-                                            <label class="form-check-label" for="exampleCheck1">Запомнить
-                                                меня?</label>
-                                        </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                               name="remember" value=<%= remember%>>
+                                        <label class="form-check-label" for="exampleCheck1">Запомнить
+                                            меня?</label>
+                                    </div>
 
-                                        <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
-                                                type="submit">Войти в аккаунт
-                                        </button>
+                                    <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
+                                            type="submit">Войти в аккаунт
+                                    </button>
+
                                 </form>
                             </div>
                         </div>
