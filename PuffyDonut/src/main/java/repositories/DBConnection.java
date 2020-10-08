@@ -1,4 +1,4 @@
-package models.repositories;
+package repositories;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DBConnection {
     public static Connection createConnection()
     {
         Connection con = null;
-        System.out.println("In models.repositories.DBConnection.java class ");
+        System.out.println("In repositories.DBConnection.java class ");
 
         try
         {

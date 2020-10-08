@@ -23,6 +23,43 @@
 
     <link href="../css/styles.css" rel="stylesheet"/>
 
+    <script>
+        jQuery.validator.addMethod(
+            'regexp',
+            function (value, element, regexp) {
+                var re = new RegExp(regexp);
+                return this.optional(element) || re.test(value);
+            },
+            "Please check your input."
+        );
+
+        $("#registerForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 4,
+                    regexp: '^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'
+                }
+            },
+            messages: {
+                email: {
+                    required: "Поле обязательно для заполнения!"
+                },
+                password: {
+                    required: "Поле обязательно для заполнения!",
+                    minlength: jQuery.validator.format("Длина пароля должна быть больше 5 символов"),
+                    regexp: 'Пароль должен содержать как минимум один числовой символ и один буквенный символ'
+                }
+            },
+            submitHandler: function () {
+                alert("Валидация успешна!");
+            }
+        });
+    </script>
 
 </head>
 <body class="masthead">
@@ -70,7 +107,7 @@
                             <div class="card-body">
                                 <h3 class="mb-4 text-black-80 mt-0 font-weight-bold">Регистрация</h3>
                                 <form action="${pageContext.request.contextPath}/register" method="post"
-                                      autocomplete="off">
+                                      id="registerForm" role="form">
                                     <div class="form-group">
                                         <span class="text-black-50">Почта</span>
                                         <input type="email" class="form-control" name="email">

@@ -1,7 +1,13 @@
-package models.entities;
+package models;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
+import java.sql.ResultSet;
 
+@Getter
+@Setter
 public class Comment {
     private int id;
     private User user_id;
@@ -17,28 +23,7 @@ public class Comment {
         this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public Comment(ResultSet resultSet) {
+        //TODO
     }
-
-    public User getUser_id() {
-        return user_id;
-    }
-
-    public Donut getDonut_id() {
-        return donut_id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
 }

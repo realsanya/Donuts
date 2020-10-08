@@ -1,6 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.Delivery;
+import models.Delivery;
 
 public interface DeliveryRepository extends OrmRepository<Delivery> {
 }

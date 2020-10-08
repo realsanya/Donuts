@@ -1,7 +1,7 @@
-package controllers;
+package servlets;
 
-import models.entities.User;
-import models.repositories.UserRepositoryJdbc;
+import models.User;
+import repositories.UserRepositoryJdbc;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

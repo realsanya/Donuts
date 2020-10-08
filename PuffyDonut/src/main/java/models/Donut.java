@@ -1,8 +1,13 @@
-package models.entities;
+package models;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Getter
+@Setter
 public class Donut {
     private int id;
     private String name;
@@ -60,42 +65,6 @@ public class Donut {
                 ", weight='" + weight + '\'' +
                 ", tag='" + tag + '\'' +
                 '}';
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Boolean getAvailability() {
-        return availability;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public String getTag() {
-        return tag;
     }
 
 }

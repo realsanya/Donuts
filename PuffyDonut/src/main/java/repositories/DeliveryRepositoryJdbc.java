@@ -1,6 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.Delivery;
+import models.Delivery;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.Order;
+import models.Order;
 
 import java.util.List;
 

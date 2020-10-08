@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>controllers.RegisterServlet</servlet-class>
+        <servlet-class>servlets.RegisterServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controllers.LoginServlet</servlet-class>
+        <servlet-class>servlets.LoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,12 +26,22 @@
 
     <servlet>
         <servlet-name>MainServlet</servlet-name>
-        <servlet-class>controllers.MainServlet</servlet-class>
+        <servlet-class>servlets.MainServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>servlets.ProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
 </web-app>

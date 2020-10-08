@@ -1,6 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.Donut;
+import models.Donut;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,12 +1,13 @@
-package models.repositories;
+package repositories;
 
-import models.entities.User;
+import models.User;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Optional;
 
 public class UserRepositoryJdbc implements UserRepository {
-    final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
+    private final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
             "address, password, email) VALUES" + "(?, ? , ? , ? , ? );";
     int result = 0;
 

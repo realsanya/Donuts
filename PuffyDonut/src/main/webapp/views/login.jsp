@@ -24,42 +24,42 @@
     <link href="../css/styles.css" rel="stylesheet"/>
 
     <script>
-        jQuery.validator.addMethod(
-            'regexp',
-            function (value, element, regexp) {
-                var re = new RegExp(regexp);
-                return this.optional(element) || re.test(value);
-            },
-            "Please check your input."
-        );
+    jQuery.validator.addMethod(
+        'regexp',
+        function (value, element, regexp) {
+            var re = new RegExp(regexp);
+            return this.optional(element) || re.test(value);
+        },
+        "Please check your input."
+    );
 
-        $("#loginForm").validate({
-            rules: {
-                email: {
-                    required: true,
-                    email: true
-                },
-                password: {
-                    required: true,
-                    minlength: 4,
-                    regexp: '^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'
-                }
+    $("#loginForm").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
             },
-            messages: {
-                email: {
-                    required: "Поле обязательно для заполнения!"
-                },
-                password: {
-                    required: "Поле обязательно для заполнения!",
-                    minlength: jQuery.validator.format("Длина пароля должна быть больше 5 символов"),
-                    regexp: 'Пароль должен содержать как минимум один числовой символ один буквенный символ'
-                }
-            },
-            submitHandler: function () {
-                alert("Валидация успешна!");
+            password: {
+                required: true,
+                minlength: 4,
+                // regexp: '^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'
             }
-        });
-    </script>
+        },
+        messages: {
+            email: {
+                required: "Поле обязательно для заполнения!"
+            },
+            password: {
+                required: "Поле обязательно для заполнения!",
+                minlength: jQuery.validator.format("Длина пароля должна быть больше 5 символов"),
+                // regexp: 'Пароль должен содержать как минимум один числовой символ один буквенный символ'
+            }
+        },
+        submitHandler: function () {
+            alert("Валидация успешна!");
+        }
+    });
+</script>
 </head>
 <body>
 

@@ -1,6 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.User;
+import models.User;
 
 public interface UserRepository extends OrmRepository<User> {
 }

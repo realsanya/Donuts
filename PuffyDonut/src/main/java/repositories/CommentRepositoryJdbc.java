@@ -1,7 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.Comment;
-import models.entities.Donut;
+import models.Comment;
 
 import java.sql.*;
 import java.util.List;

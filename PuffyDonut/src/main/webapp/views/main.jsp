@@ -1,4 +1,4 @@
-<%@ page import="models.entities.Donut" %>
+<%@ page import="models.Donut" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Asus

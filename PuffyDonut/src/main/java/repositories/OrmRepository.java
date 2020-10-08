@@ -1,6 +1,7 @@
-package models.repositories;
+package repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrmRepository<T> {
     List<T> findAll();

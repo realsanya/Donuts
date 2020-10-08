@@ -1,7 +1,12 @@
-package models.entities;
+package models;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
 
+@Getter
+@Setter
 public class Delivery {
     private Order order_id;
     private Date delivery_date;
@@ -11,17 +16,5 @@ public class Delivery {
         this.order_id = order_id;
         this.delivery_date = delivery_date;
         this.delivery_status = delivery_status;
-    }
-
-    public Order getOrder_id() {
-        return order_id;
-    }
-
-    public Date getDelivery_date() {
-        return delivery_date;
-    }
-
-    public String getDelivery_status() {
-        return delivery_status;
     }
 }

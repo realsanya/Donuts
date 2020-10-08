@@ -1,6 +1,6 @@
-package models.repositories;
+package repositories;
 
-import models.entities.Comment;
+import models.Comment;
 
 public interface CommentRepository extends OrmRepository<Comment> {
 }
