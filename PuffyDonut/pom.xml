@@ -49,13 +49,6 @@
             <version>8.0.21</version>
         </dependency>
 
-        <!--FreeMarker-->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.30</version>
-        </dependency>
-
         <!--JQuery-->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -76,6 +69,13 @@
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- JSTL -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
     </dependencies>

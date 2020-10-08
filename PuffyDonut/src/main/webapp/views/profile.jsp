@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Профиль</title>
@@ -113,111 +114,56 @@
                         <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>
                             Мои отзывы</h5>
                         <ul class="list-unstyled timeline-sm">
-                            <%
-                                List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
-                                if (reviewList != null && !reviewList.isEmpty()) {
-                                    //out.println("<ui>");
-                                    for (Review review : reviewList) {
-                                        out.println(" <li class=\"timeline-sm-item\">"
-                                                + "<div class=\"row\">" +
-                                                "<div class=\"col-2\">" + "<img src=\"../static/donut.png\" class=\"img-fluid\">" +
-                                                " </div>" + " <div class=\"col mt-auto mb-auto\">" +
-                                                " <span class=\"timeline-sm-date\">" + review.getDate() + "/span>" +
-                                                "<h5 class=\"mt-0 mb-1\">" + review.getUser_id() + "</h5>" +
-                                                "</div>" + "  </div>" + "<p class=\"text-muted mt-2\">"
-                                                + review.getText() + "</p>" + " </li>");
-                                    }
-                                    //out.println("</ui>");
-                                } else out.println("<p>There are no reviews yet! </p>");
-                            %>
+                            <c:forEach items="($reviewList)" var="review">
+                                <li class="timeline-sm-item">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img src="../static/donut.png" class="img-fluid">
+                                        </div>
+                                        <div class="col mt-auto mb-auto">
+                                             <span class="timeline-sm-date">
+                                                 $(review.getDate())
+                                             </span>
+                                            <h5 class="mt-0 mb-1">
+                                                $(review.getUser_id())
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted mt-2">
+                                        $(review.getText())
+                                    </p>
+                                </li>
+                            </c:forEach>
+
+
+                            <%--                            <%--%>
+                            <%--                                List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");--%>
+                            <%--                                if (reviewList != null && !reviewList.isEmpty()) {--%>
+                            <%--                                    for (Review review : reviewList) {%>--%>
                             <%--                            <li class="timeline-sm-item">--%>
                             <%--                                <div class="row">--%>
                             <%--                                    <div class="col-2">--%>
                             <%--                                        <img src="../static/donut.png" class="img-fluid">--%>
                             <%--                                    </div>--%>
                             <%--                                    <div class="col mt-auto mb-auto">--%>
-                            <%--                                        <span class="timeline-sm-date">11.05.2000</span>--%>
-                            <%--                                        <h5 class="mt-0 mb-1">Martha Smith</h5>--%>
+                            <%--                                             <span class="timeline-sm-date">--%>
+                            <%--                                                 <%=review.getDate()%>--%>
+                            <%--                                             </span>--%>
+                            <%--                                        <h5 class="mt-0 mb-1">--%>
+                            <%--                                            <%= review.getUser_id()%>--%>
+                            <%--                                        </h5>--%>
                             <%--                                    </div>--%>
-
-
                             <%--                                </div>--%>
-                            <%--                                <p class="text-muted mt-2">Everyone realizes why a new common language--%>
-                            <%--                                    would be desirable: one could refuse to pay expensive translators.--%>
-                            <%--                                    To achieve this, it would be necessary to have uniform grammar,--%>
-                            <%--                                    pronunciation and more common words.</p>--%>
-
+                            <%--                                <p class="text-muted mt-2">--%>
+                            <%--                                        <%= review.getText()%> <%} }else{%>--%>
+                            <%--                                <h2> Вы не оставили ни одного отзыва! </h2><% }%>--%>
+                            <%--                                </p>--%>
                             <%--                            </li>--%>
-
-                            <%--                            <li class="timeline-sm-item">--%>
-                            <%--                                <div class="row">--%>
-                            <%--                                    <div class="col-2">--%>
-                            <%--                                        <img src="../static/donut.png" class="img-fluid">--%>
-                            <%--                                    </div>--%>
-                            <%--                                    <div class="col mt-auto mb-auto">--%>
-                            <%--                                        <span class="timeline-sm-date">11.05.2000</span>--%>
-                            <%--                                        <h5 class="mt-0 mb-1">Martha Smith</h5>--%>
-                            <%--                                    </div>--%>
-
-
-                            <%--                                </div>--%>
-                            <%--                                <p class="text-muted mt-2">Everyone realizes why a new common language--%>
-                            <%--                                    would be desirable: one could refuse to pay expensive translators.--%>
-                            <%--                                    To achieve this, it would be necessary to have uniform grammar,--%>
-                            <%--                                    pronunciation and more common words.</p>--%>
-
-                            <%--                            </li>--%>
-
-
-                            <%--                            <li class="timeline-sm-item">--%>
-                            <%--                                <div class="row">--%>
-                            <%--                                    <div class="col-2">--%>
-                            <%--                                        <img src="../static/donut.png" class="img-fluid">--%>
-                            <%--                                    </div>--%>
-                            <%--                                    <div class="col mt-auto mb-auto">--%>
-                            <%--                                        <span class="timeline-sm-date">11.05.2000</span>--%>
-                            <%--                                        <h5 class="mt-0 mb-1">Martha Smith</h5>--%>
-                            <%--                                    </div>--%>
-
-
-                            <%--                                </div>--%>
-                            <%--                                <p class="text-muted mt-2">Everyone realizes why a new common language--%>
-                            <%--                                    would be desirable: one could refuse to pay expensive translators.--%>
-                            <%--                                    To achieve this, it would be necessary to have uniform grammar,--%>
-                            <%--                                    pronunciation and more common words.</p>--%>
-
-                            <%--                            </li>--%>
-
-
-                            <%--                            <li class="timeline-sm-item">--%>
-                            <%--                                <div class="row">--%>
-                            <%--                                    <div class="col-2">--%>
-                            <%--                                        <img src="../static/donut.png" class="img-fluid">--%>
-                            <%--                                    </div>--%>
-                            <%--                                    <div class="col mt-auto mb-auto">--%>
-                            <%--                                        <span class="timeline-sm-date">11.05.2000</span>--%>
-                            <%--                                        <h5 class="mt-0 mb-1">Martha Smith</h5>--%>
-                            <%--                                    </div>--%>
-
-
-                            <%--                                </div>--%>
-                            <%--                                <p class="text-muted mt-2">Everyone realizes why a new common language--%>
-                            <%--                                    would be desirable: one could refuse to pay expensive translators.--%>
-                            <%--                                    To achieve this, it would be necessary to have uniform grammar,--%>
-                            <%--                                    pronunciation and more common words.</p>--%>
-
-                            <%--                            </li>--%>
-
                         </ul>
                     </div>
-                    <!-- end timeline content-->
-
-                    <!-- end settings content-->
-
                 </div> <!-- end tab-content -->
             </div> <!-- end card-box-->
-
-        </div> <!-- end col -->
+        </div>
     </div>
 </div>
 
