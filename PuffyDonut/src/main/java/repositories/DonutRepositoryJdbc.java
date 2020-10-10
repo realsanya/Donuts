@@ -1,10 +1,12 @@
 package repositories;
 
 import models.Donut;
+import models.Review;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DonutRepositoryJdbc implements DonutRepository {
     private final String SQL_SELECT_BY_ID = "SELECT * FROM product WHERE id= ";
@@ -12,7 +14,7 @@ public class DonutRepositoryJdbc implements DonutRepository {
     private final String SQL_SELECT_ALL_BY_WEIGHT = "SELECT * FROM product WHERE weight= ";
     private final String SQL_SELECT_ALL_BY_TAG = "SELECT * FROM product WHERE tag= ";
 
-    public Donut findById(Long id) {
+    public Optional<Review> findById(Long id) {
         try {
             Connection connection = DBConnection.createConnection();
             Statement statement = connection.createStatement();

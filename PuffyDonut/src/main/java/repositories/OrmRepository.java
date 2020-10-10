@@ -1,5 +1,7 @@
 package repositories;
 
+import models.Review;
+
 import java.util.List;
 import java.util.Optional;
 

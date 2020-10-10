@@ -1,9 +1,11 @@
 package repositories;
 
 import models.Comment;
+import models.Review;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Optional;
 
 public class CommentRepositoryJdbc implements CommentRepository {
     final String SQL_INSERT_COMMENTS = "INSERT INTO comment" + "( text, user_id," +
@@ -18,7 +20,7 @@ public class CommentRepositoryJdbc implements CommentRepository {
     }
 
     @Override
-    public Comment findById(Long id) {
+    public Optional<Review> findById(Long id) {
         try {
             Connection connection = DBConnection.createConnection();
             Statement statement = connection.createStatement();

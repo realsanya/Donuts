@@ -1,20 +1,39 @@
 package servlets;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import models.User;
 import repositories.UserRepositoryJdbc;
+import services.UserService;
+import services.UserServiceImpl;
 import utils.HashPassword;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
+@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private UserRepositoryJdbc userRepositoryJdbc = new UserRepositoryJdbc();
+    private UserService userService;
+
+    @Override
+    public void init() throws ServletException {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/db?serverTimezone=UTC");
+        hikariConfig.setDriverClassName("mysql");
+        hikariConfig.setUsername("root");
+        hikariConfig.setPassword("realsanya");
+        hikariConfig.setMaximumPoolSize(10);
+
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+        UserRepositoryJdbc userRepositoryJdbc = new UserRepositoryJdbc(dataSource);
+        this.userService = new UserServiceImpl(userRepositoryJdbc);
+
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String first_name = request.getParameter("first_name");
@@ -34,7 +53,8 @@ public class RegisterServlet extends HttpServlet {
                 .password(password)
                 .build();
 
-        userRepositoryJdbc.save(user);
+        userService.addUser(user);
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("registerdetails.jsp");
         requestDispatcher.forward(request, response);
 

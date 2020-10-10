@@ -1,8 +1,10 @@
 package repositories;
 
 import models.Delivery;
+import models.Review;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DeliveryRepositoryJdbc implements DeliveryRepository {
     @Override
@@ -11,7 +13,7 @@ public class DeliveryRepositoryJdbc implements DeliveryRepository {
     }
 
     @Override
-    public Delivery findById(Long id) {
+    public Optional<Review> findById(Long id) {
         return null;
     }
 
