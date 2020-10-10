@@ -2,6 +2,7 @@ package servlets;
 
 import models.User;
 import repositories.UserRepositoryJdbc;
+import utils.HashPassword;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,25 +23,18 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
-            byte[] bytes = messageDigest.digest(password.getBytes());
-            StringBuilder builder = new StringBuilder();
-            for (byte b : bytes) {
-                builder.append(b);
-            }
+        HashPassword hashPassword = new HashPassword();
+        password = HashPassword.getHash(password);
 
-            User user = new User();
-            user.setFirst_name(first_name);
-            user.setLast_name(last_name);
-            user.setAddress(address);
-            user.setPassword(builder.toString());
-            user.setEmail(email);
+        User user = User.builder()
+                .first_name(first_name)
+                .last_name(last_name)
+                .address(address)
+                .email(email)
+                .password(password)
+                .build();
 
-            userRepositoryJdbc.save(user);
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException(e);
-        }
+        userRepositoryJdbc.save(user);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("registerdetails.jsp");
         requestDispatcher.forward(request, response);
 
