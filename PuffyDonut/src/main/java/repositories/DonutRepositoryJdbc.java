@@ -2,80 +2,68 @@ package repositories;
 
 import models.Donut;
 import models.Review;
+import models.User;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class DonutRepositoryJdbc implements DonutRepository {
-    private final String SQL_SELECT_BY_ID = "SELECT * FROM product WHERE id= ";
+    private DataSource dataSource;
+
+    //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM product";
+
+    //language=SQL
     private final String SQL_SELECT_ALL_BY_WEIGHT = "SELECT * FROM product WHERE weight= ";
+
+    //language=SQL
     private final String SQL_SELECT_ALL_BY_TAG = "SELECT * FROM product WHERE tag= ";
 
-    public Optional<Review> findById(Long id) {
-        try {
-            Connection connection = DBConnection.createConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_BY_ID + id);
-            if (resultSet.next()) {
-                return new Donut(resultSet);
-            }
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-        return null;
+    //language=SQL
+    private final String SQL_SELECT_BY_ID = "SELECT * FROM product WHERE id= ";
+
+    public DonutRepositoryJdbc(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
-    public List<Donut> findAll() {
-        ArrayList<Donut> donuts = new ArrayList<Donut>();
-        try {
-            Connection connection = DBConnection.createConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL);
+    private RowMapper<Donut> donutRowMapper = row -> Donut.builder()
+            .name(row.getString("product_name"))
+            .description(row.getString("product_description"))
+            .image(row.getString("image"))
+            .price(row.getFloat("price"))
+            .availability(row.getBoolean("availability"))
+            .quantity(row.getInt("quantity"))
+            .weight(row.getInt("weight"))
+            .tag(row.getString("tag"))
+            .build();
 
-            if (resultSet.next()) {
-                donuts.add(new Donut(resultSet));
-            }
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-        return donuts;
+
+    public List<Donut> findAll() {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL, donutRowMapper);
     }
 
     public List<Donut> findAllByTag(String tag) {
-        ArrayList<Donut> donuts = new ArrayList<Donut>();
-        try {
-            Connection connection = DBConnection.createConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_BY_TAG + tag);
-
-            if (resultSet.next()) {
-                donuts.add(new Donut(resultSet));
-            }
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-        return donuts;
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_TAG, donutRowMapper, tag);
     }
 
-    public List<Donut> findAllByWeight(int weight) {
-        ArrayList<Donut> donuts = new ArrayList<Donut>();
-        try {
-            Connection connection = DBConnection.createConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_BY_WEIGHT + weight);
-
-            if (resultSet.next()) {
-                donuts.add(new Donut(resultSet));
-            }
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-        return donuts;
+    public Optional<Donut> findById(Long id) {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        List<Donut> donuts = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, donutRowMapper, id);
+        return Optional.ofNullable(donuts.get(0));
     }
 
+    public List<Donut> findAllByWeight(Integer weight) {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_WEIGHT, donutRowMapper, weight);
+    }
+
+
+//TODO
     public void save(Donut entity) {
         throw new IllegalStateException();
     }
