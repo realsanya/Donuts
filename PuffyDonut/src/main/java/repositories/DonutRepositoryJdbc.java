@@ -51,16 +51,18 @@ public class DonutRepositoryJdbc implements DonutRepository {
         return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_TAG, donutRowMapper, tag);
     }
 
+    public List<Donut> findAllByWeight(Integer weight) {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_WEIGHT, donutRowMapper, weight);
+    }
+
     public Optional<Donut> findById(Long id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<Donut> donuts = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, donutRowMapper, id);
         return Optional.ofNullable(donuts.get(0));
     }
 
-    public List<Donut> findAllByWeight(Integer weight) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_WEIGHT, donutRowMapper, weight);
-    }
+
 
 
 //TODO
