@@ -2,24 +2,64 @@ package repositories;
 
 import models.User;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
 public class UserRepositoryJdbc implements UserRepository {
+
+    private DataSource dataSource;
+
+    //language=SQL
     private final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
             "address, password, email) VALUES" + "(?, ? , ? , ? , ? );";
-    int result = 0;
 
+    //language=SQL
+    private final String SQL_SELECT_ALL = "SELECT * FROM user_table";
+
+    //language=SQL
+    private final String SQL_SELECT_BY_ID = "SELECT * FROM user_table WHERE user_id =";
+
+    //language=SQL
+    private final String SQL_SELECT_BY_EMAIL_PASS = "SELECT * FROM user_table WHERE email= ? AND password= ?";
+
+    private RowMapper<User> userRowMapper = row -> User.builder()
+            .first_name(row.getString("first_name"))
+            .last_name(row.getString("last_name"))
+            .address(row.getString("address"))
+            .email(row.getString("email"))
+            .password(row.getString("password"))
+            .image(row.getString(row.getString("image")))
+            .build();
+
+    public UserRepositoryJdbc(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     public List<User> findAll() {
-        return null;
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL, userRowMapper);
     }
 
-    public User findById(Long id) {
-        return null;
+    public Optional<User> findById(Long id) {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, userRowMapper, id);
+        return Optional.ofNullable(user.get(0));
     }
 
+    @Override
+    public Optional<User> findByEmailAndPassword(String email, String password) {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL_PASS, userRowMapper, email, password);
+        return Optional.ofNullable(user.get(0));
+    }
+
+
+
+
+
+//TODO
     public void save(User user) {
         try {
             Connection connection = DBConnection.createConnection();
@@ -30,8 +70,6 @@ public class UserRepositoryJdbc implements UserRepository {
             preparedStatement.setString(4, user.getPassword());
             preparedStatement.setString(5, user.getEmail());
 
-            System.out.println(preparedStatement);
-            result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
