@@ -14,16 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileServlet extends HttpServlet {
-    ReviewRepositoryJdbc reviewRepositoryJdbc = new ReviewRepositoryJdbc();
     private ReviewsService reviewsService;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //TODO: findAllByID
-        List<Review> reviewList = reviewRepositoryJdbc.findAllByUserID(4);
-        for (Review r : reviewList) {
-            System.out.println(r.getText());
-        }
-        request.setAttribute("reviewList", reviewList);
+//        List<Review> reviewList = reviewRepositoryJdbc.findAllByUserID(4);
+//        for (Review r : reviewList) {
+//            System.out.println(r.getText());
+//        }
+       // request.setAttribute("reviewList", reviewList);
         RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("views/profile.jsp");
         requestDispatcher.forward(request, response);
     }

@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 
 
 
-        String userValidate = userRepositoryJdbc.authenticateUser(user);
+//        String userValidate = userRepositoryJdbc.authenticateUser(user);
 
         Cookie cookieEmail = new Cookie("cookieEmail", email);
         Cookie cookiePassword = new Cookie("cookiePassword", password);
@@ -37,13 +37,13 @@ public class LoginServlet extends HttpServlet {
         response.addCookie(cookiePassword);
         response.addCookie(cookieRemember);
 
-        if (userValidate.equals("SUCCESS")) {
-            request.setAttribute("email", email);
-            request.getRequestDispatcher("views/profile.jsp").forward(request, response);
-        } else {
-            request.setAttribute("errMessage", userValidate);
-            request.getRequestDispatcher("views/login.jsp").forward(request, response);
-        }
+//        if (userValidate.equals("SUCCESS")) {
+//            request.setAttribute("email", email);
+//            request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+//        } else {
+//            request.setAttribute("errMessage", userValidate);
+//            request.getRequestDispatcher("views/login.jsp").forward(request, response);
+//        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

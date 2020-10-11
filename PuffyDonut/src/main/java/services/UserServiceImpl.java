@@ -20,13 +20,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserByEmailAndPassword(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password);
-    }
-
-    @Override
-    public boolean userIsExist(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password).isPresent();
+    public boolean userIsExist(String email) {
+        return userRepository.findByEmail(email).isPresent();
     }
 
     @Override

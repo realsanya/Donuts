@@ -49,9 +49,9 @@ public class UserRepositoryJdbc implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByEmailAndPassword(String email, String password) {
+    public Optional<User> findByEmail(String email) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL_PASS, userRowMapper, email, password);
+        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL_PASS, userRowMapper, email);
         return Optional.ofNullable(user.get(0));
     }
 

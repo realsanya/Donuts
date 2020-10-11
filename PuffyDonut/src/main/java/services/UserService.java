@@ -8,9 +8,7 @@ import java.util.Optional;
 public interface UserService {
     List<User> getAllUsers();
 
-    Optional<User> getUserByEmailAndPassword(String email, String password);
-
-    boolean userIsExist(String email, String password);
+    boolean userIsExist(String email);
 
     void addUser(User user);
 }
