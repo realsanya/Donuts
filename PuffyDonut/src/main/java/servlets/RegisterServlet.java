@@ -18,13 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DataSource dataSource = (DataSource) request.getServletContext().getAttribute("datasource");
-        UserRepository userRepository = new UserRepositoryJdbc(dataSource);
-        UserService userService = new UserServiceImpl(userRepository);
+        UserService userService = (UserService) request.getServletContext().getAttribute("userService");
 
         String first_name = request.getParameter("first_name");
         String last_name = request.getParameter("last_name");
@@ -56,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/register.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.ftl");
         requestDispatcher.forward(request, response);
     }
 }
