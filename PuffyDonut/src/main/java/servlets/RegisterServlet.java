@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 
+
 public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,7 +54,6 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.ftl");
-        requestDispatcher.forward(request, response);
+        request.getRequestDispatcher("/register.ftl").forward(request, response);
     }
 }

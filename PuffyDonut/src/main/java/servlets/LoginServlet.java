@@ -2,6 +2,7 @@ package servlets;
 
 import models.User;
 import repositories.UserRepositoryJdbc;
+import services.UserService;
 import utils.HashPassword;
 
 import javax.servlet.RequestDispatcher;
@@ -15,19 +16,16 @@ import java.security.NoSuchAlgorithmException;
 public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserService userService = (UserService) request.getServletContext().getAttribute("userService");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
 
-        HashPassword hashPassword = new HashPassword();
         password = HashPassword.getHash(password);
 
         User user = User.builder().email(email).password(password).build();
-
-
-
-//        String userValidate = userRepositoryJdbc.authenticateUser(user);
+        userService.addUser(user);
 
         Cookie cookieEmail = new Cookie("cookieEmail", email);
         Cookie cookiePassword = new Cookie("cookiePassword", password);
@@ -46,8 +44,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/login.jsp");
-        requestDispatcher.forward(request, response);
+        request.getRequestDispatcher("login.ftl").forward(request, response);
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
