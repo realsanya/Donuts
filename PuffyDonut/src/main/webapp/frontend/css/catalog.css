@@ -1,0 +1,56 @@
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    border: #aa4aac solid 1px !important;
+    color: #aa4aac;
+    background: transparent;
+}
+
+.active {
+    border: #aa4aac solid 1px !important;
+}
+
+.tag-donut {
+    background: transparent linear-gradient(to right, #973b99, #d56ed6) !important;
+    color: white !important;
+    border-radius: 15px;
+}
+
+.shop__sidebar__search {
+    border: #aa4aac solid 1px !important;
+    border-radius: 15px;
+    background: transparent;
+}
+
+.btn-primary {
+    font-size: 8px;
+    color: white;
+    letter-spacing: 2px;
+    border: 2px transparent;
+    border-radius: 40px;
+    background: transparent linear-gradient(to right, #973b99, #d56ed6);
+    transition: all 0.3s ease 0s;
+
+}
+
+.card.border-white {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+.masthead {
+    background: url("../assets/img/back.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.donut {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}

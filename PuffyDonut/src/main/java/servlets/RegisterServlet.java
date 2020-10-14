@@ -41,15 +41,15 @@ public class RegisterServlet extends HttpServlet {
                     .email(email)
                     .password(password)
                     .build();
-
+            System.out.println(user.getLast_name());
             userService.addUser(user);
 
             request.getSession().setAttribute("email", email);
             request.getSession().setAttribute("password", password);
-            response.sendRedirect("/profile");
+           // response.sendRedirect("/profile");
 
         } else {
-            response.sendRedirect("/register");
+           // response.sendRedirect("/register");
         }
     }
 

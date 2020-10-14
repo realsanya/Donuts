@@ -61,18 +61,13 @@ public class UserRepositoryJdbc implements UserRepository {
 
 //TODO
     public void save(User user) {
-//        try {
-//            Connection connection = DBConnection.createConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_USERS);
-//            preparedStatement.setString(1, user.getFirst_name());
-//            preparedStatement.setString(2, user.getLast_name());
-//            preparedStatement.setString(3, user.getAddress());
-//            preparedStatement.setString(4, user.getPassword());
-//            preparedStatement.setString(5, user.getEmail());
-//
-//        } catch (SQLException e) {
-//            throw new IllegalStateException(e);
-//        }
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        simpleJdbcTemplate.queryInsert(SQL_INSERT_USERS,
+                user.getFirst_name(),
+                user.getLast_name(),
+                user.getAddress(),
+                user.getPassword(),
+                user.getEmail());
     }
 
     public void update(User entity) {

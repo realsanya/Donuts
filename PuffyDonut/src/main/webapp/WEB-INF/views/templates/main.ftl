@@ -10,7 +10,7 @@
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 font-weight-light mb-5">Превосходный десерт по сладкой цене<br>с бесплатной
                     доставкой</p>
-                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.html">Смотреть каталог</a>
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.ftl">Смотреть каталог</a>
 
                 <p class="mt-5 text-white-75 font-weight-light ">Сделайте заказ прямо сейчас и получите скидку 10%</p>
             </div>
@@ -29,7 +29,7 @@
                         Где в одном месте собран весь наш ассортимент. Удобная навигация, фильтры по необходимым параметрам,
                         подробное описание товаров и разнообразие форм оплаты сделают покупку приятной, быстрой и
                         легкой.</p>
-                    <a class="" style="color: black" href="about.html">Подробнее о нас</a>
+                    <a class="" style="color: black" href="about.ftl">Подробнее о нас</a>
                 </div>
             </div>
         </div>
