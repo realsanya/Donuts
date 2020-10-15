@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 
-public class RegisterServlet extends HttpServlet {
+public class  RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserService userService = (UserService) request.getServletContext().getAttribute("userService");

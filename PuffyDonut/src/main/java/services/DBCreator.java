@@ -1,7 +1,11 @@
 package services;
 
+import annotations.Table;
 import caster.Castable;
 import caster.IntegerCaster;
+import caster.ManyToOneCaster;
+import caster.StringCaster;
+import utils.SQLUtils;
 
 
 import java.beans.Transient;
@@ -32,37 +36,37 @@ public class DBCreator {
     };
 
     public void create() {
-        Reflections reflections = new Reflections(
-                "ru.kpfu.itis.orm.entity",
-                new TypeAnnotationsScanner(),
-                new SubTypesScanner()
-        );
+//        Reflections reflections = new Reflections(
+//                "ru.kpfu.itis.orm.entity",
+//                new TypeAnnotationsScanner(),
+//                new SubTypesScanner()
+//        );
 
-        Set<Class<?>> entities = reflections.getTypesAnnotatedWith(Table.class);
-        entities.forEach(aClass -> {
-            StringBuilder sql = new StringBuilder();
-
-            sql.append("CREATE TABLE IF NOT EXISTS " + SqlUtils.recognizeTableName(aClass) + " (");
-
-            Stream.of(aClass.getDeclaredFields())
-                    .forEach(field -> {
-                        sql.append(castables.stream()
-                                .filter(castable -> castable.isSupport(field))
-                                .map(castable -> castable.cast(field))
-                                .findFirst()
-                                .orElse("")).append(", ")
-                        ;
-
-                    });
-
-            String finalSql = sql.substring(0, sql.length() - 2) + ");";
-            System.out.println(finalSql);
-            try {
-                execute(finalSql);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        });
+        // Set<Class<?>> entities = reflections.getTypesAnnotatedWith(Table.class);
+//        entities.forEach(aClass -> {
+//            StringBuilder sql = new StringBuilder();
+//
+//            sql.append("CREATE TABLE IF NOT EXISTS " + SQLUtils.recognizeTableName(aClass) + " (");
+//
+//            Stream.of(aClass.getDeclaredFields())
+//                    .forEach(field -> {
+//                        sql.append(castables.stream()
+//                                .filter(castable -> castable.isSupport(field))
+//                                .map(castable -> castable.cast(field))
+//                                .findFirst()
+//                                .orElse("")).append(", ")
+//                        ;
+//
+//                    });
+//
+//            String finalSql = sql.substring(0, sql.length() - 2) + ");";
+//            System.out.println(finalSql);
+//            try {
+//                execute(finalSql);
+//            } catch (ClassNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//        });
     }
 
     private void execute(String finalSql) throws ClassNotFoundException {
@@ -86,4 +90,4 @@ public class DBCreator {
     }
 }
 
-}
+
