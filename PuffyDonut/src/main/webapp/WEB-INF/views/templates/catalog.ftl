@@ -66,7 +66,7 @@
                                 <div class="col-4 bg-white donut mt-2">
                                     <div class="card border-white">
                                         <div class="card-body text-center ">
-                                            <#--                                            TODO: исправить путь к assets-->
+                                            <#-- TODO: исправить путь к assets-->
                                             <p><img class=" img-fluid" src="../static/${product.getImage()}"
                                                     alt="card image"></p>
 
