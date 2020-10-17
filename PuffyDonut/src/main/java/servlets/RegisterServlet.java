@@ -19,9 +19,10 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 
-public class  RegisterServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         UserService userService = (UserService) request.getServletContext().getAttribute("userService");
 
         String first_name = request.getParameter("first_name");
@@ -31,7 +32,7 @@ public class  RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String password_again = request.getParameter("password_again");
 
-        if (password.equals(password_again) && !userService.userIsExist(email)) {
+        //if (password.equals(password_again) && !userService.userIsExist(email)) {
             password = HashPassword.getHash(password);
 
             User user = User.builder()
@@ -44,13 +45,12 @@ public class  RegisterServlet extends HttpServlet {
             System.out.println(user.getLast_name());
             userService.addUser(user);
 
-            request.getSession().setAttribute("email", email);
-            request.getSession().setAttribute("password", password);
-           // response.sendRedirect("/profile");
-
-        } else {
-           // response.sendRedirect("/register");
-        }
+//            request.getSession().setAttribute("email", email);
+//            request.getSession().setAttribute("password", password);
+//            response.sendRedirect("/profile");
+//        } else {
+         //   response.sendRedirect("/register");
+        //}
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

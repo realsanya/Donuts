@@ -71,7 +71,5 @@ public class SimpleJdbcTemplate {
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        //ignore
-        //ignore
     }
 }

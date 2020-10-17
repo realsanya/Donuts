@@ -1,7 +1,7 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "main.css"] title="Главная">
-
+    <body class="masthead">
     <div class="container h-75">
         <div class="row h-100 align-items-left justify-content-left text-left">
             <div class="col-lg-10 align-self-end">
@@ -56,12 +56,12 @@
                                             <h5 class="text-left">${product.getName()}</h5>
                                         </div>
                                         <div class="col">
-                                            <h5 class="text-right">${product.getPrice()}</h5>
+                                            <h5 class="text-right">${product.getPrice()}руб</h5>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <h6 class="text-left">${product.getWeight()}</h6>
+                                            <h6 class="text-left">${product.getWeight()}г</h6>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -100,7 +100,6 @@
     <!-- Call to action-->
     <section class="page-section own_class">
     </section>
-
 
 
     <!-- Contact-->
@@ -148,5 +147,5 @@
             </div>
         </div>
     </section>
-
+    </body>
 </@base.main>

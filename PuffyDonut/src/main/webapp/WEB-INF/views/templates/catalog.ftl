@@ -2,6 +2,7 @@
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "advantages.css"] title="Каталог">
     <!-- Shop Section Begin -->
+    <body class="masthead">
     <section class="shop mt-5">
         <div class="container card px-5 pt-5 pb-5 pb-lg-5">
             <div class="row ">
@@ -67,7 +68,8 @@
                                     <div class="card border-white">
                                         <div class="card-body text-center ">
                                             <#-- TODO: исправить путь к assets-->
-                                            <p><img class=" img-fluid" src="../static/${product.getImage()}"
+                                            <p><img class=" img-fluid"
+                                                    src="../../assets/img/donuts/${product.getImage()}"
                                                     alt="card image"></p>
 
                                             <div class="row">
@@ -75,12 +77,12 @@
                                                     <h5 class="text-left "> ${product.getName()}</h5>
                                                 </div>
                                                 <div class="col">
-                                                    <h5 class="text-right">  ${product.getPrice()}</h5>
+                                                    <h5 class="text-right">  ${product.getPrice()}руб</h5>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="text-left"> ${product.getWeight()}</h6>
+                                                    <h6 class="text-left"> ${product.getWeight()}г</h6>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -134,5 +136,6 @@
         </div>
         </div>
     </section>
+    </body>
     <!-- Shop Section End -->
 </@base.main>

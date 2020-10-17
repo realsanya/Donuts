@@ -2,22 +2,18 @@ package listeners;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import repositories.DonutRepository;
-import repositories.DonutRepositoryJdbc;
-import repositories.UserRepository;
-import repositories.UserRepositoryJdbc;
-import services.DonutService;
-import services.DonutServiceImpl;
-import services.UserService;
-import services.UserServiceImpl;
+import repositories.*;
+import services.*;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.sql.DataSource;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+@WebListener
 public class ContextListener implements ServletContextListener {
 
     @SuppressWarnings("DuplicatedCode")
@@ -39,8 +35,8 @@ public class ContextListener implements ServletContextListener {
 
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/db?serverTimezone=UTC");
-        hikariConfig.setDriverClassName("mysql");
         hikariConfig.setUsername("root");
+        hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
         hikariConfig.setPassword("realsanya");
         hikariConfig.setMaximumPoolSize(10);
 
@@ -55,6 +51,10 @@ public class ContextListener implements ServletContextListener {
         DonutRepository donutRepository = new DonutRepositoryJdbc(dataSource);
         DonutService donutService = new DonutServiceImpl(donutRepository);
         servletContextEvent.getServletContext().setAttribute("donutService", donutService);
+
+        ReviewRepository reviewRepository = new ReviewRepositoryJdbc(dataSource);
+        ReviewsService reviewsService = new ReviewsServiceImpl(reviewRepository);
+        servletContextEvent.getServletContext().setAttribute("reviewsService", reviewsService);
 
     }
 

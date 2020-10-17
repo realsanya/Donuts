@@ -74,31 +74,30 @@ public class UserRepositoryJdbc implements UserRepository {
         throw new IllegalStateException();
     }
 
-    public String authenticateUser(User user) {
-        String email = user.getEmail();
-        String password = user.getPassword();
-
-        String emailDB = "";
-        String passwordDB = "";
-
-//        try {
-//            Connection connection = DBConnection.createConnection();
-//            Statement statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery("SELECT email,password FROM user_table");
+//    public String authenticateUser(User user) {
+//        String email = user.getEmail();
+//        String password = user.getPassword();
 //
-//            while (resultSet.next()) {
-//                emailDB = resultSet.getString("email");
-//                passwordDB = resultSet.getString("password");
+//        String emailDB = "";
+//        String passwordDB = "";
 //
-//                if (email.equals(emailDB) && password.equals(passwordDB)) {
-//                    return "SUCCESS";
-//                }
-//            }
-//        } catch (SQLException e) {
-//            throw new IllegalStateException(e);
-//        }
-        return "Invalid user credentials";
-    }
-
+////        try {
+////            Connection connection = DBConnection.createConnection();
+////            Statement statement = connection.createStatement();
+////            ResultSet resultSet = statement.executeQuery("SELECT email,password FROM user_table");
+////
+////            while (resultSet.next()) {
+////                emailDB = resultSet.getString("email");
+////                passwordDB = resultSet.getString("password");
+////
+////                if (email.equals(emailDB) && password.equals(passwordDB)) {
+////                    return "SUCCESS";
+////                }
+////            }
+////        } catch (SQLException e) {
+////            throw new IllegalStateException(e);
+////        }
+//        return "Invalid user credentials";
+//    }
 
 }

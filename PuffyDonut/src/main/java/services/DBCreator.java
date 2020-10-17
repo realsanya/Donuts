@@ -1,24 +1,18 @@
 package services;
 
-import annotations.Table;
 import caster.Castable;
 import caster.IntegerCaster;
 import caster.ManyToOneCaster;
 import caster.StringCaster;
-import utils.SQLUtils;
 
 
-import java.beans.Transient;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
-import java.util.Set;
-import java.util.stream.Stream;
 
 public class DBCreator {
     private ArrayList<Castable> castables = new ArrayList<Castable>() {
@@ -73,7 +67,7 @@ public class DBCreator {
         //Class.forName("org.postgresql.Driver");
         Properties properties = new Properties();
         try {
-            properties.load(new FileReader("db.properties"));
+            properties.load(new FileReader("WEB-INF/db.properties"));
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
