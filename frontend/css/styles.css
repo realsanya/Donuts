@@ -10125,6 +10125,15 @@ hr.light {
   text-align: center;
   margin: auto;
 }
+.gradient-text {
+  text-transform: uppercase;
+  background: transparent linear-gradient(to right, #973b99, #d56ed6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #0B2349;
+  display: table;
+  margin: 20px auto;
+}
 .avatar-upload .avatar-preview {
   width: 192px;
   height: 192px;
