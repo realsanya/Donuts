@@ -15,20 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileServlet extends HttpServlet {
-    private ReviewsService reviewsService;
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO: findAllByID
-//        List<Review> reviewList = reviewRepositoryJdbc.findAllByUserID(4);
-//        for (Review r : reviewList) {
-//            System.out.println(r.getText());
-//        }
-       // request.setAttribute("reviewList", reviewList);
-        RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("views/profile.jsp");
-        requestDispatcher.forward(request, response);
-    }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("profile.ftl").forward(request, response);
+        request.getRequestDispatcher("/profile.ftl").forward(request, response);
     }
 }

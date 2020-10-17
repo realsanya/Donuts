@@ -57,7 +57,7 @@
                                             <h5 class="text-left">${products[x].getName()}</h5>
                                         </div>
                                         <div class="col">
-                                            <h5 class="text-right">${products[x].getPrice()}руб</h5>
+                                            <h5 class="text-right">${products[x].getPrice()}₽</h5>
                                         </div>
                                     </div>
                                     <div class="row">

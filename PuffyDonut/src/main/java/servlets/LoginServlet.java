@@ -30,11 +30,11 @@ public class LoginServlet extends HttpServlet {
         request.getServletContext().setAttribute("user", null);
         request.getSession().setAttribute("email", null);
         request.getSession().setAttribute("password", null);
-
-        response.sendRedirect("/main");
+//
+//        response.sendRedirect("/main");
 
 //        UserService userService = (UserService) request.getServletContext().getAttribute("userService");
-//
+////
 //        String email = request.getParameter("email");
 //        String password = request.getParameter("password");
 //        String remember = request.getParameter("remember");
@@ -51,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 //        response.addCookie(cookiePassword);
 //        response.addCookie(cookieRemember);
 
+        response.sendRedirect("/main");
+
 //        if (userValidate.equals("SUCCESS")) {
 //            request.setAttribute("email", email);
 //            request.getRequestDispatcher("views/profile.jsp").forward(request, response);
@@ -62,11 +64,5 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("login.ftl").forward(request, response);
-
-//        String email = request.getParameter("email");
-//        String password = request.getParameter("password");
-//        HttpSession httpSession = request.getSession();
-//        httpSession.setAttribute("email", email);
-//        httpSession.setAttribute("password", password);
     }
 }
