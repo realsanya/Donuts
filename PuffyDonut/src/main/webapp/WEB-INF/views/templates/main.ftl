@@ -44,30 +44,31 @@
             <div class="row">
                 <!--donuts-->
                 <#if products??>
-                    <#list products as product>
+                    <#list 0..2 as x>
                         <div class="col-xs-6 col-sm-4 col-md-4 ">
                             <div class=" card border-white">
                                 <div class="card-body text-center ">
-                                    <p><img class=" img-fluid" src="../../../frontend/static/icon/${product.getImage()}"
+                                    <p><img class=" img-fluid"
+                                            src="../../../frontend/static/icon/${products[x].getImage()}"
                                             alt="card image"></p>
 
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="text-left">${product.getName()}</h5>
+                                            <h5 class="text-left">${products[x].getName()}</h5>
                                         </div>
                                         <div class="col">
-                                            <h5 class="text-right">${product.getPrice()}руб</h5>
+                                            <h5 class="text-right">${products[x].getPrice()}руб</h5>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <h6 class="text-left">${product.getWeight()}г</h6>
+                                            <h6 class="text-left">${products[x].getWeight()}г</h6>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col text-justify">
                                             <small>
-                                                ${product.getDescription()}
+                                                ${products[x].getDescription()}
                                             </small>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@
                                         <div class="col text-left my-auto">
                                             <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
                                             </button>
-                                            <span style="margin-left: 5px; margin-right: 5px"> ${product.getQuantity()} </span>
+                                            <span style="margin-left: 5px; margin-right: 5px"> ${products[x].getQuantity()} </span>
                                             <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i>
                                             </button>
                                         </div>
@@ -93,6 +94,9 @@
                 </#if>
                 <!-- end donuts-->
             </div>
+            <div class="row justify-content-center mt-5">
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.ftl">Смотреть каталог</a>
+            </div>
         </div>
     </section>
 
@@ -103,49 +107,47 @@
 
 
     <!-- Contact-->
-    <section class="page-section" id="contact">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" id="reviews">
-                    <h2 class="mt-0 mb-5">Отзывы наших клиентов</h2>
+    <#--    <section class="page-section" id="contact">-->
+    <#--        <div class="container">-->
+    <#--            <div class="row justify-content-center">-->
+    <#--                <div class="col-lg-8 text-center" id="reviews">-->
+    <#--                    <h2 class="mt-0 mb-5">Отзывы наших клиентов</h2>-->
 
-                </div>
-            </div>
+    <#--                </div>-->
+    <#--            </div>-->
 
-            <div class="row mb-5 mt-5 ">
+    <#--            <div class="row mb-5 mt-5 ">-->
+    <#--                <!--reviews&ndash;&gt;-->
+    <#--                <#if reviews??>-->
+    <#--                    <#list 0..2 as x>-->
+    <#--                        <div class="card testimonial-card col mx-2">-->
 
+    <#--                            <!-- Avatar &ndash;&gt;-->
+    <#--                            <div class="avatar mx-auto white">-->
+    <#--                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"-->
+    <#--                                     class="rounded-circle img-responsive" alt="woman avatar">-->
+    <#--                            </div>-->
 
-                <!--reviews-->
-                <#if reviews??>
-                    <#list reviews as review>
-                        <div class="card testimonial-card col mx-2">
-
-                            <!-- Avatar -->
-                            <div class="avatar mx-auto white">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"
-                                     class="rounded-circle img-responsive" alt="woman avatar">
-                            </div>
-
-                            <!-- Content -->
-                            <div class="card-body ">
-                                <!-- Name -->
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <h5 class="text-left font-weight-bold">Martha Smith</h5>
-                                    </div>
-                                    <div class="col">
-                                        <h5 class="text-right font-weight-light">${review.data()}</h5>
-                                    </div>
-                                </div>
-                                <!-- Quotation -->
-                                <p class="font-small">${review.text()}</p>
-                            </div>
-                        </div>
-                    </#list>
-                </#if>
-                <!--end reviews-->
-            </div>
-        </div>
-    </section>
+    <#--                            <!-- Content &ndash;&gt;-->
+    <#--                            <div class="card-body ">-->
+    <#--                                <!-- Name &ndash;&gt;-->
+    <#--                                <div class="row mb-2">-->
+    <#--                                    <div class="col">-->
+    <#--                                        <h5 class="text-left font-weight-bold">Martha Smith</h5>-->
+    <#--                                    </div>-->
+    <#--                                    <div class="col">-->
+    <#--                                        <h5 class="text-right font-weight-light">${reviews[x].data()}</h5>-->
+    <#--                                    </div>-->
+    <#--                                </div>-->
+    <#--                                <!-- Quotation &ndash;&gt;-->
+    <#--                                <p class="font-small">${reviews[x].text()}</p>-->
+    <#--                            </div>-->
+    <#--                        </div>-->
+    <#--                    </#list>-->
+    <#--                </#if>-->
+    <#--                <!--end reviews&ndash;&gt;-->
+    <#--            </div>-->
+    <#--        </div>-->
+    <#--    </section>-->
     </body>
 </@base.main>

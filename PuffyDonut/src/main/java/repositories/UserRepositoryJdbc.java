@@ -11,6 +11,10 @@ public class UserRepositoryJdbc implements UserRepository {
 
     private DataSource dataSource;
 
+    public UserRepositoryJdbc(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     //language=SQL
     private final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
             "address, password, email) VALUES" + "(?, ? , ? , ? , ? );";
@@ -22,7 +26,7 @@ public class UserRepositoryJdbc implements UserRepository {
     private final String SQL_SELECT_BY_ID = "SELECT * FROM user_table WHERE user_id =";
 
     //language=SQL
-    private final String SQL_SELECT_BY_EMAIL_PASS = "SELECT * FROM user_table WHERE email= ? AND password= ?";
+    private final String SQL_SELECT_BY_EMAIL = "SELECT * FROM user_table WHERE email= ?";
 
     private RowMapper<User> userRowMapper = row -> User.builder()
             .first_name(row.getString("first_name"))
@@ -33,9 +37,14 @@ public class UserRepositoryJdbc implements UserRepository {
             .image(row.getString(row.getString("image")))
             .build();
 
-    public UserRepositoryJdbc(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    private RowMapper<User> userRowMapper2 = row -> User.builder()
+            .first_name(row.getString("first_name"))
+            .last_name(row.getString("last_name"))
+            .address(row.getString("address"))
+            .email(row.getString("email"))
+            .password(row.getString("password"))
+            .build();
+
 
     public List<User> findAll() {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
@@ -51,15 +60,12 @@ public class UserRepositoryJdbc implements UserRepository {
     @Override
     public Optional<User> findByEmail(String email) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL_PASS, userRowMapper, email);
+        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL, userRowMapper2, email);
         return Optional.ofNullable(user.get(0));
     }
 
 
-
-
-
-//TODO
+    //TODO
     public void save(User user) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         simpleJdbcTemplate.queryInsert(SQL_INSERT_USERS,
@@ -70,6 +76,7 @@ public class UserRepositoryJdbc implements UserRepository {
                 user.getEmail());
     }
 
+    //откроешь сайт с регистором пожалуйста
     public void update(User entity) {
         throw new IllegalStateException();
     }

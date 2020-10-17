@@ -15,7 +15,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="mb-4 text-black-80 mt-0 font-weight-bold">Регистрация</h3>
-                                    <form action="" autocomplete="off">
+                                    <form action="/register" method="post" autocomplete="off">
                                         <div class="form-group">
                                             <span class="text-black-50">Почта</span>
                                             <input type="email" data-verify="email" class="form-control" name="email"
