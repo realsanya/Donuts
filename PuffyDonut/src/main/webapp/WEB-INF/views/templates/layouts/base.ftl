@@ -18,6 +18,11 @@
               rel="stylesheet"/>
         <link rel="stylesheet" href="../../../../frontend/css/mdb-pro.min.css">
         <link rel="stylesheet" href="../../../../frontend/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../../../frontend/css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+        <link rel="stylesheet" href="../../../../frontend/css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="../../../../frontend/css/shopstyle.css" type="text/css">
         <#list css as style>
             <link rel="stylesheet" href="../../../../frontend/css/${style}">
         </#list>

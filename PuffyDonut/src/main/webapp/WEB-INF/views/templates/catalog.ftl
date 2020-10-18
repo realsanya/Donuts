@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["styles.css", "advantages.css"] title="Каталог">
+<@base.main css=["styles.css", "catalog.css"] scripts=["catalog.js"] title="Каталог">
     <!-- Shop Section Begin -->
     <body class="masthead">
     <section class="shop mt-5">
@@ -9,8 +9,11 @@
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="#">
-                                <input style="border-radius: 15px;" type="text" placeholder="Search...">
+                            <form action="#" id="search-form">
+                                <div class="autocomplete">
+                                    <input style="border-radius: 15px;" id="search-input" type="text"
+                                           placeholder="Search...">
+                                </div>
                                 <button type="submit" class="search-btn" style="color: #aa4aac"><i
                                             class="fas fa-search"></i></button>
                             </form>
@@ -24,13 +27,11 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <a class="tag-donut" href="#">Product</a>
-                                                <a class="tag-donut" href="#">Bags</a>
-                                                <a class="tag-donut" href="#">Shoes</a>
-                                                <a class="tag-donut" href="#">Fashio</a>
-                                                <a class="tag-donut" href="#">Clothing</a>
-                                                <a class="tag-donut" href="#">Hats</a>
-                                                <a class="tag-donut" href="#">Accessories</a>
+                                                <button class="tag-donut" onclick="">Шоколад</button>
+                                                <button class="tag-donut" onclick="">Орехи</button>
+                                                <button class="tag-donut" onclick="">Ягоды</button>
+                                                <button class="tag-donut" onclick="">Кокос</button>
+                                                <button class="tag-donut" onclick="">Ваниль</button>
                                             </div>
                                         </div>
                                     </div>
