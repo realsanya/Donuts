@@ -1,9 +1,7 @@
 package repositories;
 
-import models.Comment;
 import models.Delivery;
-import models.Donut;
-import models.Review;
+
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -11,6 +9,7 @@ import java.util.Optional;
 
 public class DeliveryRepositoryJdbc implements DeliveryRepository {
     private DataSource dataSource;
+
 
     //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM delivery";
@@ -35,7 +34,7 @@ public class DeliveryRepositoryJdbc implements DeliveryRepository {
     }
 
     @Override
-    public Optional<Delivery> findById(Long id) {
+    public Delivery findById(Long id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<Delivery> deliveries = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, deliveryRowMapper, id);
         return Optional.ofNullable(deliveries.get(0));

@@ -21,5 +21,5 @@ public class Product {
     @Builder.Default
     private Integer quantity = 1;
     private Integer weight;
-    private String tag;
+    private Tag tag;
 }

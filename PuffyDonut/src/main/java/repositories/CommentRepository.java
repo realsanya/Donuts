@@ -1,12 +1,13 @@
 package repositories;
 
 import models.Comment;
-import models.Review;
+import models.Product;
+import models.User;
 
 import java.util.List;
 
 public interface CommentRepository extends OrmRepository<Comment> {
-    List<Comment> findAllByUserID(Long user_id);
+    List<Comment> findAllByUserID(User user_id);
 
-    List<Comment> findAllByDonutID(Long donut_id);
+    List<Comment> findAllByProductID(Product product_id);
 }

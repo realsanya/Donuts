@@ -29,8 +29,8 @@ public class OrderRepositoryJdbc implements OrderRepository {
 
     //TODO
     //language=SQL
-    private static final String SQL_GET_PRODUCTS = "SELECT p.product_id, p.product_name, p.product_description, p.quantity, p.price, p.image, c.name as ca_name FROM customer_basket inner join basket b on b.id = customer_basket.basket_id inner join product p on p.id = customer_basket.product_id inner join categories c on c.id = p.category_id where basket_id=?;";
-
+    //  private static final String SQL_GET_PRODUCTS = "SELECT p.product_id, p.product_name, p.product_description, p.quantity, p.price, p.image, c.name as ca_name FROM customer_basket inner join basket b on b.id = customer_basket.basket_id inner join product p on p.id = customer_basket.product_id inner join categories c on c.id = p.category_id where basket_id=?;";
+    private static final String SQL_GET_PRODUCTS = "SELECT * from order_table";
 
     //language=SQL
     private static final String SQL_FIND_BY_USER_ID = "SELECT * FROM order_table where user_id = ?";
@@ -70,10 +70,10 @@ public class OrderRepositoryJdbc implements OrderRepository {
     }
 
     @Override
-    public Optional<Order> findById(Long id) {
+    public Order findById(Long id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<Order> orders = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, orderRowMapper, id);
-        return Optional.ofNullable(orders.get(0));
+        return !orders.isEmpty() ? orders.get(0) : null;
     }
 
     @Override

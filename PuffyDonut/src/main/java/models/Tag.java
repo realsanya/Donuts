@@ -8,6 +8,6 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 public class Tag {
-    private Donut donut_id;
+    private Product id;
     private String tag;
 }

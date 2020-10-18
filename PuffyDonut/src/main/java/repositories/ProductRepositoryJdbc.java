@@ -1,6 +1,7 @@
 package repositories;
 
 import models.Product;
+import models.Tag;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -42,7 +43,7 @@ public class ProductRepositoryJdbc implements ProductRepository {
             .availability(row.getBoolean("availability"))
             .quantity(row.getInt("quantity"))
             .weight(row.getInt("weight"))
-            .tag(row.getString("tag"))
+            .tag(Tag.builder().tag("tag").build())
             .build();
 
     @Override

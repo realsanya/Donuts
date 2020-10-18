@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 @EqualsAndHashCode
 public class Comment {
     private int id;
-    private Long user_id;
-    private Long donut_id;
+    private User user_id;
+    private Product product_id;
     private String text;
     private Date date;
 }
