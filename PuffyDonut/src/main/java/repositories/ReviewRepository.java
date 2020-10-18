@@ -1,10 +1,10 @@
 package repositories;
 
-import models.Donut;
 import models.Review;
+import models.User;
 
 import java.util.List;
 
 public interface ReviewRepository extends OrmRepository<Review> {
-    List<Review> findAllByUserID(Long id);
+    List<Review> findAllByUserID(User id);
 }

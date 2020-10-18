@@ -10,7 +10,7 @@ public interface ReviewsService {
 
     List<Review> getAllReviews();
 
-    List<Review> getAllReviewsByUserID(Long user_id);
+    List<Review> getAllReviewsByUserID(User user_id);
 
     void addReview(Review review);
 }

@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @EqualsAndHashCode
 public class Review {
     private Long id;
-    private Long user_id;
+    private User user_id;
     private String text;
     private Date date;
 }

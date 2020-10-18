@@ -1,6 +1,7 @@
 package services;
 
 import models.Review;
+import models.User;
 import repositories.ReviewRepository;
 import repositories.ReviewRepositoryJdbc;
 
@@ -20,7 +21,7 @@ public class ReviewsServiceImpl implements ReviewsService {
     }
 
     @Override
-    public List<Review> getAllReviewsByUserID(Long user_id) {
+    public List<Review> getAllReviewsByUserID(User user_id) {
         return reviewRepository.findAllByUserID(user_id);
     }
 

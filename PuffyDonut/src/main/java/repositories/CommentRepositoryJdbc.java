@@ -1,6 +1,7 @@
 package repositories;
 
 import models.Comment;
+import models.Order;
 import models.Product;
 import models.User;
 import services.ProductService;
@@ -17,20 +18,19 @@ public class CommentRepositoryJdbc implements CommentRepository {
     private ProductService productService;
 
     //language=SQL
-    final String SQL_INSERT_COMMENTS = "INSERT INTO comment" + "( text, user_id," +
-            "date) VALUES" + "(?, ? , ?)";
+    final String SQL_CREATE = "INSERT INTO comment" + "( text, user_id, date) VALUES (?, ? , ?)";
 
     //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM comment";
 
     //language=SQL
-    private final String SQL_SELECT_BY_ID = "SELECT * FROM comment WHERE id= ";
+    private final String SQL_SELECT_BY_ID = "SELECT * FROM comment WHERE id = ?";
 
     //language=SQL
-    private final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM comment WHERE user_id= ";
+    private final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM comment WHERE user_id = ?";
 
     //language=SQL
-    private final String SQL_SELECT_ALL_BY_DONUT_ID = "SELECT * FROM comment WHERE donut_id= ";
+    private final String SQL_SELECT_ALL_BY_PRODUCT_ID = "SELECT * FROM comment WHERE donut_id= ?";
 
     private RowMapper<Comment> commentRowMapper = row -> Comment.builder()
             .user_id(userService.getUserById(row.getLong("user_id")))
@@ -47,10 +47,10 @@ public class CommentRepositoryJdbc implements CommentRepository {
         this.template = new SimpleJdbcTemplate(dataSource);
     }
 
-
     //TODO
     @Override
     public void save(Comment comment) {
+        template.queryInsert(SQL_CREATE, comment);
     }
 
     @Override
@@ -61,16 +61,20 @@ public class CommentRepositoryJdbc implements CommentRepository {
 
     @Override
     public Comment findById(Long id) {
-        return null;
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        List<Comment> comments = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, commentRowMapper, id);
+        return !comments.isEmpty() ? comments.get(0) : null;
     }
 
     @Override
     public List<Comment> findAllByUserID(User user_id) {
-        return null;
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, commentRowMapper, user_id);
     }
 
     @Override
     public List<Comment> findAllByProductID(Product product_id) {
-        return null;
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_PRODUCT_ID, commentRowMapper, product_id);
     }
 }

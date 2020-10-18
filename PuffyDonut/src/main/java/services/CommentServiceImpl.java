@@ -1,6 +1,8 @@
 package services;
 
 import models.Comment;
+import models.Product;
+import models.User;
 import repositories.CommentRepository;
 import repositories.ReviewRepository;
 
@@ -20,13 +22,13 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getAllCommentsByUserID(Long user_id) {
+    public List<Comment> getAllCommentsByUserID(User user_id) {
         return commentRepository.findAllByUserID(user_id);
     }
 
     @Override
-    public List<Comment> getAllCommentsByDonutID(Long donut_id) {
-        return commentRepository.findAllByDonutID(donut_id);
+    public List<Comment> getAllCommentsByDonutID(Product product_id) {
+        return commentRepository.findAllByProductID(product_id);
     }
 
     @Override
