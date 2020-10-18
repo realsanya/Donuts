@@ -26,9 +26,4 @@ public class CatalogServlet extends HttpServlet {
 
         request.getRequestDispatcher("/catalog.ftl").forward(request, response);
     }
-
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        doGet(request, response);
-//    }
 }

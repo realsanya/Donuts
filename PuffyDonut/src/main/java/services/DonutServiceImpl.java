@@ -4,6 +4,7 @@ import models.Donut;
 import repositories.DonutRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DonutServiceImpl implements DonutService {
 
@@ -16,6 +17,11 @@ public class DonutServiceImpl implements DonutService {
     @Override
     public List<Donut> getAllDonuts() {
         return donutRepository.findAll();
+    }
+
+    @Override
+    public Optional<Donut> getDonutById(Long id) {
+        return donutRepository.findById(id);
     }
 
     @Override

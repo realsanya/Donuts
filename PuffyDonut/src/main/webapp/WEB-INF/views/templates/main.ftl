@@ -19,7 +19,7 @@
     </div>
 
     <!-- About-->
-    <section class="page-section bg-primary" style="" id="about">
+    <section class="page-section bg-primary" style="background-color: white!important;" id="about">
         <div class="container">
             <div class="row ">
                 <div class="col"></div>
@@ -102,52 +102,108 @@
 
     <!-- Portfolio-->
     <!-- Call to action-->
-    <section class="page-section own_class">
+    <section class="page-section container">
+        <h2 class="text-center mt-0 mb-5">Почему выбирают нас?</h2>
+        <div class="row">
+            <div class="col-auto">
+                <div class="row h-100 ">
+                    <div class="col-auto my-auto">
+                        <img src="../../../assets/img/hr/left.png" class="img-fluid">
+                    </div>
+                    <div class="col-auto my-auto ">
+                        <h6 class="gradient-text mx-0">
+                            Натуральные ингридиенты
+                        </h6>
+                        <h6 class="text-black-80">
+                            В процессе приготовления<br>
+                            используем натуральные<br>
+                            и свежие продукты
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="row h-100 ">
+                    <div class="col-auto my-auto">
+                        <img src="../../../assets/img/hr/center.png" class="img-fluid">
+                    </div>
+                    <div class="col-auto my-auto ">
+                        <h6 class="gradient-text mx-0">
+                            Огромный ассортимент
+                        </h6>
+                        <h6 class="text-black-80">
+                            Большой выбор пончиков<br>
+                            с разными начинками<br>
+                            на любой вкус
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="row h-100 ">
+                    <div class="col-auto my-auto">
+                        <img src="../../../assets/img/hr/right.png" class="img-fluid">
+                    </div>
+                    <div class="col-auto my-auto ">
+                        <h6 class="gradient-text mx-0">
+                            Бесплатная доставка
+                        </h6>
+                        <h6 class="text-black-80">
+                            Курьер доставит пончики,<br>
+                            куда вы пожелаете<br>
+                            бесплатно
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
     <!-- Contact-->
-    <#--    <section class="page-section" id="contact">-->
-    <#--        <div class="container">-->
-    <#--            <div class="row justify-content-center">-->
-    <#--                <div class="col-lg-8 text-center" id="reviews">-->
-    <#--                    <h2 class="mt-0 mb-5">Отзывы наших клиентов</h2>-->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" id="reviews">
+                    <h2 class="mt-0 mb-5">Отзывы наших клиентов</h2>
 
-    <#--                </div>-->
-    <#--            </div>-->
+                </div>
+            </div>
 
-    <#--            <div class="row mb-5 mt-5 ">-->
-    <#--                <!--reviews&ndash;&gt;-->
-    <#--                <#if reviews??>-->
-    <#--                    <#list 0..2 as x>-->
-    <#--                        <div class="card testimonial-card col mx-2">-->
+            <div class="row mb-5 mt-5 ">
+                <!--reviews-->
+                <#if reviews??>
+                    <#list 0..2 as y>
+                        <div class="card testimonial-card col mx-2">
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"
+                                     class="rounded-circle img-responsive" alt="woman avatar">
+                            </div>
 
-    <#--                            <!-- Avatar &ndash;&gt;-->
-    <#--                            <div class="avatar mx-auto white">-->
-    <#--                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"-->
-    <#--                                     class="rounded-circle img-responsive" alt="woman avatar">-->
-    <#--                            </div>-->
-
-    <#--                            <!-- Content &ndash;&gt;-->
-    <#--                            <div class="card-body ">-->
-    <#--                                <!-- Name &ndash;&gt;-->
-    <#--                                <div class="row mb-2">-->
-    <#--                                    <div class="col">-->
-    <#--                                        <h5 class="text-left font-weight-bold">Martha Smith</h5>-->
-    <#--                                    </div>-->
-    <#--                                    <div class="col">-->
-    <#--                                        <h5 class="text-right font-weight-light">${reviews[x].data()}</h5>-->
-    <#--                                    </div>-->
-    <#--                                </div>-->
-    <#--                                <!-- Quotation &ndash;&gt;-->
-    <#--                                <p class="font-small">${reviews[x].text()}</p>-->
-    <#--                            </div>-->
-    <#--                        </div>-->
-    <#--                    </#list>-->
-    <#--                </#if>-->
-    <#--                <!--end reviews&ndash;&gt;-->
-    <#--            </div>-->
-    <#--        </div>-->
-    <#--    </section>-->
+                            <!-- Content -->
+                            <div class="card-body ">
+                                <!-- Name -->
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <h5 class="text-left font-weight-bold">${reviews[y].user.getFirstName()}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="text-right font-weight-light">${reviews[y].getDate()}</h5>
+                                    </div>
+                                </div>
+                                <!-- Quotation -->
+                                <p class="font-small">${reviews[y].getText()}</p>
+                            </div>
+                        </div>
+                    </#list>
+                </#if>
+                <!--end reviews-->
+            </div>
+            <div class="row justify-content-center mt-5">
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.ftl">Смотреть ещё</a>
+            </div>
+        </div>
+    </section>
     </body>
 </@base.main>

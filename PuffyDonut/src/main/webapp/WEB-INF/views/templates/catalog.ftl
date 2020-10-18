@@ -39,12 +39,13 @@
                         </div>
                     </div>
                 </div>
+                <#if products??>
                 <div class="col-lg-9 ">
                     <div class="shop__product__option">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1–12 of 126 results</p>
+                                    <p>Showing 1–6 of ?? results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -62,58 +63,57 @@
                     </div>
                     <div class="row">
                         <!--donuts-->
-                        <#if products??>
-                            <#list products as product>
-                                <div class="col-4 bg-white donut mt-2">
-                                    <div class="card border-white">
-                                        <div class="card-body text-center ">
-                                            <#-- TODO: исправить путь к assets-->
-                                            <p><img class=" img-fluid"
-                                                    src="../../assets/img/donuts/${product.getImage()}"
-                                                    alt="card image"></p>
+                        <#list products as product>
+                            <div class="col-4 bg-white donut mt-2">
+                                <div class="card border-white">
+                                    <div class="card-body text-center ">
+                                        <#-- TODO: исправить путь к assets-->
+                                        <p><img class=" img-fluid"
+                                                src="../../assets/img/donuts/${product.getImage()}"
+                                                alt="card image"></p>
 
-                                            <div class="row">
-                                                <div class="col-lg-7">
-                                                    <h5 class="text-left "> ${product.getName()}</h5>
-                                                </div>
-                                                <div class="col">
-                                                    <h5 class="text-right">  ${product.getPrice()}руб</h5>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <h5 class="text-left "> ${product.getName()}</h5>
                                             </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h6 class="text-left"> ${product.getWeight()}г</h6>
-                                                </div>
+                                            <div class="col">
+                                                <h5 class="text-right">  ${product.getPrice()}₽</h5>
                                             </div>
-                                            <div class="row">
-                                                <div class="col text-justify">
-                                                    <small>
-                                                        ${product.getDescription()}
-                                                    </small>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row row-eq-height">
-                                                <div class="col text-left my-auto">
-                                                    <button type="button" class="btn-sm  btn-circle"><i
-                                                                class="fa fa-minus"></i>
-                                                    </button>
-                                                    <span>${product.getQuantity()}</span>
-                                                    <button type="button" class="btn-sm  btn-circle"><i
-                                                                class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-lg-6 text-right ">
-                                                    <button type="button" class="btn-lg btn-primary text-nowrap">В
-                                                        корзину
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <br>
                                         </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="text-left"> ${product.getWeight()}г</h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col text-justify">
+                                                <small>
+                                                    ${product.getDescription()}
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row row-eq-height">
+                                            <div class="col text-left my-auto">
+                                                <button type="button" class="btn-sm  btn-circle"><i
+                                                            class="fa fa-minus"></i>
+                                                </button>
+                                                <span>${product.getQuantity()}</span>
+                                                <button type="button" class="btn-sm  btn-circle"><i
+                                                            class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-lg-6 text-right ">
+                                                <button type="button" class="btn-lg btn-primary text-nowrap">
+                                                    В корзину
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <br>
                                     </div>
                                 </div>
-                            </#list>
+                            </div>
+                        </#list>
                         </#if>
                     </div>
                     <!--end donuts-->

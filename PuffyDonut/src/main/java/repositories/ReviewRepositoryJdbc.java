@@ -11,6 +11,7 @@ import java.util.Optional;
 
 public class ReviewRepositoryJdbc implements ReviewRepository {
     private DataSource dataSource;
+    UserRepositoryJdbc userRepositoryJdbc = new UserRepositoryJdbc(dataSource);
 
     //language=SQL
     final String SQL_INSERT_REVIEW = "INSERT INTO review ( user_id, review_text, date ) VALUES (?, ?, ?)";

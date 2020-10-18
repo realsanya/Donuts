@@ -470,6 +470,20 @@ mark,
     content: "— ";
 }
 
+.gradient-text {
+    text-transform: uppercase;
+    background: transparent linear-gradient(to right, #973b99, #d56ed6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #0B2349;
+    display: table;
+    margin: 20px auto;
+}
+
+.card.testimonial-card {
+    border-radius: 40px;
+}
+
 .img-fluid {
     max-width: 100%;
     height: auto;
