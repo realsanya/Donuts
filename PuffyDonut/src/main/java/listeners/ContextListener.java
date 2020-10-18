@@ -21,7 +21,7 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 //        Properties properties = new Properties();
 //        try {
-//            properties.load(new FileReader("resources/db.properties"));
+//            properties.load(new FileReader("/WEB-INF/properties/db.properties"));
 //        } catch (IOException e) {
 //            throw new IllegalStateException(e);
 //        }

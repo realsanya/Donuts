@@ -53,19 +53,18 @@ public class UserRepositoryJdbc implements UserRepository {
 
     public Optional<User> findById(Long id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, userRowMapper, id);
-        return Optional.ofNullable(user.get(0));
+        List<User> users = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, userRowMapper, id);
+        return !users.isEmpty() ? Optional.ofNullable(users.get(0)) : Optional.empty();
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> user = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL, userRowMapper2, email);
-        return Optional.ofNullable(user.get(0));
+        List<User> users = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL, userRowMapper2, email);
+        return !users.isEmpty() ? Optional.ofNullable(users.get(0)) : Optional.empty();
     }
 
-
-    //TODO
+    @Override
     public void save(User user) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         simpleJdbcTemplate.queryInsert(SQL_INSERT_USERS,
@@ -76,6 +75,8 @@ public class UserRepositoryJdbc implements UserRepository {
                 user.getEmail());
     }
 
+
+    //TODO
     //откроешь сайт с регистором пожалуйста
     public void update(User entity) {
         throw new IllegalStateException();

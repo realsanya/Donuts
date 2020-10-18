@@ -16,53 +16,46 @@ import java.security.NoSuchAlgorithmException;
 public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie[] cookies = request.getCookies();
+        UserService userService = (UserService) request.getServletContext().getAttribute("userService");
 
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("email") || cookie.getName().equals("password")) {
-                cookie.setValue("");
-                cookie.setPath("/");
-                cookie.setMaxAge(0);
-                response.addCookie(cookie);
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        boolean remember = request.getParameter("remember") != null;
+
+        password = HashPassword.getHash(password);
+
+        if (email != null && password != null) {
+            User user = userService.getUser(email);
+
+            if (user == null) {
+                setError(request, response, "Такого пользователья не существует!");
+                return;
             }
+
+            String passwordVerify = user.getPassword();
+
+            if (!password.equals(passwordVerify)) {
+                setError(request, response, "Неверный пароль !");
+            }
+            if (remember) {
+                response.addCookie(new Cookie("email", email));
+                response.addCookie(new Cookie("password", password));
+            }
+
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect("/main");
+        } else {
+            setError(request, response, "Неверные данные!");
         }
+    }
 
-        request.getServletContext().setAttribute("user", null);
-        request.getSession().setAttribute("email", null);
-        request.getSession().setAttribute("password", null);
-//
-//        response.sendRedirect("/main");
-
-//        UserService userService = (UserService) request.getServletContext().getAttribute("userService");
-////
-//        String email = request.getParameter("email");
-//        String password = request.getParameter("password");
-//        String remember = request.getParameter("remember");
-//
-//        password = HashPassword.getHash(password);
-//
-//        User user = User.builder().email(email).password(password).build();
-//        userService.addUser(user);
-//
-//        Cookie cookieEmail = new Cookie("cookieEmail", email);
-//        Cookie cookiePassword = new Cookie("cookiePassword", password);
-//        Cookie cookieRemember = new Cookie("cookieRemember", remember);
-//        response.addCookie(cookieEmail);
-//        response.addCookie(cookiePassword);
-//        response.addCookie(cookieRemember);
-
-        response.sendRedirect("/main");
-
-//        if (userValidate.equals("SUCCESS")) {
-//            request.setAttribute("email", email);
-//            request.getRequestDispatcher("views/profile.jsp").forward(request, response);
-//        } else {
-//            request.setAttribute("errMessage", userValidate);
-//            request.getRequestDispatcher("views/login.jsp").forward(request, response);
-//        }
+    private void setError(HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException {
+        request.setAttribute(message, true);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login");
+        requestDispatcher.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("login.ftl").forward(request, response);
+        request.getRequestDispatcher("/login.ftl").forward(request, response);
     }
 }

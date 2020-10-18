@@ -33,8 +33,8 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String password_again = request.getParameter("password_again");
 
-        //TODO добавить проверку !userService.userIsExist(email)
-        if (password.equals(password_again)) {
+        //TODO добавить алерт о неверной регистрации
+        if (password.equals(password_again) && !userService.userIsExist(email)) {
             password = HashPassword.getHash(password);
 
             User user = User.builder()

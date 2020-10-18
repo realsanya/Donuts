@@ -4,7 +4,6 @@ import models.User;
 import repositories.UserRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
 
@@ -28,4 +27,10 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         userRepository.save(user);
     }
+
+    @Override
+    public User getUser(String email) {
+        return userRepository.findByEmail(email).get();
+    }
+
 }
