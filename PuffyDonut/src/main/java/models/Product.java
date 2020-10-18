@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode
-public class Donut {
+public class Product {
     private Long id;
     private String name;
     private String description;

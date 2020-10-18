@@ -1,18 +1,18 @@
 package services;
 
 import models.Order;
-import models.Review;
+import models.Product;
 import models.User;
 
-import java.util.List;
-import java.util.Optional;
-
 public interface OrderService {
-    List<Order> getAllOrders();
 
-    List<Order> getAllOrdersByUserID(Long user_id);
+    void createOrder(Order order);
 
-    boolean orderIsExist(Long order_id);
+    Order getUserOrder(User user);
 
-    void addOrder(Order order);
+    void addProductInOrder(Order order, Product product);
+
+    void deleteProductFromOrder(Order order, Product product);
+
+
 }
