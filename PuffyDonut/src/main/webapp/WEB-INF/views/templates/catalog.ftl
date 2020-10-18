@@ -9,7 +9,7 @@
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="#" id="search-form">
+                            <form action="Searche" method="post" id="searh-form">
                                 <div class="autocomplete">
                                     <input style="border-radius: 15px;" id="search-input" type="text"
                                            placeholder="Search...">
@@ -27,11 +27,11 @@
                                     <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <button class="tag-donut" onclick="">Шоколад</button>
-                                                <button class="tag-donut" onclick="">Орехи</button>
-                                                <button class="tag-donut" onclick="">Ягоды</button>
-                                                <button class="tag-donut" onclick="">Кокос</button>
-                                                <button class="tag-donut" onclick="">Ваниль</button>
+                                                <button class="tag-donut" id="chocolateTag" onclick="">Шоколад</button>
+                                                <button class="tag-donut" id="nutsTag" onclick="">Орехи</button>
+                                                <button class="tag-donut" id="berriesTag" onclick="">Ягоды</button>
+                                                <button class="tag-donut" id="cocosTag" onclick="">Кокос</button>
+                                                <button class="tag-donut" id="vanillaTag" onclick="">Ваниль</button>
                                             </div>
                                         </div>
                                     </div>
@@ -53,10 +53,10 @@
                                 <div class="shop__product__option__right">
                                     <p>Сортировать по:</p>
                                     <select>
-                                        <option value="">цене с дешевых</option>
-                                        <option value="">цене с дорогих</option>
-                                        <option value="">весу с легких</option>
-                                        <option value="">весу с тяжелых</option>
+                                        <option id="priceIncrease" value="">цене с дешевых</option>
+                                        <option id="priceDecrease" value="">цене с дорогих</option>
+                                        <option id="weightIncrease" value="">весу с легких</option>
+                                        <option id="weightDecrease" value="">весу с тяжелых</option>
                                     </select>
                                 </div>
                             </div>
