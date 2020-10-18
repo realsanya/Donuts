@@ -1,9 +1,6 @@
 package servlets;
 
-import models.User;
-import services.DonutService;
-import services.UserService;
-import utils.HashPassword;
+import services.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +17,9 @@ public class CatalogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DataSource dataSource = (DataSource) request.getServletContext().getAttribute("datasource");
 
-        DonutService donutService = (DonutService) request.getServletContext().getAttribute("donutService");
+        ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
 
-        request.setAttribute("products", donutService.getAllDonuts());
+        request.setAttribute("products", productService.getAllProducts());
 
         request.getRequestDispatcher("/catalog.ftl").forward(request, response);
     }

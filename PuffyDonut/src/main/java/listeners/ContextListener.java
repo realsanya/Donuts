@@ -2,6 +2,7 @@ package listeners;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import models.Product;
 import repositories.*;
 import services.*;
 
@@ -48,9 +49,9 @@ public class ContextListener implements ServletContextListener {
         UserService userService = new UserServiceImpl(userRepository);
         servletContextEvent.getServletContext().setAttribute("userService", userService);
 
-        DonutRepository donutRepository = new DonutRepositoryJdbc(dataSource);
-        DonutService donutService = new DonutServiceImpl(donutRepository);
-        servletContextEvent.getServletContext().setAttribute("donutService", donutService);
+        ProductRepository productRepository = new ProductRepositoryJdbc(dataSource);
+        ProductService productService = new ProductServiceImpl(productRepository);
+        servletContextEvent.getServletContext().setAttribute("productService", productRepository);
 
         ReviewRepository reviewRepository = new ReviewRepositoryJdbc(dataSource);
         ReviewsService reviewsService = new ReviewsServiceImpl(reviewRepository);
