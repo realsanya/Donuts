@@ -18,8 +18,9 @@ public class MainServlet extends HttpServlet {
         ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
         request.setAttribute("products", productService.getAllProducts());
 
-        ReviewsService reviewsService = (ReviewsService) request.getServletContext().getAttribute("reviewsService");
-        request.setAttribute("reviews", reviewsService.getAllReviews());
+        //TODO: разобраться с reviews
+//        ReviewsService reviewsService = (ReviewsService) request.getServletContext().getAttribute("reviewsService");
+//        request.setAttribute("reviews", reviewsService.getAllReviews());
 
         request.getRequestDispatcher("/main.ftl").forward(request, response);
     }

@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userIsExist(String email) {
-        return userRepository.findByEmail(email).isPresent();
+        return userRepository.findByEmail(email) != null;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String email) {
-        return userRepository.findByEmail(email).get();
+        return userRepository.findByEmail(email);
     }
 
     @Override

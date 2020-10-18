@@ -23,7 +23,7 @@ public class UserRepositoryJdbc implements UserRepository {
     private final String SQL_SELECT_ALL = "SELECT * FROM user_table";
 
     //language=SQL
-    private final String SQL_SELECT_BY_ID = "SELECT * FROM user_table WHERE user_id =";
+    private final String SQL_SELECT_BY_ID = "SELECT * FROM user_table WHERE user_id = ?";
 
     //language=SQL
     private final String SQL_SELECT_BY_EMAIL = "SELECT * FROM user_table WHERE email= ?";
@@ -51,17 +51,17 @@ public class UserRepositoryJdbc implements UserRepository {
         return simpleJdbcTemplate.query(SQL_SELECT_ALL, userRowMapper);
     }
 
-    public Optional<User> findById(Long id) {
+    public User findById(Long id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<User> users = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, userRowMapper, id);
-        return !users.isEmpty() ? Optional.ofNullable(users.get(0)) : Optional.empty();
+        return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
+    public User findByEmail(String email) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<User> users = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL, userRowMapper2, email);
-        return !users.isEmpty() ? Optional.ofNullable(users.get(0)) : Optional.empty();
+        return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
@@ -74,38 +74,5 @@ public class UserRepositoryJdbc implements UserRepository {
                 user.getPassword(),
                 user.getEmail());
     }
-
-
-    //TODO
-    //откроешь сайт с регистором пожалуйста
-    public void update(User entity) {
-        throw new IllegalStateException();
-    }
-
-//    public String authenticateUser(User user) {
-//        String email = user.getEmail();
-//        String password = user.getPassword();
-//
-//        String emailDB = "";
-//        String passwordDB = "";
-//
-////        try {
-////            Connection connection = DBConnection.createConnection();
-////            Statement statement = connection.createStatement();
-////            ResultSet resultSet = statement.executeQuery("SELECT email,password FROM user_table");
-////
-////            while (resultSet.next()) {
-////                emailDB = resultSet.getString("email");
-////                passwordDB = resultSet.getString("password");
-////
-////                if (email.equals(emailDB) && password.equals(passwordDB)) {
-////                    return "SUCCESS";
-////                }
-////            }
-////        } catch (SQLException e) {
-////            throw new IllegalStateException(e);
-////        }
-//        return "Invalid user credentials";
-//    }
 
 }

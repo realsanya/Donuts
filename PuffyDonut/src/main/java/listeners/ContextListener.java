@@ -51,9 +51,9 @@ public class ContextListener implements ServletContextListener {
 
         ProductRepository productRepository = new ProductRepositoryJdbc(dataSource);
         ProductService productService = new ProductServiceImpl(productRepository);
-        servletContextEvent.getServletContext().setAttribute("productService", productRepository);
+        servletContextEvent.getServletContext().setAttribute("productService", productService);
 
-        ReviewRepository reviewRepository = new ReviewRepositoryJdbc(dataSource);
+        ReviewRepository reviewRepository = new ReviewRepositoryJdbc(dataSource, userService);
         ReviewsService reviewsService = new ReviewsServiceImpl(reviewRepository);
         servletContextEvent.getServletContext().setAttribute("reviewsService", reviewsService);
 
