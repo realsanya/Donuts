@@ -10,7 +10,7 @@ import java.sql.Date;
 @ToString
 @EqualsAndHashCode
 public class Delivery {
-    private Long order_id;
+    private Order order_id;
     private Date delivery_date;
     private String delivery_status;
 }

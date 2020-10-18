@@ -1,6 +1,5 @@
 package servlets;
 
-import services.DonutService;
 import services.ReviewsService;
 
 import javax.servlet.ServletException;
@@ -8,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 
 @WebServlet("/reviews")

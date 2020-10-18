@@ -87,6 +87,8 @@ public class OrderRepositoryJdbc implements OrderRepository {
         return !baskets.isEmpty() ? baskets.get(0) : null;
     }
 
+
+
     @Override
     public void addProduct(Order order, Product product) {
         template.queryInsert(SQL_ADD_PRODUCT, order.getOrder_id(), product.getId());
