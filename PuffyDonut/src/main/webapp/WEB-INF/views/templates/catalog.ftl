@@ -9,7 +9,7 @@
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="Searche" method="post" id="searh-form">
+                            <form action="/searcher" method="post" id="searh-form">
                                 <div class="autocomplete">
                                     <input style="border-radius: 15px;" id="search-input" type="text"
                                            placeholder="Search...">
@@ -105,12 +105,12 @@
                                                 </button>
                                             </div>
                                             <div class="col-lg-6 text-right ">
-                                                <button type="button" class="btn-lg btn-primary text-nowrap">
+                                                <button type="button" class="btn-lg btn-primary text-nowrap"
+                                                        >
                                                     В корзину
                                                 </button>
                                             </div>
                                         </div>
-                                        <br>
                                     </div>
                                 </div>
                             </div>
@@ -137,6 +137,7 @@
         </div>
         </div>
     </section>
+
     </body>
     <!-- Shop Section End -->
 </@base.main>

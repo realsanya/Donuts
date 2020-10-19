@@ -1,6 +1,7 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "advantages.css"] title="Преимущества">
+    <body class="masthead">
     <!--content-->
     <main>
         <div class="container">
@@ -17,8 +18,8 @@
                                 <h5 class="mb-4">Корзина ( <span>1</span> )</h5>
 
                                 <!-- products -->
-                                <#if products??>
-                                    <#list products as product>
+                                <#if order??>
+                                    <#list order.getProducts() as product>
                                         <div class="row mb-4">
                                             <div class="col-md-5 col-lg-3 col-xl-3">
                                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
@@ -61,10 +62,9 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div>
-                                                            <a href="#!" type="button"
-                                                               class="card-link-secondary small text-uppercase mr-3"><i
-                                                                        class="fas fa-trash-alt mr-1"></i> Удалить с
-                                                                корзины
+                                                            <a href="/basketService?delete=${product.getId()}" type="button"
+                                                               class="card-link-secondary small text-uppercase mr-3"><i class="fas fa-trash-alt mr-1"></i>
+                                                                Удалить с корзины
                                                             </a>
                                                         </div>
                                                         <p class="mb-0"><span><strong>50.99₽</strong></span></p>
@@ -77,16 +77,10 @@
                                 <hr class="mb-4">
                             </div>
                         </div>
-                        <!-- Card -->
-
-
                     </div>
-                    <!--Grid column-->
 
 
-                    <!--Grid column-->
                     <div class="col-lg-4">
-                        <!-- Card -->
                         <div class="card mb-4">
                             <div class="card-body">
 
@@ -115,24 +109,12 @@
                                         type="submit">
                                     Оплатить
                                 </button>
-
-
                             </div>
                         </div>
-                        <!-- Card -->
-                        <!-- Card -->
-                        <!-- Card -->
-
                     </div>
-                    <!--Grid column-->
-
                 </div>
-                <!--Grid row-->
-
             </section>
-            <!--Section: Block Content-->
-
         </div>
     </main>
-    <!--end content-->
+    </body>
 </@base.main>
