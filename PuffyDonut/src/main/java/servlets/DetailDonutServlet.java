@@ -23,9 +23,8 @@ public class DetailDonutServlet extends HttpServlet {
             Product product = productService.getProductById(id);
 
             request.setAttribute("product", product);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/details/musicpage.ftl");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/detail.ftl");
             requestDispatcher.forward(request, response);
-
 
         } catch (NumberFormatException exp) {
             response.sendRedirect("/404");

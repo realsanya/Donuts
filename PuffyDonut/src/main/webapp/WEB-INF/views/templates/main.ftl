@@ -10,7 +10,7 @@
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 font-weight-light mb-5">Превосходный десерт по сладкой цене<br>с бесплатной
                     доставкой</p>
-                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.ftl">Смотреть каталог</a>
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="/catalog">Смотреть каталог</a>
 
                 <p class="mt-5 text-white-75 font-weight-light ">Сделайте заказ прямо сейчас и получите скидку
                     10%</p>
@@ -31,7 +31,7 @@
                         параметрам,
                         подробное описание товаров и разнообразие форм оплаты сделают покупку приятной, быстрой и
                         легкой.</p>
-                    <a class="" style="color: black" href="about.ftl">Подробнее о нас</a>
+                    <a class="" style="color: black" href="/about">Подробнее о нас</a>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                 <!-- end donuts-->
             </div>
             <div class="row justify-content-center mt-5">
-                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.ftl">Смотреть каталог</a>
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="/catalog">Смотреть каталог</a>
             </div>
         </div>
     </section>
@@ -201,7 +201,7 @@
                 <!--end reviews-->
             </div>
             <div class="row justify-content-center mt-5">
-                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="catalog.ftl">Смотреть ещё</a>
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="/catalog">Смотреть ещё</a>
             </div>
         </div>
     </section>

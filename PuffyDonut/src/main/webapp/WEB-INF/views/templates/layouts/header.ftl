@@ -7,15 +7,16 @@
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="about.ftl">О нас</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="advantages.ftl">Преимущества</a>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/advantages">Преимущества</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="catalog.ftl">Каталог</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="reviews.ftl">Отзывы</a></li>
-                    <li class="nav-item mr-4"><a class="nav-link js-scroll-trigger" href="#">Доставка и оплата</a>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/catalog">Каталог</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/reviews">Отзывы</a></li>
+                    <li class="nav-item mr-4"><a class="nav-link js-scroll-trigger" href="/delivery">Доставка и
+                            оплата</a>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="cart.ftl"><i
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/basket"><i
                                     class="fa fa-shopping-cart mr-3"></i>Корзина</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="tel:88009644434">
                             <i class="fa fa-phone"></i> 8 800 964-44-34</a>
