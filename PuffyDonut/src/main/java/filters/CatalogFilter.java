@@ -1,8 +1,6 @@
 package filters;
 
 
-import com.mysql.cj.xdevapi.JsonArray;
-import com.mysql.cj.xdevapi.JsonValue;
 import models.Product;
 import org.json.simple.JSONArray;
 import services.ProductService;
@@ -13,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/catalog")
+@WebServlet("/catalo")
 public class CatalogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -30,5 +28,6 @@ public class CatalogFilter implements Filter {
         servletResponse.setCharacterEncoding("UTF-8");
         servletResponse.getWriter().write(products.toString());
 
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }

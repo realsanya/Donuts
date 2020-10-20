@@ -21,13 +21,19 @@ public class ProductRepositoryJdbc implements ProductRepository {
     private final String SQL_SELECT_BY_TAG = "SELECT * FROM product WHERE tag= ?";
 
     //language=SQL
-    private final String SQL_SELECT_BY_PRICE = "SELECT * FROM product WHERE price= ?";
-
-    //language=SQL
-    private final String SQL_SELECT_BY_WEIGHT = "SELECT * FROM product WHERE weight = ? ";
-
-    //language=SQL
     private final String SQL_SELECT_BY_NAME = "SELECT * FROM product WHERE product_name = ? ";
+
+    //language=SQL
+    private final String SQL_SELECT_BY_INCREASE_PRICE = "SELECT * FROM product ORDER BY price";
+
+    //language=SQL
+    private final String SQL_SELECT_BY_DECREASE_PRICE = "SELECT * FROM product ORDER BY price DESC";
+
+    //language=SQL
+    private final String SQL_SELECT_BY_INCREASE_WEIGHT = "SELECT * FROM product ORDER BY weight";
+
+    //language=SQL
+    private final String SQL_SELECT_BY_DECREASE_WEIGHT = "SELECT * FROM product ORDER BY weight DESC";
 
 
     public ProductRepositoryJdbc(DataSource dataSource) {
@@ -68,36 +74,33 @@ public class ProductRepositoryJdbc implements ProductRepository {
         return !products.isEmpty() ? products.get(0) : null;
     }
 
-
     @Override
     public List<Product> findProductsByTag(String tag) {
-        return orderProductsTag(tag, SQL_SELECT_BY_TAG);
+        List<Product> products = template.query(SQL_SELECT_BY_TAG, productRowMapper, tag);
+        return !products.isEmpty() ? products : null;
     }
 
     @Override
-    public List<Product> findProductsByPrice(Float price) {
-        return orderProductsPrice(price, SQL_SELECT_BY_PRICE);
+    public List<Product> findProductsByIncreasePrice() {
+        List<Product> products = template.query(SQL_SELECT_BY_INCREASE_PRICE, productRowMapper);
+        return !products.isEmpty() ? products : null;
     }
 
     @Override
-    public List<Product> findProductsByWeight(Integer weight) {
-        return orderProductsWeight(weight, SQL_SELECT_BY_WEIGHT);
-    }
-
-
-    private List<Product> orderProductsTag(String tag, String SQL) {
-        List<Product> products = template.query(SQL, productRowMapper, tag);
+    public List<Product> findProductsByDecreasePrice() {
+        List<Product> products = template.query(SQL_SELECT_BY_DECREASE_PRICE, productRowMapper);
         return !products.isEmpty() ? products : null;
     }
 
-    private List<Product> orderProductsPrice(Float price, String SQL) {
-        List<Product> products = template.query(SQL, productRowMapper, price);
+    @Override
+    public List<Product> findProductsByIncreaseWeight() {
+        List<Product> products = template.query(SQL_SELECT_BY_INCREASE_WEIGHT, productRowMapper);
         return !products.isEmpty() ? products : null;
     }
 
-    private List<Product> orderProductsWeight(Integer weight, String SQL) {
-        List<Product> products = template.query(SQL, productRowMapper, weight);
+    @Override
+    public List<Product> findProductsByDecreaseWeight() {
+        List<Product> products = template.query(SQL_SELECT_BY_DECREASE_WEIGHT, productRowMapper);
         return !products.isEmpty() ? products : null;
     }
-
 }

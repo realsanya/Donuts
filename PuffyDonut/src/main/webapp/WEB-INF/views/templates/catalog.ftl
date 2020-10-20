@@ -70,7 +70,7 @@
                                     <div class="card-body text-center ">
                                         <#-- TODO: исправить путь к assets-->
                                         <p><img class=" img-fluid"
-                                                src="../../assets/img/donuts/${product.getImage()}"
+                                                src="../../../assets/img/donuts/${product.getImage()}"
                                                 alt="card image"></p>
 
                                         <div class="row">
@@ -106,7 +106,7 @@
                                             </div>
                                             <div class="col-lg-6 text-right ">
                                                 <button type="button" class="btn-lg btn-primary text-nowrap"
-                                                        >
+                                                >
                                                     В корзину
                                                 </button>
                                             </div>

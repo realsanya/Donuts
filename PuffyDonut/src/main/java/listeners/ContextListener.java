@@ -20,27 +20,12 @@ public class ContextListener implements ServletContextListener {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-//        Properties properties = new Properties();
-//        try {
-//            properties.load(new FileReader("/WEB-INF/properties/db.properties"));
-//        } catch (IOException e) {
-//            throw new IllegalStateException(e);
-//        }
-//
-//        HikariConfig hikariConfig = new HikariConfig();
-//        hikariConfig.setJdbcUrl(properties.getProperty("db.url"));
-//        hikariConfig.setDriverClassName(properties.getProperty("db.driver.classname"));
-//        hikariConfig.setUsername(properties.getProperty("db.username"));
-//        hikariConfig.setPassword(properties.getProperty("db.password"));
-//        hikariConfig.setMaximumPoolSize(Integer.parseInt(properties.getProperty("db.hikari.max - pool")));
-
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/db?serverTimezone=UTC");
         hikariConfig.setUsername("root");
         hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
         hikariConfig.setPassword("realsanya");
         hikariConfig.setMaximumPoolSize(10);
-
 
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
         servletContextEvent.getServletContext().setAttribute("datasource", dataSource);
@@ -56,6 +41,10 @@ public class ContextListener implements ServletContextListener {
         ReviewRepository reviewRepository = new ReviewRepositoryJdbc(dataSource, userService);
         ReviewsService reviewsService = new ReviewsServiceImpl(reviewRepository);
         servletContextEvent.getServletContext().setAttribute("reviewsService", reviewsService);
+
+        AuthRepository authRepository = new AuthRepositoryJdbc(dataSource);
+        AuthService authService = new AuthServiceImpl(authRepository);
+        servletContextEvent.getServletContext().setAttribute("authService", authService);
 
     }
 

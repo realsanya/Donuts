@@ -32,13 +32,9 @@ public class SearchServlet extends HttpServlet {
         DataSource dataSource = (DataSource) request.getServletContext().getAttribute("datasource");
         ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
 
-        if (input == null) {
-            input = " ";
-        }
 
         List<Product> products = null;
 
-        //TODO исправить поиск по цене и весу в repo
         if (chocolateTag) {
             products = productService.getAllProductsByTag("шоколад");
         } else if (nutsTag) {
@@ -50,13 +46,13 @@ public class SearchServlet extends HttpServlet {
         } else if (vanillaTag) {
             products = productService.getAllProductsByTag("ваниль");
         } else if (priceIncrease) {
-            //products = productService.getAllDonutsByPrice();
+            products = productService.getAllProductsByIncreasePrice();
         } else if (priceDecrease) {
-            //TODO
+            products = productService.getAllProductsByDecreasePrice();
         } else if (weightIncrease) {
-            //TODO
+            products = productService.getAllProductsByIncreaseWeight();
         } else if (weightDecrease) {
-            //TODO
+            products = productService.getAllProductsByDecreaseWeight();
         }
 
         request.setAttribute("products", products);

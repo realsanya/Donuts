@@ -10,7 +10,11 @@ public interface ProductRepository extends OrmRepository<Product> {
 
     List<Product> findProductsByTag(String tag);
 
-    List<Product> findProductsByPrice(Float price);
+    List<Product> findProductsByIncreasePrice();
 
-    List<Product> findProductsByWeight(Integer weight);
+    List<Product> findProductsByDecreasePrice();
+
+    List<Product> findProductsByIncreaseWeight();
+
+    List<Product> findProductsByDecreaseWeight();
 }

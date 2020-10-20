@@ -1,5 +1,14 @@
-var donuts = ["пончик с глазурью", "пончик с глазурью", "пончик с глазурью"];
-autocomplete(document.getElementById("search-input"), donuts);
+$.ajax({
+    url: "/catalog",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        autocomplete(document.getElementById("search-input"), data);
+    }
+});
+
+// var donuts = ["пончик с глазурью", "пончик с глазурью", "пончик с глазурью"];
+// autocomplete(document.getElementById("search-input"), donuts);
 
 function autocomplete(inp, arr) {
     var currentFocus;
