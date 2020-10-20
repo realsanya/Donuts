@@ -52,12 +52,15 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__right">
                                     <p>Сортировать по:</p>
-                                    <select>
-                                        <option id="priceIncrease" value="">цене с дешевых</option>
-                                        <option id="priceDecrease" value="">цене с дорогих</option>
-                                        <option id="weightIncrease" value="">весу с легких</option>
-                                        <option id="weightDecrease" value="">весу с тяжелых</option>
-                                    </select>
+                                    <form action="/search" method="post">
+                                        <button type="submit" class="tag-donut">Выбрать</button>
+                                        <select name="select-form">
+                                            <option value="priceIncrease">цене с дешевых</option>
+                                            <option value="priceDecrease">цене с дорогих</option>
+                                            <option value="weightIncrease">весу с легких</option>
+                                            <option value="weightDecrease">весу с тяжелых</option>
+                                        </select>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +140,9 @@
         </div>
         </div>
     </section>
-
+    <script>
+        document.forms["formname"].submit()
+    </script>
     </body>
     <!-- Shop Section End -->
 </@base.main>

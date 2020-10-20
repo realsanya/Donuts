@@ -14,7 +14,12 @@ public interface ProductService {
 
     List<Product> getAllProductsByTag(String tag);
 
-    List<Product> getAllDonutsByPrice(Float price);
+    List<Product> getAllProductsByIncreasePrice();
 
-    List<Product> getAllDonutsByWeight(Integer weight);
+    List<Product> getAllProductsByDecreasePrice();
+
+    List<Product> getAllProductsByIncreaseWeight();
+
+    List<Product> getAllProductsByDecreaseWeight();
+
 }

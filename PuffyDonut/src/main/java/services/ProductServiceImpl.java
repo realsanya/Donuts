@@ -35,12 +35,24 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllDonutsByPrice(Float price) {
-        return productRepository.findProductsByPrice(price);
+    public List<Product> getAllProductsByIncreasePrice() {
+        return productRepository.findProductsByIncreasePrice();
     }
 
     @Override
-    public List<Product> getAllDonutsByWeight(Integer weight) {
-        return productRepository.findProductsByWeight(weight);
+    public List<Product> getAllProductsByDecreasePrice() {
+        return productRepository.findProductsByDecreasePrice();
     }
+
+    @Override
+    public List<Product> getAllProductsByIncreaseWeight() {
+        return productRepository.findProductsByIncreaseWeight();
+    }
+
+    @Override
+    public List<Product> getAllProductsByDecreaseWeight() {
+        return productRepository.findProductsByDecreaseWeight();
+    }
+
+
 }
