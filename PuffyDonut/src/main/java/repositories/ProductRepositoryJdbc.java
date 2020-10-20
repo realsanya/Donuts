@@ -4,6 +4,7 @@ import models.Product;
 import models.Tag;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class ProductRepositoryJdbc implements ProductRepository {
     private final String SQL_SELECT_BY_ID = "SELECT * FROM product WHERE product_id = ?";
 
     //language=SQL
-    private final String SQL_SELECT_BY_TAG = "SELECT * FROM product WHERE tag= ?";
+    private final String SQL_SELECT_BY_TAG = "SELECT donut_id FROM tag_table WHERE tag= ?";
 
     //language=SQL
     private final String SQL_SELECT_BY_NAME = "SELECT * FROM product WHERE product_name = ? ";
@@ -74,9 +75,19 @@ public class ProductRepositoryJdbc implements ProductRepository {
         return !products.isEmpty() ? products.get(0) : null;
     }
 
+    public static RowMapper<Tag> tagRowMapper = row -> Tag.builder()
+            .id(Product.builder().id(row.getLong("donut_id")).build())
+            .tag(row.getString("tag"))
+            .build();
+
+
     @Override
     public List<Product> findProductsByTag(String tag) {
-        List<Product> products = template.query(SQL_SELECT_BY_TAG, productRowMapper, tag);
+        List<Tag> tags = template.query(SQL_SELECT_BY_TAG, tagRowMapper, tag);
+        List<Product> products = new ArrayList<>();
+        for (Tag t : tags) {
+            products.add(t.getId());
+        }
         return !products.isEmpty() ? products : null;
     }
 

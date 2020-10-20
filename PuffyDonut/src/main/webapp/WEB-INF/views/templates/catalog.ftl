@@ -24,17 +24,30 @@
                                     <div class="card-heading">
                                         <h4>Tags</h4>
                                     </div>
-                                    <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__tags">
-                                                <button class="tag-donut" id="chocolateTag" onclick="">Шоколад</button>
-                                                <button class="tag-donut" id="nutsTag" onclick="">Орехи</button>
-                                                <button class="tag-donut" id="berriesTag" onclick="">Ягоды</button>
-                                                <button class="tag-donut" id="cocosTag" onclick="">Кокос</button>
-                                                <button class="tag-donut" id="vanillaTag" onclick="">Ваниль</button>
+                                    <form action="/searchByTag" method="post">
+                                        <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <div class="shop__sidebar__tags">
+                                                    <button class="tag-donut" name="tag" id="chocolateTag" type="submit"
+                                                            value="шоколад">
+                                                        Шоколад
+                                                    </button>
+                                                    <button class="tag-donut" name="tag" id="nutsTag" type="submit">
+                                                        Орехи
+                                                    </button>
+                                                    <button class="tag-donut" name="tag" id="berriesTag" type="submit">
+                                                        Ягоды
+                                                    </button>
+                                                    <button class="tag-donut" name="tag" id="cocosTag" type="submit">
+                                                        Кокос
+                                                    </button>
+                                                    <button class="tag-donut" name="tag" id="vanillaTag" type="submit">
+                                                        Ваниль
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -140,9 +153,6 @@
         </div>
         </div>
     </section>
-    <script>
-        document.forms["formname"].submit()
-    </script>
     </body>
     <!-- Shop Section End -->
 </@base.main>
