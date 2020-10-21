@@ -49,7 +49,7 @@
                             <div class=" card border-white">
                                 <div class="card-body text-center ">
                                     <p><img class=" img-fluid"
-                                            src="../../../frontend/static/icon/${products[x].getImage()}"
+                                            src="../../../assets/img/donuts/${products[x].getImage()}"
                                             alt="card image"></p>
 
                                     <div class="row">
@@ -177,7 +177,7 @@
                         <div class="card testimonial-card col mx-2">
                             <!-- Avatar -->
                             <div class="avatar mx-auto white">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"
+                                <img src="../../../assets/img/donuts/donut1.png"
                                      class="rounded-circle img-responsive" alt="woman avatar">
                             </div>
 
@@ -186,7 +186,7 @@
                                 <!-- Name -->
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <h5 class="text-left font-weight-bold">${reviews[y].user.getFirstName()}</h5>
+                                        <h5 class="text-left font-weight-bold">${reviews[y].getUser_id().getFirst_name()}</h5>
                                     </div>
                                     <div class="col">
                                         <h5 class="text-right font-weight-light">${reviews[y].getDate()}</h5>
@@ -201,7 +201,7 @@
                 <!--end reviews-->
             </div>
             <div class="row justify-content-center mt-5">
-                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="/catalog">Смотреть ещё</a>
+                <a class="btn btn-primary btn-lg js-scroll-trigger px-4" href="/reviews">Смотреть ещё</a>
             </div>
         </div>
     </section>
