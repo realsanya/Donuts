@@ -3,6 +3,7 @@ package services;
 import models.Product;
 import repositories.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProductsByTag(String tag) {
-        return productRepository.findProductsByTag(tag);
+        List<Product> result = new ArrayList<>();
+
+        List<Product> productsList = productRepository.findProductsByTag(tag);
+        for (Product product : productsList) {
+            result.add(productRepository.findById(product.getId()));
+        }
+        return result;
     }
 
     @Override

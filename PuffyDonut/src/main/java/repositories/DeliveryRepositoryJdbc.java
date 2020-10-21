@@ -1,13 +1,10 @@
 package repositories;
 
 import models.Delivery;
-import models.Order;
 import services.OrderService;
-
 
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Optional;
 
 public class DeliveryRepositoryJdbc implements DeliveryRepository {
     private DataSource dataSource;
@@ -48,7 +45,6 @@ public class DeliveryRepositoryJdbc implements DeliveryRepository {
         return !deliveries.isEmpty() ? deliveries.get(0) : null;
     }
 
-    //TODO
     @Override
     public void save(Delivery delivery) {
         template.queryInsert(SQL_CREATE, delivery);

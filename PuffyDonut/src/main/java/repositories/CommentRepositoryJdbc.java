@@ -1,7 +1,6 @@
 package repositories;
 
 import models.Comment;
-import models.Order;
 import models.Product;
 import models.User;
 import services.ProductService;
@@ -9,7 +8,6 @@ import services.UserService;
 
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Optional;
 
 public class CommentRepositoryJdbc implements CommentRepository {
     private DataSource dataSource;
@@ -46,8 +44,7 @@ public class CommentRepositoryJdbc implements CommentRepository {
         this.productService = productService;
         this.template = new SimpleJdbcTemplate(dataSource);
     }
-
-    //TODO
+    
     @Override
     public void save(Comment comment) {
         template.queryInsert(SQL_CREATE, comment);

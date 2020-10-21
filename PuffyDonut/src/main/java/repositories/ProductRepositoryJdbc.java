@@ -6,7 +6,6 @@ import models.Tag;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ProductRepositoryJdbc implements ProductRepository {
     private final DataSource dataSource;
@@ -43,6 +42,7 @@ public class ProductRepositoryJdbc implements ProductRepository {
     }
 
     public static RowMapper<Product> productRowMapper = row -> Product.builder()
+            .id(row.getLong("product_id"))
             .name(row.getString("product_name"))
             .description(row.getString("product_description"))
             .image(row.getString("image"))

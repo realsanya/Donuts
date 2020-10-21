@@ -1,15 +1,11 @@
 package repositories;
 
-import models.Comment;
 import models.Review;
 import models.User;
 import services.UserService;
 
 import javax.sql.DataSource;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ReviewRepositoryJdbc implements ReviewRepository {
     private DataSource dataSource;
@@ -24,11 +20,11 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
 
     //language=SQL
-    private final String SQL_SELECT_BY_ID = "SELECT * FROM review WHERE id= ";
+    private final String SQL_SELECT_BY_ID = "SELECT * FROM review WHERE id= ?";
 
 
     //language=SQL
-    private final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM review WHERE user_id= ";
+    private final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM review WHERE user_id= ? ";
 
 
     private RowMapper<Review> reviewRowMapper = row -> Review.builder()

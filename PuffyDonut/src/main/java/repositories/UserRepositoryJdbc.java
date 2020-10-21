@@ -1,11 +1,10 @@
 package repositories;
 
-import models.Review;
 import models.User;
 
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Optional;
+
 
 public class UserRepositoryJdbc implements UserRepository {
 
@@ -34,7 +33,6 @@ public class UserRepositoryJdbc implements UserRepository {
             .address(row.getString("address"))
             .email(row.getString("email"))
             .password(row.getString("password"))
-            .image(row.getString(row.getString("image")))
             .build();
 
     private RowMapper<User> userRowMapper2 = row -> User.builder()
