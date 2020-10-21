@@ -3,35 +3,35 @@
 <@base.main css=["styles.css", "detail.css"] title="Подробнее">
     <div class="masthead">
         <div class="container mt-5  card px-5 pt-5 pb-5">
-            <#if donut??>
+            <#if product??>
             <!-- Modal -->
             <div class="row">
                 <div class="col-lg-4 col-xl-4 ">
                     <div class="card-box text-center ">
-                        <img src="../../../frontend/static/icon/${donut.getImage()}" class="rounded-circle   img-fluid "
+                        <img src="../../../assets/img/donuts/donut1.png" class="rounded-circle   img-fluid "
                              alt="profile-image">
 
-                        <h4 class="mb-0">${donut.getName()}</h4>
+                        <h4 class="mb-0">${product.getName()}</h4>
 
                         <button type="button" class="btn btn-primary btn-lg ">В корзину</button>
 
                         <div class="text-left mt-3">
                             <h4 class="font-13 text-uppercase">Описание:</h4>
                             <p class="text-muted font-13 mb-3">
-                                ${donut.getDescription()}
+                                ${product.getDescription()}
                             </p>
                             <p class="text-muted mb-1 font-13"><strong>Цена :</strong> <span
-                                        class="ml-2">${donut.getPrice()}₽</span>
+                                        class="ml-2">${product.getPrice()}₽</span>
                             </p>
 
                             <p class="text-muted mb-2 font-13"><strong>Весa :</strong> <span
-                                        class="ml-2">${donut.getWeight()}г</span></p>
+                                        class="ml-2">${product.getWeight()}г</span></p>
 
                             <p class="text-muted mb-2 font-13"><strong>Тэг :</strong> <span
-                                        class="ml-2">${donut.getTag()}</span></p>
+                                        class="ml-2">${product.getTag()}</span></p>
 
                             <p class="text-muted mb-2 font-13"><strong>Количество :</strong> <span
-                                        class="ml-2 ">${donut.getQuantity()} штук</span></p>
+                                        class="ml-2 ">${product.getQuantity()} штук</span></p>
                         </div>
                     </div>
                 </div>
@@ -59,12 +59,12 @@
                                             <li class="timeline-sm-item">
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="../../../frontend/assets/img/donuts/${comment.getImage()}"
+                                                        <img src="../../../assets/img/donuts/donut1.png"
                                                              class="img-fluid">
                                                     </div>
                                                     <div class="col mt-auto mb-auto">
                                                         <span class="timeline-sm-date">${comment.getDate()}</span>
-                                                        <h5 class="mt-0 mb-1">Martha Smith</h5>
+                                                        <h5 class="mt-0 mb-1">${comment.getUser_id().getFirst_name()}</h5>
                                                     </div>
 
 

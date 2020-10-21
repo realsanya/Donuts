@@ -27,24 +27,24 @@
                                     <form action="/searchByTag" method="post">
                                         <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                                             <div class="card-body">
-                                                <div class="shop__sidebar__tags">
-                                                    <button class="tag-donut" name="tag" id="chocolateTag" type="submit"
-                                                            value="шоколад">
+                                                <select name="select-tag" class="shop__product__option__right">
+                                                    <option value="chocolateTag">
                                                         Шоколад
-                                                    </button>
-                                                    <button class="tag-donut" name="tag" id="nutsTag" type="submit">
+                                                    </option>
+                                                    <option value="nutsTag">
                                                         Орехи
-                                                    </button>
-                                                    <button class="tag-donut" name="tag" id="berriesTag" type="submit">
+                                                    </option>
+                                                    <option value="berriesTag">
                                                         Ягоды
-                                                    </button>
-                                                    <button class="tag-donut" name="tag" id="cocosTag" type="submit">
+                                                    </option>
+                                                    <option value="cocosTag">
                                                         Кокос
-                                                    </button>
-                                                    <button class="tag-donut" name="tag" id="vanillaTag" type="submit">
+                                                    </option>
+                                                    <option value="vanillaTag">
                                                         Ваниль
-                                                    </button>
-                                                </div>
+                                                    </option>
+                                                </select>
+                                                <button type="submit" class="tag-donut">Выбрать</button>
                                             </div>
                                         </div>
                                     </form>
@@ -91,7 +91,8 @@
 
                                         <div class="row">
                                             <div class="col-lg-7">
-                                                <h5 class="text-left "> ${product.getName()}</h5>
+                                                <a href="detail/product?id=${product.getId()}"><h5
+                                                            class="text-left "> ${product.getName()}</h5></a>
                                             </div>
                                             <div class="col">
                                                 <h5 class="text-right">  ${product.getPrice()}₽</h5>
@@ -120,12 +121,15 @@
                                                             class="fa fa-plus"></i>
                                                 </button>
                                             </div>
-                                            <div class="col-lg-6 text-right ">
-                                                <button type="button" class="btn-lg btn-primary text-nowrap"
-                                                >
-                                                    В корзину
-                                                </button>
-                                            </div>
+                                            <form method="get">
+                                                <div class="col-lg-6 text-right ">
+                                                    <button type="button" class="btn-lg btn-primary text-nowrap"
+                                                            onclick="window.location='/orderService?add=${product.getId()}'"
+                                                    >
+                                                        В корзину
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

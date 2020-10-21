@@ -38,7 +38,6 @@ public class CommentRepositoryJdbc implements CommentRepository {
             .build();
 
     public CommentRepositoryJdbc(DataSource dataSource, UserService userService, ProductService productService) {
-
         this.dataSource = dataSource;
         this.userService = userService;
         this.productService = productService;
@@ -66,12 +65,12 @@ public class CommentRepositoryJdbc implements CommentRepository {
     @Override
     public List<Comment> findAllByUserID(User user_id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, commentRowMapper, user_id);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, commentRowMapper, user_id.getId());
     }
 
     @Override
     public List<Comment> findAllByProductID(Product product_id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_PRODUCT_ID, commentRowMapper, product_id);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_PRODUCT_ID, commentRowMapper, product_id.getId());
     }
 }

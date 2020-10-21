@@ -46,6 +46,10 @@ public class ContextListener implements ServletContextListener {
         AuthService authService = new AuthServiceImpl(authRepository);
         servletContextEvent.getServletContext().setAttribute("authService", authService);
 
+        CommentRepository commentRepository = new CommentRepositoryJdbc(dataSource, userService, productService);
+        CommentService commentService = new CommentServiceImpl(commentRepository);
+        servletContextEvent.getServletContext().setAttribute("commentService", commentService);
+
     }
 
     @Override
