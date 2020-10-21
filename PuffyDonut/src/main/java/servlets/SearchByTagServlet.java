@@ -25,11 +25,11 @@ public class SearchByTagServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String tag = request.getParameter("tag");
+        String tag = request.getParameter("select-tag");
         ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
 
         List<Product> products = new ArrayList<>();
-        //TODO
+
         if (tag.equals("chocolateTag")) {
             products = productService.getAllProductsByTag("шоколад");
         } else if (tag.equals("nutsTag")) {

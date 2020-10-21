@@ -77,7 +77,6 @@ public class ProductRepositoryJdbc implements ProductRepository {
 
     public static RowMapper<Tag> tagRowMapper = row -> Tag.builder()
             .id(Product.builder().id(row.getLong("donut_id")).build())
-            .tag(row.getString("tag"))
             .build();
 
 
