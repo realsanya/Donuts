@@ -21,10 +21,12 @@ public class AuthFilter implements Filter {
         Cookie[] cookies = req.getCookies();
         boolean find = false;
 
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("cookie")) {
-                find = authService.findCookie(cookie);
-                break;
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("cookie")) {
+                    find = authService.findCookie(cookie);
+                    break;
+                }
             }
         }
 

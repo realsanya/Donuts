@@ -1,0 +1,13 @@
+.btn-primary.btn-lg {
+    font-size: 10px;
+    color: white;
+    letter-spacing: 2px;
+    border: 2px transparent;
+    border-radius: 40px;
+    background: transparent linear-gradient(to right, #973b99, #d56ed6);
+    transition: all 0.3s ease 0s;
+}
+
+.btn.btn-link {
+    color: #aa4aac;
+}
