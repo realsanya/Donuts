@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "advantages.css"] title="Преимущества">
-    <body class="masthead">
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-4 mr-3">
@@ -39,5 +38,4 @@
             </div>
         </div>
     </div>
-    </body>
 </@base.main>

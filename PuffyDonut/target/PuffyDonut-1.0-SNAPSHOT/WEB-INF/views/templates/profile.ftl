@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "profile.css"] title="Профиль" scripts=["profile.js"]>
-    <body class="masthead">
     <div class="container mt-5  card px-5 pt-5 pb-5">
         <div class="row">
             <div class="col-lg-4 col-xl-4 ">
@@ -9,7 +8,8 @@
 
                     <#if user??>
                     <div class="selector rounded-circle">
-                        <img src="../static/${user.getImage()}" id="profile-image" class="img-fluid"
+                        <img src="../../../assets/user/${comment.getUser_id().getImage()}" id="profile-image"
+                             class="img-fluid"
                              style="border-radius: 50%;object-fit:cover; width: 300px; height: 300px"
                              alt="profile-image">
                     </div>
@@ -38,7 +38,7 @@
                                     class="ml-2">${user.getAddress()}</span></p>
 
                     </div>
-                    <button type="button" id="" class="btn btn-primary btn-lg" >Выход</button>
+                    <button type="button" id="" class="btn btn-primary btn-lg">Выход</button>
                 </div> <!-- end card-box -->
 
 
@@ -53,21 +53,22 @@
 
 
                             <ul class="list-unstyled timeline-sm">
-                                <#if reviews??>
-                                    <#list reviews as review>
+                                <#if comments??>
+                                    <#list comments as comment>
                                         <li class="timeline-sm-item">
                                             <div class="row">
                                                 <div class="col-2">
-                                                    <img src="../static/${user.getImage()}" class="img-fluid">
+                                                    <img src="../../../assets/user/${comment.getUser_id().getImage()}"
+                                                         class="img-fluid">
                                                 </div>
                                                 <div class="col mt-auto mb-auto">
-                                                    <span class="timeline-sm-date">${review.getDate()}</span>
+                                                    <span class="timeline-sm-date">${comment.getDate()}</span>
                                                     <h5 class="mt-0 mb-1">Martha Smith</h5>
                                                 </div>
 
 
                                             </div>
-                                            <p class="text-muted mt-2">${review.getText()}</p>
+                                            <p class="text-muted mt-2">${comment.getText()}</p>
 
                                         </li>
                                     </#list>
@@ -80,5 +81,4 @@
             </div> <!-- end col -->
         </div>
     </div>
-    </body>
 </@base.main>

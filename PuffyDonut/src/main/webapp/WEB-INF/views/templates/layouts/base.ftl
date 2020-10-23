@@ -23,11 +23,12 @@
 
         <link rel="stylesheet" href="../../../../frontend/css/owl.carousel.min.css" type="text/css">
         <link rel="stylesheet" href="../../../../frontend/css/shopstyle.css" type="text/css">
+        <link rel="stylesheet" href="../../../../frontend/css/styles.css" type="text/css">
         <#list css as style>
             <link rel="stylesheet" href="../../../../frontend/css/${style}">
         </#list>
     </head>
-    <body>
+    <body class="masthead">
     <#include "header.ftl">
     <#nested>
     <script src="../../../../frontend/js/jquery-3.4.1.min.js"></script>

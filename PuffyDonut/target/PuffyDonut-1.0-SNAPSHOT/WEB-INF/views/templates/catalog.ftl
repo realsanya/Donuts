@@ -2,17 +2,16 @@
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "catalog.css"] scripts=["catalog.js"] title="Каталог">
     <!-- Shop Section Begin -->
-    <body class="masthead">
     <section class="shop mt-5">
         <div class="container card px-5 pt-5 pb-5 pb-lg-5">
             <div class="row ">
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="/searcher" method="post" id="searh-form">
+                            <form action="/search" method="get" id="searh-form" class="search-form">
                                 <div class="autocomplete">
-                                    <input style="border-radius: 15px;" id="search-input" type="text"
-                                           placeholder="Search...">
+                                    <input style="border-radius: 15px;" id="search-input" name="search-input"
+                                           placeholder="Search..." autocomplete="off">
                                 </div>
                                 <button type="submit" class="search-btn" style="color: #aa4aac"><i
                                             class="fas fa-search"></i></button>
@@ -59,7 +58,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1–6 of ?? results</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -78,10 +77,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="padding-top: 10px">
                         <!--donuts-->
                         <#list products as product>
-                            <div class="col-4 bg-white donut mt-2">
+                            <div class="col-xs-6 col-sm-4 col-md-4 ">
                                 <div class="card border-white">
                                     <div class="card-body text-center ">
                                         <#-- TODO: исправить путь к assets-->
@@ -142,21 +141,9 @@
 
                     <!--PAGES-->
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         </div>
     </section>
-    </body>
     <!-- Shop Section End -->
 </@base.main>

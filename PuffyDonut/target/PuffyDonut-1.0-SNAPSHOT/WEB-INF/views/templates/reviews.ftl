@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css"] scripts=["searchReview.js"] title="Отзывы">
-    <body class="masthead">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center mb-5" id="reviews">
@@ -15,7 +14,8 @@
                     <#list 0..2 as x>
                         <div class="card testimonial-card col-4  mb-5">
                             <div class="avatar mx-auto white">
-                                <img src="../../../assets/user/${reviews[x].getUser_id().getImage()}" class="rounded-circle img-responsive"
+                                <img src="../../../assets/user/${reviews[x].getUser_id().getImage()}"
+                                     class="rounded-circle img-responsive"
                                      alt="woman avatar">
                             </div>
                             <div class="card-body">
@@ -41,5 +41,4 @@
             <button class="btn btn-primary btn-lg js-scroll-trigger px-4" onclick="searchReview()">Смотреть ещё</button>
         </div>
     </div>
-    </body>
 </@base.main>

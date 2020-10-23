@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["styles.css"] title="Отзывы">
-    <body class="masthead">
+<@base.main css=["styles.css"] scripts=["searchReview.js"] title="Отзывы">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center mb-5" id="reviews">
@@ -9,39 +8,37 @@
 
             </div>
         </div>
-
-        <div class="row mb-5 mt-5 ">
-            <#if reviews??>
-            <#list reviews as review>
-
-            <div class="card testimonial-card col-4  mb-5">
-
-                <!-- Avatar -->
-                <div class="avatar mx-auto white">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"
-                         class="rounded-circle img-responsive" alt="woman avatar">
-                </div>
-
-                <!-- Content -->
-                <div class="card-body ">
-                    <!-- Name -->
-                    <div class="row mb-2">
-                        <div class="col">
-                            <h5 class="text-left font-weight-bold">Martha Smith</h5>
+        <#if reviews??>
+            <div class="container">
+                <div class="row mb-5 mt-5" id="results">
+                    <#list 0..2 as x>
+                        <div class="card testimonial-card col-4  mb-5">
+                            <div class="avatar mx-auto white">
+                                <img src="../../../assets/user/${reviews[x].getUser_id().getImage()}"
+                                     class="rounded-circle img-responsive"
+                                     alt="woman avatar">
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <h5 class="text-left font-weight-bold">${reviews[x].getUser_id().getFirstname()}</h5>
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="text-right font-weight-light">
+                                            ${reviews[x].getDate()}
+                                        </h5>
+                                    </div>
+                                </div>
+                                <p class="font-small"> ${reviews[x].getText()} </p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <h5 class="text-right font-weight-light">${review.getDate()}</h5>
-                        </div>
-                    </div>
-
-                    <!-- Quotation -->
-                    <p class="font-small">${review.getText()}</p>
-
+                    </#list>
                 </div>
             </div>
-        </div>
-        </#list>
         </#if>
+
+        <div class="row justify-content-center mt-5">
+            <button class="btn btn-primary btn-lg js-scroll-trigger px-4" onclick="searchReview()">Смотреть ещё</button>
+        </div>
     </div>
-    </body>
 </@base.main>

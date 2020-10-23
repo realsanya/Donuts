@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css"] title="Регистрация">
-    <body class="masthead">
     <div class="container">
         <!--Section: Block Content-->
         <section class="mt-5 mb-4">
@@ -54,6 +53,4 @@
             </div>
         </section>
     </div>
-    </main>
-    </body>
 </@base.main>

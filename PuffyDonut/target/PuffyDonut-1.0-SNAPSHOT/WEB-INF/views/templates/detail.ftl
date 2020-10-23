@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "detail.css"] title="Подробнее">
-    <div class="masthead">
         <div class="container mt-5  card px-5 pt-5 pb-5">
             <#if product??>
             <!-- Modal -->
@@ -82,5 +81,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </@base.main>

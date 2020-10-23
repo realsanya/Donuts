@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "about.css"] title="О нас">
-    <body class="masthead">
     <div class="container mt-5 pb-5">
         <h1 class="text-uppercase text-left text-white font-weight-bold">О нас</h1>
 
@@ -19,5 +18,4 @@
             </h3>
         </div>
     </div>
-    </body>
 </@base.main>

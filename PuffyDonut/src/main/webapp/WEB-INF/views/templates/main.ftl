@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["styles.css", "main.css"] title="Главная">
-    <body class="masthead">
+<@base.main css=["main.css"] title="Главная">
     <div class="container h-75">
         <div class="row h-100 align-items-left justify-content-left text-left">
             <div class="col-lg-10 align-self-end">
@@ -205,5 +204,4 @@
             </div>
         </div>
     </section>
-    </body>
 </@base.main>

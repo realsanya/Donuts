@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <appender class="ch.qos.logback.core.ConsoleAppender" name="consoleAppender">
         <encoder>
@@ -12,7 +13,7 @@
     <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="fileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>
-                C:\Users\Asus\Desktop\ITISPROJECTS\Donut\Donuts\PuffyDonut\src\main\resources\logs\log_%d{yyyy-MM-dd}.log
+                ${user.dir}/PuffyDonut/logs/log_%d{yyyy-MM-dd}.log
             </FileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>

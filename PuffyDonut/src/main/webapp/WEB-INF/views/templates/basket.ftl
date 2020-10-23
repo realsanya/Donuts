@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css", "advantages.css"] title="Преимущества">
-    <body class="masthead">
     <!--content-->
     <main>
         <div class="container">
@@ -62,8 +61,10 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div>
-                                                            <a href="/basketService?delete=${product.getId()}" type="button"
-                                                               class="card-link-secondary small text-uppercase mr-3"><i class="fas fa-trash-alt mr-1"></i>
+                                                            <a href="/basketService?delete=${product.getId()}"
+                                                               type="button"
+                                                               class="card-link-secondary small text-uppercase mr-3"><i
+                                                                        class="fas fa-trash-alt mr-1"></i>
                                                                 Удалить с корзины
                                                             </a>
                                                         </div>
@@ -116,5 +117,4 @@
             </section>
         </div>
     </main>
-    </body>
 </@base.main>

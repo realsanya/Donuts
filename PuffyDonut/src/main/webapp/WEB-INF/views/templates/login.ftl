@@ -1,7 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css"] title="Авторизация">
-    <body class="masthead">
     <div class="container">
         <!--Section: Block Content-->
         <section class="mt-5 mb-4">
@@ -25,7 +24,8 @@
                                         <input type="password" class="form-control" name="password">
                                     </div>
                                     <div class="form-group">
-                                        <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
+                                        <input type="checkbox" name="remember" class="form-check-input"
+                                               id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">Запомнить меня?</label>
                                     </div>
 
@@ -41,5 +41,4 @@
             </div>
         </section>
     </div>
-    </body>
 </@base.main>

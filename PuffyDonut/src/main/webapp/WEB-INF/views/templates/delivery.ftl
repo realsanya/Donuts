@@ -2,7 +2,6 @@
 <#import "layouts/base.ftl" as base>
 <@base.main css=["styles.css"] scripts=["delivery.js"] title="Доставка">
 <#--    TODO не подключается скрипт с api-->
-    <body class="masthead">
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col"><h1 class="text-white font-weight-bold">Доставка</h1></div>
@@ -17,5 +16,4 @@
             </div>
         </div>
     </div>
-    </body>
 </@base.main>
