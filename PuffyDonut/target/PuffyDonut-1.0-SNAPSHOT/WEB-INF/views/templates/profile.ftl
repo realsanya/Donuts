@@ -1,14 +1,13 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["styles.css", "profile.css"] scripts=["profile.js"] title="Профиль" >
+<@base.main css=["styles.css", "profile.css"] title="Профиль" >
     <div class="container mt-5  card px-5 pt-5 pb-5">
         <div class="row">
             <div class="col-lg-4 col-xl-4 ">
                 <div class="card-box text-center " id="imagePreview">
 
-                    <#if user??>
                     <div class="selector rounded-circle">
-                        <img src="../../../assets/user/${comment.getUser_id().getImage()}" id="profile-image"
+                        <img src="../../../assets/user/${user.getImage()}" id="profile-image"
                              class="img-fluid"
                              style="border-radius: 50%;object-fit:cover; width: 300px; height: 300px"
                              alt="profile-image">
@@ -77,7 +76,7 @@
                         </div>
                     </div> <!-- end tab-content -->
                 </div> <!-- end card-box-->
-                </#if>
+
             </div> <!-- end col -->
         </div>
     </div>

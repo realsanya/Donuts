@@ -62,7 +62,7 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
     @Override
     public List<Review> findAllByUserID(User user_id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, reviewRowMapper, user_id);
+        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, reviewRowMapper, user_id.getId());
     }
 
 }

@@ -41,6 +41,7 @@
     <script src="../../../../frontend/js/mixitup.min.js"></script>
     <script src="../../../../frontend/js/owl.carousel.min.js"></script>
     <script src="../../../../frontend/js/main.js"></script>
+    <script src="../../../../frontend/js/profile.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9d9f7410-0f6f-4ea1-a0fa-60e7557ff7f7&lang=ru_RU"
             type="text/javascript">
     </script>
