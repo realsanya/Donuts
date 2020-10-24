@@ -35,11 +35,17 @@
 
                                     <div class="form-group">
                                         <span class="text-black-50">Пароль</span>
-                                        <input type="password" class="form-control" name="password" required>
+                                        <input type="password" class="form-control" name="password"
+                                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                                               title="Длина от 8 до 12 символов, нужен хотя бы 1 спец символ: !@#$%^&*_=+-"
+                                               required>
                                     </div>
                                     <div class="form-group">
                                         <span class="text-black-50">Повторить пароль</span>
-                                        <input type="password" class="form-control" name="password_again" required>
+                                        <input type="password" class="form-control" name="password_again"
+                                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                                               title="Длина от 8 до 12 символов, нужен хотя бы 1 спец символ: !@#$%^&*_=+-"
+                                               required>
                                     </div>
                                     <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"
                                             type="submit">Войти в аккаунт
