@@ -72,7 +72,8 @@ public class UserRepositoryJdbc implements UserRepository {
                 user.getLast_name(),
                 user.getAddress(),
                 user.getPassword(),
-                user.getEmail());
+                user.getEmail(),
+                user.getImage());
     }
 
 }

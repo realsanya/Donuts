@@ -22,11 +22,11 @@
                                     </div>
                                     <div class="form-group">
                                         <span class="text-black-50">Имя</span>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="first_name" required>
                                     </div>
                                     <div class="form-group">
                                         <span class="text-black-50">Фамилия</span>
-                                        <input type="text" class="form-control" name="lastname" required>
+                                        <input type="text" class="form-control" name="last_name" required>
                                     </div>
                                     <div class="form-group">
                                         <span class="text-black-50">Адрес</span>

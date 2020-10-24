@@ -45,7 +45,7 @@ public class CommentRepositoryJdbc implements CommentRepository {
         this.productService = productService;
         this.template = new SimpleJdbcTemplate(dataSource);
     }
-    
+
     @Override
     public void save(Comment comment) {
         template.queryInsert(SQL_CREATE, comment);
@@ -59,20 +59,19 @@ public class CommentRepositoryJdbc implements CommentRepository {
 
     @Override
     public Comment findById(Long id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<Comment> comments = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, commentRowMapper, id);
+        List<Comment> comments = template.query(SQL_SELECT_BY_ID, commentRowMapper, id);
         return !comments.isEmpty() ? comments.get(0) : null;
     }
 
     @Override
     public List<Comment> findAllByUserID(User user_id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, commentRowMapper, user_id.getId());
+        List<Comment> comments = template.query(SQL_SELECT_ALL_BY_USER_ID, commentRowMapper, user_id.getId());
+        return !comments.isEmpty() ? comments : null;
     }
 
     @Override
     public List<Comment> findAllByProductID(Product product_id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_PRODUCT_ID, commentRowMapper, product_id.getId());
+        List<Comment> comments = template.query(SQL_SELECT_ALL_BY_PRODUCT_ID, commentRowMapper, product_id.getId());
+        return !comments.isEmpty() ? comments : null;
     }
 }

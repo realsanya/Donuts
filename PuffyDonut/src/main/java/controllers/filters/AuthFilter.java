@@ -1,39 +1,26 @@
 package controllers.filters;
 
-import services.interfaces.AuthService;
+import models.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter({"/profile", "/order", "/orderService"})
+@WebFilter({"/register", "/login"})
 public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-        AuthService authService = (AuthService) req.getServletContext().getAttribute("authService");
+        User user = (User) req.getSession().getAttribute("user");
 
-        Cookie[] cookies = req.getCookies();
-        boolean find = false;
-
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("cookie")) {
-                    find = authService.findCookie(cookie);
-                    break;
-                }
-            }
-        }
-
-        if (find) {
-            filterChain.doFilter(servletRequest, servletResponse);
+        if (user != null) {
+            resp.sendRedirect("/profile");
         } else {
-            resp.sendRedirect("/login");
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 }

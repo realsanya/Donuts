@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["styles.css", "profile.css"] title="Профиль" scripts=["profile.js"]>
+<@base.main css=["styles.css", "profile.css"] scripts=["profile.js"] title="Профиль" >
     <div class="container mt-5  card px-5 pt-5 pb-5">
         <div class="row">
             <div class="col-lg-4 col-xl-4 ">
