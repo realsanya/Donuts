@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter("/main")
 public class LoggingFilter implements Filter {
-    private static final Logger logger = LoggerFactory.getLogger(Logger.class);
+    private static final Logger logger = LoggerFactory.getLogger(Logger.class.getName());
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
