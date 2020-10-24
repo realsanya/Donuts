@@ -7,9 +7,6 @@ $.ajax({
     }
 });
 
-// var donuts = ["пончик с глазурью", "пончик с глазурью", "пончик с глазурью"];
-// autocomplete(document.getElementById("search-input"), donuts);
-
 function autocomplete(inp, arr) {
     var currentFocus;
     inp.addEventListener("input", function (e) {

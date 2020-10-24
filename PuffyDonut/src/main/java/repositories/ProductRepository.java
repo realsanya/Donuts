@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProductRepository extends OrmRepository<Product> {
 
-    Product findProductByName(String name);
+    List<Product> findProductByName(String name);
 
     List<Product> findProductsByTag(String tag);
 

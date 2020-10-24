@@ -70,9 +70,9 @@ public class ProductRepositoryJdbc implements ProductRepository {
     }
 
     @Override
-    public Product findProductByName(String name) {
+    public List<Product> findProductByName(String name) {
         List<Product> products = template.query(SQL_SELECT_BY_NAME, productRowMapper, name);
-        return !products.isEmpty() ? products.get(0) : null;
+        return !products.isEmpty() ? products : null;
     }
 
     public static RowMapper<Tag> tagRowMapper = row -> Tag.builder()

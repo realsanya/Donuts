@@ -8,7 +8,7 @@
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="/search" method="get" id="searh-form" class="search-form">
+                            <form action="/searchByName" method="post" id="searh-form" class="search-form">
                                 <div class="autocomplete">
                                     <input style="border-radius: 15px;" id="search-input" name="search-input"
                                            placeholder="Search..." autocomplete="off">
