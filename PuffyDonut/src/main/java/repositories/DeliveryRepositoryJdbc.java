@@ -1,7 +1,9 @@
 package repositories;
 
 import models.Delivery;
-import services.OrderService;
+import repositories.interfaces.DeliveryRepository;
+import repositories.interfaces.RowMapper;
+import services.interfaces.OrderService;
 
 import javax.sql.DataSource;
 import java.util.List;

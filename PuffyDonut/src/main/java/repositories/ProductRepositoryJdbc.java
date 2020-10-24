@@ -2,6 +2,8 @@ package repositories;
 
 import models.Product;
 import models.Tag;
+import repositories.interfaces.ProductRepository;
+import repositories.interfaces.RowMapper;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;

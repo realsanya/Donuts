@@ -1,7 +1,8 @@
 package services;
 
 import models.Delivery;
-import repositories.DeliveryRepository;
+import repositories.interfaces.DeliveryRepository;
+import services.interfaces.DeliveryService;
 
 public class DeliveryServiceImpl implements DeliveryService {
     private DeliveryRepository deliveryRepository;

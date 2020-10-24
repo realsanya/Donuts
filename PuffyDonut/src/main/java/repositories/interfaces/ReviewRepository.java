@@ -1,7 +1,8 @@
-package repositories;
+package repositories.interfaces;
 
 import models.Review;
 import models.User;
+import repositories.interfaces.OrmRepository;
 
 import java.util.List;
 

@@ -1,7 +1,8 @@
 package services;
 
 import models.User;
-import repositories.UserRepository;
+import repositories.interfaces.UserRepository;
+import services.interfaces.UserService;
 
 import java.util.List;
 

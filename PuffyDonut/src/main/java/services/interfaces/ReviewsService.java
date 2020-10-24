@@ -1,4 +1,4 @@
-package services;
+package services.interfaces;
 
 import models.Review;
 import models.User;

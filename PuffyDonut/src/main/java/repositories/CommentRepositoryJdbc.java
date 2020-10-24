@@ -3,8 +3,10 @@ package repositories;
 import models.Comment;
 import models.Product;
 import models.User;
-import services.ProductService;
-import services.UserService;
+import repositories.interfaces.CommentRepository;
+import repositories.interfaces.RowMapper;
+import services.interfaces.ProductService;
+import services.interfaces.UserService;
 
 import javax.sql.DataSource;
 import java.util.List;

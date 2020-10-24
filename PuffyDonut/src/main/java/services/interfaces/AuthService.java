@@ -1,4 +1,4 @@
-package services;
+package services.interfaces;
 
 import javax.servlet.http.Cookie;
 

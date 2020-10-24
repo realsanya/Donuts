@@ -1,6 +1,8 @@
 package repositories;
 
 import models.User;
+import repositories.interfaces.RowMapper;
+import repositories.interfaces.UserRepository;
 
 import javax.sql.DataSource;
 import java.util.List;

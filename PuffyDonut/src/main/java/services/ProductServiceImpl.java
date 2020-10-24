@@ -1,11 +1,11 @@
 package services;
 
 import models.Product;
-import repositories.ProductRepository;
+import repositories.interfaces.ProductRepository;
+import services.interfaces.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ProductServiceImpl implements ProductService {
 

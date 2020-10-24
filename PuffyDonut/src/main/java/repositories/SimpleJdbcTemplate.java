@@ -1,5 +1,7 @@
 package repositories;
 
+import repositories.interfaces.RowMapper;
+
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;

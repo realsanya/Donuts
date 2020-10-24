@@ -2,8 +2,8 @@ package services;
 
 import models.Review;
 import models.User;
-import repositories.ReviewRepository;
-import repositories.ReviewRepositoryJdbc;
+import repositories.interfaces.ReviewRepository;
+import services.interfaces.ReviewsService;
 
 import java.util.List;
 

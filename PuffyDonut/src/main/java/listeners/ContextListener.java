@@ -2,17 +2,14 @@ package listeners;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import models.Product;
 import repositories.*;
+import repositories.interfaces.*;
 import services.*;
+import services.interfaces.*;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.sql.DataSource;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Properties;
 
 @WebListener
 public class ContextListener implements ServletContextListener {

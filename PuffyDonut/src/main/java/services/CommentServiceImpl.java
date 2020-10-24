@@ -3,8 +3,8 @@ package services;
 import models.Comment;
 import models.Product;
 import models.User;
-import repositories.CommentRepository;
-import repositories.ReviewRepository;
+import repositories.interfaces.CommentRepository;
+import services.interfaces.CommentService;
 
 import java.util.List;
 

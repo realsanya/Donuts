@@ -1,8 +1,7 @@
-package repositories;
+package repositories.interfaces;
 
 import models.User;
-
-import java.util.Optional;
+import repositories.interfaces.OrmRepository;
 
 public interface UserRepository extends OrmRepository<User> {
     User findByEmail(String email);

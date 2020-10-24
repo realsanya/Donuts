@@ -1,4 +1,4 @@
-package services;
+package services.interfaces;
 
 import models.Order;
 import models.Product;

@@ -3,12 +3,13 @@ package repositories;
 import models.Order;
 import models.Product;
 import models.User;
-import services.UserService;
+import repositories.interfaces.OrderRepository;
+import repositories.interfaces.RowMapper;
+import services.interfaces.UserService;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static repositories.ProductRepositoryJdbc.productRowMapper;
 

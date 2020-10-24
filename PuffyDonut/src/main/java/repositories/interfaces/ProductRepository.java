@@ -1,6 +1,7 @@
-package repositories;
+package repositories.interfaces;
 
 import models.Product;
+import repositories.interfaces.OrmRepository;
 
 import java.util.List;
 

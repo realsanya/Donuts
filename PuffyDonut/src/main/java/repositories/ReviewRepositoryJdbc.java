@@ -2,7 +2,9 @@ package repositories;
 
 import models.Review;
 import models.User;
-import services.UserService;
+import repositories.interfaces.ReviewRepository;
+import repositories.interfaces.RowMapper;
+import services.interfaces.UserService;
 
 import javax.sql.DataSource;
 import java.util.List;

@@ -3,7 +3,8 @@ package services;
 import models.Order;
 import models.Product;
 import models.User;
-import repositories.OrderRepository;
+import repositories.interfaces.OrderRepository;
+import services.interfaces.OrderService;
 
 public class OrderServiceImpl implements OrderService {
 

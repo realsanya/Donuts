@@ -1,7 +1,7 @@
 package services;
 
-import repositories.AuthRepository;
-import repositories.AuthRepositoryJdbc;
+import repositories.interfaces.AuthRepository;
+import services.interfaces.AuthService;
 
 import javax.servlet.http.Cookie;
 

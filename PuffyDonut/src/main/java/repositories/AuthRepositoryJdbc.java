@@ -1,5 +1,8 @@
 package repositories;
 
+import repositories.interfaces.AuthRepository;
+import repositories.interfaces.RowMapper;
+
 import javax.servlet.http.Cookie;
 import javax.sql.DataSource;
 import java.util.List;
