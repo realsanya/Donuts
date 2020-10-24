@@ -123,7 +123,7 @@
                                             <form method="get">
                                                 <div class="col-lg-6 text-right ">
                                                     <button type="button" class="btn-lg btn-primary text-nowrap"
-                                                            onclick="window.location='/orderService?add=${product.getId()}'"
+                                                            onclick="window.location='/orderService?add='${product.getId()}"
                                                     >
                                                         В корзину
                                                     </button>

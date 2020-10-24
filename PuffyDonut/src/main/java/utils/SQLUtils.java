@@ -1,7 +1,7 @@
 package utils;
 
-import annotations.Constraint;
-import annotations.Table;
+import orm.annotations.Constraint;
+import orm.annotations.Table;
 
 import java.lang.reflect.Field;
 

@@ -21,7 +21,7 @@
             <Pattern>%d{HH:mm:ss} %-5level %logger{35} - %msg %n</Pattern>
         </encoder>
     </appender>
-    <logger name="filters.Logger" additivity="false">
+    <logger name="controllers.filters.Logger" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="fileAppender"/>
     </logger>

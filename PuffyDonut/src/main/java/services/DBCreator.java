@@ -1,9 +1,9 @@
 package services;
 
-import caster.Castable;
-import caster.IntegerCaster;
-import caster.ManyToOneCaster;
-import caster.StringCaster;
+import orm.caster.Castable;
+import orm.caster.IntegerCaster;
+import orm.caster.ManyToOneCaster;
+import orm.caster.StringCaster;
 
 
 import java.io.FileReader;
