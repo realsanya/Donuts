@@ -4,6 +4,7 @@ import models.Review;
 import models.User;
 import repositories.interfaces.ReviewRepository;
 import services.interfaces.ReviewsService;
+import utils.ReviewDto;
 
 import java.util.List;
 
@@ -21,12 +22,23 @@ public class ReviewsServiceImpl implements ReviewsService {
     }
 
     @Override
+    public List<Review> getAllReviews(int page, int size) {
+        return reviewRepository.findAll(page, size);
+    }
+
+    @Override
     public List<Review> getAllReviewsByUserID(User user_id) {
         return reviewRepository.findAllByUserID(user_id);
     }
 
     @Override
-    public void addReview(Review review) {
-        reviewRepository.save(review);
+    public void addReview(ReviewDto reviewDto) {
+        reviewRepository.save(
+                Review.builder()
+                        .user_id(reviewDto.getUser())
+                        .text(reviewDto.getText())
+                        .date(reviewDto.getDate())
+                        .build()
+        );
     }
 }

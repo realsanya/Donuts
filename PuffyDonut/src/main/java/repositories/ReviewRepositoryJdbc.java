@@ -7,7 +7,9 @@ import repositories.interfaces.RowMapper;
 import services.interfaces.UserService;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ReviewRepositoryJdbc implements ReviewRepository {
     private DataSource dataSource;
@@ -19,6 +21,9 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
     //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM review";
+
+    //language=SQL
+    private final String SQL_SELECT_ALL_WITH_PAGINATION = "select * from review order by id limit :limit offset :offset";
 
 
     //language=SQL
@@ -48,21 +53,27 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
     @Override
     public List<Review> findAll() {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL, reviewRowMapper);
+        return template.query(SQL_SELECT_ALL, reviewRowMapper);
+    }
+
+    @Override
+    public List<Review> findAll(int page, int size) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("limit", size);
+        params.put("offset", page * size);
+        return template.query(SQL_SELECT_ALL_WITH_PAGINATION, reviewRowMapper, params);
     }
 
     @Override
     public Review findById(Long id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<Review> reviews = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, reviewRowMapper, id);
+        List<Review> reviews = template.query(SQL_SELECT_BY_ID, reviewRowMapper, id);
         return !reviews.isEmpty() ? reviews.get(0) : null;
     }
 
     @Override
     public List<Review> findAllByUserID(User user_id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL_BY_USER_ID, reviewRowMapper, user_id.getId());
+        return template.query(SQL_SELECT_ALL_BY_USER_ID, reviewRowMapper, user_id.getId());
     }
+
 
 }
