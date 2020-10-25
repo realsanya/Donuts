@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="../../../../frontend/css/owl.carousel.min.css" type="text/css">
         <link rel="stylesheet" href="../../../../frontend/css/shopstyle.css" type="text/css">
         <link rel="stylesheet" href="../../../../frontend/css/styles.css" type="text/css">
+
         <#list css as style>
             <link rel="stylesheet" href="../../../../frontend/css/${style}">
         </#list>

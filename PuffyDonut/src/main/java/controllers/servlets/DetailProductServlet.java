@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/detail/product")
+@WebServlet("/detail")
 public class DetailProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String s = request.getParameter("id");
+
         try {
             Long id = Long.parseLong(s);
 
@@ -40,8 +41,18 @@ public class DetailProductServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String input = request.getParameter("review");
+        input = input == null ? "null" : input;
+        System.out.println(input);
+
+//        Comment comment = Comment.builder().build();
+//        List<Comment> comments = (List<Comment>) request.getAttribute("comments");
+//        comments.add(comment);
+//
+//        request.setAttribute("comments", comments);
+//        request.getRequestDispatcher("/detail.ftl").forward(request, response);
     }
 
 }

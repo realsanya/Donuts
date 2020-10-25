@@ -14,7 +14,6 @@ public class AuthRepositoryJdbc implements AuthRepository {
     //language=SQL
     final String SQL_CREATE = "INSERT INTO cookie (uuid) VALUES ?";
 
-    //TODO подумать над запросом
     //language=SQL
     final String SQL_FIND = "SELECT * FROM cookie WHERE uuid = ?";
 

@@ -50,7 +50,6 @@ public class ProductRepositoryJdbc implements ProductRepository {
             .image(row.getString("image"))
             .price(row.getFloat("price"))
             .availability(row.getBoolean("availability"))
-            .quantity(row.getInt("quantity"))
             .weight(row.getInt("weight"))
             .tag(Tag.builder().tag("tag").build())
             .build();

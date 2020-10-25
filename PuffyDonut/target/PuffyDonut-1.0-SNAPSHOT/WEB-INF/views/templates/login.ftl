@@ -30,7 +30,7 @@
                                         <label class="form-check-label" for="exampleCheck1">Запомнить меня?</label>
                                     </div>
 
-                                    <div class="form-group justify-content-center">
+                                    <div class="form-group">
                                         <a class="text-secondary" href="/register">Зарегистрироваться</a>
                                     </div>
 

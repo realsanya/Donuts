@@ -73,14 +73,7 @@
                                     </div>
                                     <br>
                                     <div class="row row-eq-height">
-                                        <div class="col text-left my-auto">
-                                            <button type="button" class="btn  btn-circle"><i class="fa fa-minus"></i>
-                                            </button>
-                                            <span style="margin-left: 5px; margin-right: 5px"> ${products[x].getQuantity()} </span>
-                                            <button type="button" class="btn  btn-circle"><i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col text-right">
+                                        <div class="col text-center">
                                             <button type="button" class="btn btn-primary btn-lg px-4">В корзину</button>
 
                                         </div>

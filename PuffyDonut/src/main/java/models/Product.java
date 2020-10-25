@@ -18,8 +18,6 @@ public class Product {
     private Float price;
     @Builder.Default
     private Boolean availability = true;
-    @Builder.Default
-    private Integer quantity = 1;
     private Integer weight;
     private Tag tag;
 }
