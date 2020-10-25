@@ -47,15 +47,7 @@
                                                                 ${product.getTag()}</p>
                                                         </div>
                                                         <div>
-                                                            <div class="def-number-input number-input safari_only mb-0 w-100">
-                                                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                                                        class="minus"></button>
-                                                                <input class="quantity" min="0" name="quantity"
-                                                                       value="1"
-                                                                       type="number">
-                                                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                                                        class="plus"></button>
-                                                            </div>
+
 
                                                         </div>
                                                     </div>

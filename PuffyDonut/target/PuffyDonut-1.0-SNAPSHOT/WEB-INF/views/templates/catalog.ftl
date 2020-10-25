@@ -90,7 +90,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-7">
-                                                <a href="detail/product?id=${product.getId()}"><h5
+                                                <a href="detail?id=${product.getId()}"><h5
                                                             class="text-left "> ${product.getName()}</h5></a>
                                             </div>
                                             <div class="col">
@@ -110,26 +110,17 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="row row-eq-height">
-                                            <div class="col text-left my-auto">
-                                                <button type="button" class="btn-sm  btn-circle"><i
-                                                            class="fa fa-minus"></i>
-                                                </button>
-                                                <span>${product.getQuantity()}</span>
-                                                <button type="button" class="btn-sm  btn-circle"><i
-                                                            class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                            <form method="get">
-                                                <div class="col-lg-6 text-right ">
-                                                    <button type="button" class="btn-lg btn-primary text-nowrap"
+                                        <form method="get">
+                                            <div class="row row-eq-height">
+                                                <div class="col text-center ">
+                                                    <button type="button" class="btn btn-primary btn-lg px-4"
                                                             onclick="window.location='/orderService?add='${product.getId()}"
                                                     >
                                                         В корзину
                                                     </button>
                                                 </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

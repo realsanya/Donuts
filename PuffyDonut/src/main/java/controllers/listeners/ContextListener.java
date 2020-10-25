@@ -1,7 +1,5 @@
 package controllers.listeners;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import repositories.*;
 import repositories.interfaces.*;
 import services.*;
@@ -10,21 +8,31 @@ import services.interfaces.*;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.IOException;
+import java.util.Properties;
 
 @WebListener
 public class ContextListener implements ServletContextListener {
 
-    @SuppressWarnings("DuplicatedCode")
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/db?serverTimezone=UTC");
-        hikariConfig.setUsername("root");
-        hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        hikariConfig.setPassword("realsanya");
-        hikariConfig.setMaximumPoolSize(10);
+        Properties properties = new Properties();
+        try {
+            properties.load(servletContextEvent.getServletContext().getResourceAsStream("/WEB-INF/properties/db.properties"));
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
 
-        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+        SimpleDataSourceConfig simpleConfig = new SimpleDataSourceConfig();
+
+        simpleConfig.setUrl(properties.getProperty("db.url"));
+        simpleConfig.setDriver(properties.getProperty("db.driver"));
+        simpleConfig.setUsername(properties.getProperty("db.username"));
+        simpleConfig.setPassword(properties.getProperty("db.password"));
+
+        SimpleDataSource dataSource = new SimpleDataSource(simpleConfig);
+
         servletContextEvent.getServletContext().setAttribute("datasource", dataSource);
 
         UserRepository userRepository = new UserRepositoryJdbc(dataSource);
