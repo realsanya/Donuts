@@ -17,16 +17,21 @@
                                 <form action="/login" method="post" autocomplete="off">
                                     <div class="form-group">
                                         <span class="text-black-50">Почта</span>
-                                        <input type="text" class="form-control" name="email">
+                                        <input type="email" class="form-control" name="email">
                                     </div>
                                     <div class="form-group">
                                         <span class="text-black-50">Пароль</span>
-                                        <input type="password" class="form-control" name="password">
+                                        <input type="password" class="form-control" name="password"
+                                               >
                                     </div>
                                     <div class="form-group">
                                         <input type="checkbox" name="remember" class="form-check-input"
                                                id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">Запомнить меня?</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a class="text-secondary">Зарегистрироваться</a>
                                     </div>
 
                                     <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"

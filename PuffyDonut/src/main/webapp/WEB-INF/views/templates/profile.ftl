@@ -22,7 +22,7 @@
                     </div>
 
                     <h4 class="mb-2">${user.getFirst_name()}</h4>
-                    <h5 class="gradient-text">@Rarity</h5>
+<#--                    <h5 class="gradient-text">@Rarity</h5>-->
 
 
                     <div class="text-left mt-3">
@@ -37,7 +37,9 @@
                                     class="ml-2">${user.getAddress()}</span></p>
 
                     </div>
-                    <button type="button" id="" class="btn btn-primary btn-lg">Выход</button>
+                    <button type="button" id="" class="btn btn-primary btn-lg" onclick="window.location='/logout'">
+                        Выход
+                    </button>
                 </div> <!-- end card-box -->
 
 

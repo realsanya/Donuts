@@ -22,8 +22,7 @@
                                     <div class="form-group">
                                         <span class="text-black-50">Пароль</span>
                                         <input type="password" class="form-control" name="password"
-                                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
-                                               title="Длина от 8 до 12 символов, нужен хотя бы 1 спец символ: !@#$%^&*_=+-">
+                                               >
                                     </div>
                                     <div class="form-group">
                                         <input type="checkbox" name="remember" class="form-check-input"

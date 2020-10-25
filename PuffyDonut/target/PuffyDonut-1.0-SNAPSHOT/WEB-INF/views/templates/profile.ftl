@@ -37,7 +37,9 @@
                                     class="ml-2">${user.getAddress()}</span></p>
 
                     </div>
-                    <button type="button" id="" class="btn btn-primary btn-lg">Выход</button>
+                    <button type="button" id="" class="btn btn-primary btn-lg" onclick="window.location='/logout'">
+                        Выход
+                    </button>
                 </div> <!-- end card-box -->
 
 
