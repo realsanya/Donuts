@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <span class="text-black-50">Пароль</span>
                                         <input type="password" class="form-control" name="password"
-                                               >
+                                        >
                                     </div>
                                     <div class="form-group">
                                         <input type="checkbox" name="remember" class="form-check-input"
@@ -30,8 +30,8 @@
                                         <label class="form-check-label" for="exampleCheck1">Запомнить меня?</label>
                                     </div>
 
-                                    <div class="form-group">
-                                        <a class="text-secondary">Зарегистрироваться</a>
+                                    <div class="form-group justify-content-center">
+                                        <a class="text-secondary" href="/register">Зарегистрироваться</a>
                                     </div>
 
                                     <button class="btn btn-primary btn-lg btn-block waves-effect waves-light"

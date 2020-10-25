@@ -22,7 +22,7 @@
                     </div>
 
                     <h4 class="mb-2">${user.getFirst_name()}</h4>
-                    <h5 class="gradient-text">@Rarity</h5>
+<#--                    <h5 class="gradient-text">@Rarity</h5>-->
 
 
                     <div class="text-left mt-3">
