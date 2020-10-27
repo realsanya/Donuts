@@ -63,13 +63,14 @@ public class SimpleJdbcTemplate {
         }
     }
 
-    public void queryInsert(String SQL, Object... args) {
+    public <T> int queryInsert(String SQL, Object... args) {
         try (Connection connection = dataSource.getConnection(); PreparedStatement statement = connection.prepareStatement(SQL)) {
 
             for (int i = 0; i < args.length; i++) {
                 statement.setObject(i + 1, args[i]);
+                System.out.println(args[i]);
             }
-
+            return statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }

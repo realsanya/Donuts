@@ -2,6 +2,7 @@ package controllers.servlets;
 
 import models.Comment;
 import models.Product;
+import models.User;
 import services.interfaces.CommentService;
 import services.interfaces.ProductService;
 
@@ -12,47 +13,61 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 @WebServlet("/detail")
 public class DetailProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("doGet");
         String s = request.getParameter("id");
 
         try {
-            Long id = Long.parseLong(s);
+            Integer id = Integer.parseInt(s);
 
             ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
             CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
 
-            List<Comment> comments = commentService.getAllCommentsByDonutID(productService.getProductById(id));
             Product product = productService.getProductById(id);
+            List<Comment> comments = commentService.getAllCommentsByDonutID(product);
 
             request.setAttribute("product", product);
             request.setAttribute("comments", comments);
 
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/detail.ftl");
             requestDispatcher.forward(request, response);
-
-        } catch (NumberFormatException exp) {
-            response.sendRedirect("/404");
+        } catch (NumberFormatException e) {
+            throw new IllegalStateException(e);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("doPost");
         request.setCharacterEncoding("UTF-8");
-        String input = request.getParameter("review");
-        input = input == null ? "null" : input;
-        System.out.println(input);
+        User user = (User) request.getSession().getAttribute("user");
 
-//        Comment comment = Comment.builder().build();
-//        List<Comment> comments = (List<Comment>) request.getAttribute("comments");
-//        comments.add(comment);
-//
-//        request.setAttribute("comments", comments);
-//        request.getRequestDispatcher("/detail.ftl").forward(request, response);
+        if (user != null) {
+            ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
+            CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
+            String input = request.getParameter("comment-input");
+            System.out.println(input);
+            System.out.println(Integer.parseInt(request.getParameter("product_id")));
+
+            Date date = new Date(System.currentTimeMillis());
+            Comment comment = Comment.builder()
+                    .user_id(user)
+                    .product_id(productService.getProductById(Integer.parseInt(request.getParameter("product_id"))))
+                    .date(date)
+                    .text(input)
+                    .build();
+            commentService.addComment(comment);
+
+            response.sendRedirect("/detail");
+        } else {
+            response.sendRedirect("/login");
+        }
     }
 
 }

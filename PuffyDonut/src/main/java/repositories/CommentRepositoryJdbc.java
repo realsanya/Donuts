@@ -9,6 +9,9 @@ import services.interfaces.ProductService;
 import services.interfaces.UserService;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CommentRepositoryJdbc implements CommentRepository {
@@ -18,7 +21,7 @@ public class CommentRepositoryJdbc implements CommentRepository {
     private ProductService productService;
 
     //language=SQL
-    final String SQL_CREATE = "INSERT INTO comment" + "( text, user_id, date) VALUES (?, ? , ?)";
+    final String SQL_CREATE = "INSERT INTO comment" + "( user_id, donut_id, date, text) VALUES (?, ? , ?, ?)";
 
     //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM comment";
@@ -33,8 +36,8 @@ public class CommentRepositoryJdbc implements CommentRepository {
     private final String SQL_SELECT_ALL_BY_PRODUCT_ID = "SELECT * FROM comment WHERE donut_id= ?";
 
     private RowMapper<Comment> commentRowMapper = row -> Comment.builder()
-            .user_id(userService.getUserById(row.getLong("user_id")))
-            .product_id(productService.getProductById(row.getLong("donut_id")))
+            .user_id(userService.getUserById(row.getInt("user_id")))
+            .product_id(productService.getProductById(row.getInt("donut_id")))
             .text(row.getString("text"))
             .date(row.getDate("date"))
             .build();
@@ -48,7 +51,15 @@ public class CommentRepositoryJdbc implements CommentRepository {
 
     @Override
     public void save(Comment comment) {
-        template.queryInsert(SQL_CREATE, comment);
+        try (Connection connection = dataSource.getConnection(); PreparedStatement statement = connection.prepareStatement(SQL_CREATE)) {
+            statement.setObject(1, comment.getUser_id().getId());
+            statement.setObject(2, comment.getProduct_id().getId());
+            statement.setObject(3, comment.getDate());
+            statement.setObject(4, comment.getText());
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+//        template.queryInsert(SQL_CREATE, comment);
     }
 
     @Override
@@ -58,7 +69,7 @@ public class CommentRepositoryJdbc implements CommentRepository {
     }
 
     @Override
-    public Comment findById(Long id) {
+    public Comment findById(Integer id) {
         List<Comment> comments = template.query(SQL_SELECT_BY_ID, commentRowMapper, id);
         return !comments.isEmpty() ? comments.get(0) : null;
     }

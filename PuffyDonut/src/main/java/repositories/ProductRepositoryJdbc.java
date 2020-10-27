@@ -44,7 +44,7 @@ public class ProductRepositoryJdbc implements ProductRepository {
     }
 
     public static RowMapper<Product> productRowMapper = row -> Product.builder()
-            .id(row.getLong("product_id"))
+            .id(row.getInt("product_id"))
             .name(row.getString("product_name"))
             .description(row.getString("product_description"))
             .image(row.getString("image"))
@@ -65,7 +65,7 @@ public class ProductRepositoryJdbc implements ProductRepository {
     }
 
     @Override
-    public Product findById(Long id) {
+    public Product findById(Integer id) {
         List<Product> products = template.query(SQL_SELECT_BY_ID, productRowMapper, id);
         return !products.isEmpty() ? products.get(0) : null;
     }
@@ -77,7 +77,7 @@ public class ProductRepositoryJdbc implements ProductRepository {
     }
 
     public static RowMapper<Tag> tagRowMapper = row -> Tag.builder()
-            .id(Product.builder().id(row.getLong("donut_id")).build())
+            .id(Product.builder().id(row.getInt("donut_id")).build())
             .build();
 
 

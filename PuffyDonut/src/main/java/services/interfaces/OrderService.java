@@ -5,7 +5,7 @@ import models.Product;
 import models.User;
 
 public interface OrderService {
-    Order getOrderById(Long id);
+    Order getOrderById(Integer id);
 
     void createOrder(Order order);
 

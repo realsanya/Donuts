@@ -23,7 +23,7 @@ public class DeliveryRepositoryJdbc implements DeliveryRepository {
     private final String SQL_CREATE = "INSERT INTO delivery (order_id, delivery_date, delivery_status) VALUES (?, ?, ?);";
 
     private RowMapper<Delivery> deliveryRowMapper = row -> Delivery.builder()
-            .order_id(orderService.getOrderById(row.getLong("order_id")))
+            .order_id(orderService.getOrderById(row.getInt("order_id")))
             .delivery_date(row.getDate("delivery_date"))
             .delivery_status(row.getString("delivery_status"))
             .build();
@@ -41,7 +41,7 @@ public class DeliveryRepositoryJdbc implements DeliveryRepository {
     }
 
     @Override
-    public Delivery findById(Long id) {
+    public Delivery findById(Integer id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<Delivery> deliveries = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, deliveryRowMapper, id);
         return !deliveries.isEmpty() ? deliveries.get(0) : null;

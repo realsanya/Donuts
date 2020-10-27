@@ -17,7 +17,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
-    public Delivery getDeliveryById(Long id) {
+    public Delivery getDeliveryById(Integer id) {
         return deliveryRepository.findById(id);
     }
 }

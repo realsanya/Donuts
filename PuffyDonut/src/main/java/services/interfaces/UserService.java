@@ -13,5 +13,5 @@ public interface UserService {
 
     User getUser(String email);
 
-    User getUserById(Long id);
+    User getUserById(Integer id);
 }

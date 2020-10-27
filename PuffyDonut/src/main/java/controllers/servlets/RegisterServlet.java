@@ -41,6 +41,7 @@ public class RegisterServlet extends HttpServlet {
                         .address(address)
                         .email(email)
                         .password(password)
+                        .image("default.png")
                         .build();
                 userService.addUser(user);
                 request.getSession().setAttribute("user", user);

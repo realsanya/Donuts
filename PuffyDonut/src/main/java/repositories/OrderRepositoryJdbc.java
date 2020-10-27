@@ -47,13 +47,13 @@ public class OrderRepositoryJdbc implements OrderRepository {
 
     private RowMapper<Order> orderRowMapper = row -> Order.builder()
             .order_id(row.getLong("product_id"))
-            .user_id(userService.getUserById(row.getLong("user_id")))
+            .user_id(userService.getUserById(row.getInt("user_id")))
             .products_id(productsInBasket(row.getInt("id")))
             .total_price(row.getFloat("total_price"))
             .payment(row.getInt("payment"))
             .build();
 
-    private List<Product> productsInBasket(int id) {
+    private List<Product> productsInBasket(Integer id) {
         List<Product> products = template.query(SQL_GET_PRODUCTS, productRowMapper, id);
         return !products.isEmpty() ? products : new ArrayList<>();
     }
@@ -71,7 +71,7 @@ public class OrderRepositoryJdbc implements OrderRepository {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Order findById(Integer id) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         List<Order> orders = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, orderRowMapper, id);
         return !orders.isEmpty() ? orders.get(0) : null;

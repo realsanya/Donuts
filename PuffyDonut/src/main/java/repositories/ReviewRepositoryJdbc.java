@@ -35,7 +35,7 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
 
     private RowMapper<Review> reviewRowMapper = row -> Review.builder()
-            .user_id(userService.getUserById(row.getLong("user_id")))
+            .user_id(userService.getUserById(row.getInt("user_id")))
             .text(row.getString("review_text"))
             .date(row.getDate("date"))
             .build();
@@ -65,7 +65,7 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
     }
 
     @Override
-    public Review findById(Long id) {
+    public Review findById(Integer id) {
         List<Review> reviews = template.query(SQL_SELECT_BY_ID, reviewRowMapper, id);
         return !reviews.isEmpty() ? reviews.get(0) : null;
     }

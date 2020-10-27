@@ -11,14 +11,16 @@ import java.util.List;
 public class UserRepositoryJdbc implements UserRepository {
 
     private DataSource dataSource;
+    private SimpleJdbcTemplate template;
 
     public UserRepositoryJdbc(DataSource dataSource) {
         this.dataSource = dataSource;
+        this.template = new SimpleJdbcTemplate(dataSource);
     }
 
     //language=SQL
     private final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
-            "address, password, email) VALUES" + "(?, ? , ? , ? , ? );";
+            "address, password, email, image) VALUES" + "(?, ? , ? , ? , ?, ?);";
 
     //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM user_table";
@@ -47,27 +49,23 @@ public class UserRepositoryJdbc implements UserRepository {
 
 
     public List<User> findAll() {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL, userRowMapper);
+        return template.query(SQL_SELECT_ALL, userRowMapper);
     }
 
-    public User findById(Long id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> users = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, userRowMapper, id);
+    public User findById(Integer id) {
+        List<User> users = template.query(SQL_SELECT_BY_ID, userRowMapper, id);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
     public User findByEmail(String email) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> users = simpleJdbcTemplate.query(SQL_SELECT_BY_EMAIL, userRowMapper2, email);
+        List<User> users = template.query(SQL_SELECT_BY_EMAIL, userRowMapper2, email);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
     public void save(User user) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        simpleJdbcTemplate.queryInsert(SQL_INSERT_USERS,
+        template.queryInsert(SQL_INSERT_USERS,
                 user.getFirst_name(),
                 user.getLast_name(),
                 user.getAddress(),

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
-    Product getProductById(Long id);
+    Product getProductById(Integer id);
 
     List<Product> getProductByName(String name);
 

@@ -28,10 +28,10 @@ public class OrderServiceServlet extends HttpServlet {
         String delete = request.getParameter("delete");
         try {
             if (add != null) {
-                addProduct(orderService, order, productService, Long.parseLong(add));
+                addProduct(orderService, order, productService, Integer.parseInt(add));
                 response.sendRedirect("/catalog");
             } else if (delete != null) {
-                deleteProduct(orderService, order, productService, Long.parseLong(delete));
+                deleteProduct(orderService, order, productService, Integer.parseInt(delete));
                 response.sendRedirect("/basket");
             }
         } catch (NumberFormatException ignored) {
@@ -41,11 +41,11 @@ public class OrderServiceServlet extends HttpServlet {
         }
     }
 
-    private void addProduct(OrderService orderService, Order order, ProductService productService, Long id) {
+    private void addProduct(OrderService orderService, Order order, ProductService productService, Integer id) {
         orderService.addProductInOrder(order, productService.getProductById(id));
     }
 
-    private void deleteProduct(OrderService orderService, Order order, ProductService productService, Long id) {
+    private void deleteProduct(OrderService orderService, Order order, ProductService productService, Integer id) {
         orderService.deleteProductFromOrder(order, productService.getProductById(id));
     }
 

@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 @ToString
 @EqualsAndHashCode
 public class Comment {
-    private int id;
+    private Integer id;
     private User user_id;
     private Product product_id;
     private String text;
