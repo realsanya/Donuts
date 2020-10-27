@@ -51,21 +51,17 @@ public class CommentRepositoryJdbc implements CommentRepository {
 
     @Override
     public void save(Comment comment) {
-        try (Connection connection = dataSource.getConnection(); PreparedStatement statement = connection.prepareStatement(SQL_CREATE)) {
-            statement.setObject(1, comment.getUser_id().getId());
-            statement.setObject(2, comment.getProduct_id().getId());
-            statement.setObject(3, comment.getDate());
-            statement.setObject(4, comment.getText());
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-//        template.queryInsert(SQL_CREATE, comment);
+        template.queryInsert(SQL_CREATE,
+                comment.getUser_id().getId(),
+                comment.getProduct_id().getId(),
+                comment.getDate(),
+                comment.getText());
+        System.out.println("save " + comment.getUser_id() + " " + comment.getProduct_id() + " " + comment.getText());
     }
 
     @Override
     public List<Comment> findAll() {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL, commentRowMapper);
+        return template.query(SQL_SELECT_ALL, commentRowMapper);
     }
 
     @Override

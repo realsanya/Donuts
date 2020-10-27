@@ -15,6 +15,7 @@
                         </button>
                     </div>
 
+
                     <form method="post" id="form_push" action="/detail">
                         <input hidden name="product_id" value="${product.getId()}">
                         <div class="modal-body">
@@ -41,7 +42,7 @@
         <div class="row">
         <div class="col-lg-4 col-xl-4 ">
             <div class="card-box text-center ">
-                <img src="../../../assets/img/donuts/donut1.png" class="rounded-circle   img-fluid "
+                <img src="../../../assets/img/donuts/${product.getImage()}" class="rounded-circle   img-fluid "
                      alt="profile-image">
 
                 <h4 class="mb-0">${product.getName()}</h4>
@@ -86,7 +87,7 @@
                                 <li class="timeline-sm-item">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img src="../../../assets/img/donuts/donut1.png"
+                                            <img src="../../../assets/img/user/${comment.getUser_id().getImage()}"
                                                  class="img-fluid">
                                         </div>
                                         <div class="col mt-auto mb-auto">

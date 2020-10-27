@@ -24,8 +24,10 @@ public class DetailProductServlet extends HttpServlet {
         String s = request.getParameter("id");
 
         try {
+
             Integer id = Integer.parseInt(s);
 
+            //при повторном заходе id = null,  user_id не заносится в бд
             ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
             CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
 
@@ -53,18 +55,19 @@ public class DetailProductServlet extends HttpServlet {
             CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
             String input = request.getParameter("comment-input");
             System.out.println(input);
-            System.out.println(Integer.parseInt(request.getParameter("product_id")));
+
+            Integer id = Integer.parseInt(request.getParameter("product_id"));
 
             Date date = new Date(System.currentTimeMillis());
             Comment comment = Comment.builder()
                     .user_id(user)
-                    .product_id(productService.getProductById(Integer.parseInt(request.getParameter("product_id"))))
+                    .product_id(productService.getProductById(id))
                     .date(date)
                     .text(input)
                     .build();
             commentService.addComment(comment);
 
-            response.sendRedirect("/detail");
+            response.sendRedirect("/detail?id=" + id);
         } else {
             response.sendRedirect("/login");
         }
