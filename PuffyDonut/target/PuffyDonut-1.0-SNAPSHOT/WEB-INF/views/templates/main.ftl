@@ -74,7 +74,10 @@
                                     <br>
                                     <div class="row row-eq-height">
                                         <div class="col text-center">
-                                            <button type="button" class="btn btn-primary btn-lg px-4">В корзину</button>
+                                            <button type="button" class="btn btn-primary btn-lg px-4"
+                                                    onclick="window.location='/orderService?add='${products[x].getId()}">
+                                                В корзину
+                                            </button>
 
                                         </div>
                                     </div>

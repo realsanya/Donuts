@@ -54,22 +54,22 @@
 
 
                             <ul class="list-unstyled timeline-sm">
-                                <#if comments??>
-                                    <#list comments as comment>
+                                <#if reviews??>
+                                    <#list reviews as review>
                                         <li class="timeline-sm-item">
                                             <div class="row">
                                                 <div class="col-2">
-                                                    <img src="../../../assets/user/${comment.getUser_id().getImage()}"
+                                                    <img src="../../../assets/user/${review.getUser_id().getImage()}"
                                                          class="img-fluid">
                                                 </div>
                                                 <div class="col mt-auto mb-auto">
-                                                    <span class="timeline-sm-date">${comment.getDate()}</span>
+                                                    <span class="timeline-sm-date">${review.getDate()}</span>
                                                     <h5 class="mt-0 mb-1">Martha Smith</h5>
                                                 </div>
 
 
                                             </div>
-                                            <p class="text-muted mt-2">${comment.getText()}</p>
+                                            <p class="text-muted mt-2">${review.getText()}</p>
 
                                         </li>
                                     </#list>

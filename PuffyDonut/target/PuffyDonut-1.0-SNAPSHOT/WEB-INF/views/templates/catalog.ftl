@@ -114,7 +114,7 @@
                                             <div class="row row-eq-height">
                                                 <div class="col text-center ">
                                                     <button type="button" class="btn btn-primary btn-lg px-4"
-                                                            onclick="window.location='/orderService?add='${product.getId()}"
+                                                            onclick="addProduct(${product.getId()})"
                                                     >
                                                         В корзину
                                                     </button>
@@ -134,7 +134,16 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
     <!-- Shop Section End -->
+    <script>
+        function addProduct(id) {
+            <#if user??>
+            alert('Пончик добавлен в корзину!');
+            <#else>
+            alert('Необходимо авторизироваться!')
+            </#if>
+            window.location.href = '/orderService?add=' + id;
+        }
+    </script>
 </@base.main>

@@ -1,10 +1,7 @@
 package controllers.servlets;
 
 import models.*;
-import services.interfaces.CommentService;
-import services.interfaces.OrderService;
-import services.interfaces.ProductService;
-import services.interfaces.UserService;
+import services.interfaces.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +17,13 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
-        CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
+//        CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
 
-        List<Comment> comments = commentService.getAllCommentsByUserID(user);
-        if (commentService.getAllCommentsByUserID(user) != null)
-            request.setAttribute("comments", comments);
+        ReviewsService reviewsService = (ReviewsService) request.getServletContext().getAttribute("reviewsService");
+
+        List<Review> reviews = reviewsService.getAllReviewsByUserID(user);
+        if (reviews != null)
+            request.setAttribute("reviews", reviews);
 
         request.getRequestDispatcher("/profile.ftl").forward(request, response);
     }
