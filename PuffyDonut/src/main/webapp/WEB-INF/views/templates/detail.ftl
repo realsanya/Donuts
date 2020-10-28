@@ -87,7 +87,7 @@
                                 <li class="timeline-sm-item">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img src="../../../assets/img/user/${comment.getUser_id().getImage()}"
+                                            <img src="../../../assets/user/${comment.getUser_id().getImage()}"
                                                  class="img-fluid">
                                         </div>
                                         <div class="col mt-auto mb-auto">

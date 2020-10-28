@@ -20,7 +20,7 @@ public class UserRepositoryJdbc implements UserRepository {
 
     //language=SQL
     private final String SQL_INSERT_USERS = "INSERT INTO user_table" + "( first_name, last_name," +
-            "address, password, email, image) VALUES" + "(?, ? , ? , ? , ?, ?);";
+            "address, password, email, image) VALUES" + "( ?, ? , ? , ? , ?, ?);";
 
     //language=SQL
     private final String SQL_SELECT_ALL = "SELECT * FROM user_table";
@@ -40,6 +40,7 @@ public class UserRepositoryJdbc implements UserRepository {
             .build();
 
     private RowMapper<User> userRowMapper2 = row -> User.builder()
+            .id(row.getLong("user_id"))
             .first_name(row.getString("first_name"))
             .last_name(row.getString("last_name"))
             .address(row.getString("address"))

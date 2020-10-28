@@ -3,8 +3,10 @@ package controllers.servlets;
 import models.Comment;
 import models.Product;
 import models.User;
+import services.UserServiceImpl;
 import services.interfaces.CommentService;
 import services.interfaces.ProductService;
+import services.interfaces.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,11 +22,9 @@ import java.util.List;
 public class DetailProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doGet");
-        String s = request.getParameter("id");
 
         try {
-
+            String s = request.getParameter("id");
             Integer id = Integer.parseInt(s);
 
             //при повторном заходе id = null,  user_id не заносится в бд
@@ -46,16 +46,17 @@ public class DetailProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost");
         request.setCharacterEncoding("UTF-8");
+        UserService userService = (UserService) request.getSession().getAttribute("userService");
+
         User user = (User) request.getSession().getAttribute("user");
 
         if (user != null) {
             ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
             CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
-            String input = request.getParameter("comment-input");
-            System.out.println(input);
 
+
+            String input = request.getParameter("comment-input");
             Integer id = Integer.parseInt(request.getParameter("product_id"));
 
             Date date = new Date(System.currentTimeMillis());

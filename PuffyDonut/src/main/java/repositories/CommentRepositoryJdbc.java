@@ -56,7 +56,6 @@ public class CommentRepositoryJdbc implements CommentRepository {
                 comment.getProduct_id().getId(),
                 comment.getDate(),
                 comment.getText());
-        System.out.println("save " + comment.getUser_id() + " " + comment.getProduct_id() + " " + comment.getText());
     }
 
     @Override

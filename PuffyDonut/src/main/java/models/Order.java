@@ -14,5 +14,6 @@ public class Order {
     private User user_id;
     private List<Product> products_id;
     private Float total_price;
-    private Integer payment;
+    @Builder.Default
+    private Integer payment = 1;
 }

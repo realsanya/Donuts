@@ -26,8 +26,11 @@ public class OrderServiceServlet extends HttpServlet {
 
         String add = request.getParameter("add");
         String delete = request.getParameter("delete");
+        System.out.println(add);
+
         try {
             if (add != null) {
+                System.out.println(Integer.parseInt(add));
                 addProduct(orderService, order, productService, Integer.parseInt(add));
                 response.sendRedirect("/catalog");
             } else if (delete != null) {

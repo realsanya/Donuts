@@ -44,7 +44,8 @@ public class RegisterServlet extends HttpServlet {
                         .image("default.png")
                         .build();
                 userService.addUser(user);
-                request.getSession().setAttribute("user", user);
+
+                request.getSession().setAttribute("user", userService.getUser(user.getEmail()));
                 response.sendRedirect("/main");
             }
         } else {

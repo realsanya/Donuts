@@ -1,7 +1,6 @@
 package controllers.servlets;
 
 import models.User;
-import services.interfaces.AuthService;
 import services.interfaces.UserService;
 import utils.HashPassword;
 import utils.Validator;
@@ -10,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.UUID;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -27,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             user = userService.getUser(email);
 
             if (user != null) {
-                request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("user", userService.getUser(user.getEmail()));
 
                 if (remember) {
                     Cookie emailCookie = new Cookie("email", email);

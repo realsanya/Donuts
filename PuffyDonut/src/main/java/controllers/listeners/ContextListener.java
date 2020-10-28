@@ -46,13 +46,13 @@ public class ContextListener implements ServletContextListener {
         ReviewsService reviewsService = new ReviewsServiceImpl(reviewRepository);
         servletContextEvent.getServletContext().setAttribute("reviewsService", reviewsService);
 
-        AuthRepository authRepository = new AuthRepositoryJdbc(dataSource);
-        AuthService authService = new AuthServiceImpl(authRepository);
-        servletContextEvent.getServletContext().setAttribute("authService", authService);
-
         CommentRepository commentRepository = new CommentRepositoryJdbc(dataSource, userService, productService);
         CommentService commentService = new CommentServiceImpl(commentRepository);
         servletContextEvent.getServletContext().setAttribute("commentService", commentService);
+
+        OrderRepository orderRepository = new OrderRepositoryJdbc(dataSource, userService, productService);
+        OrderService orderService = new OrderServiceImpl(orderRepository);
+        servletContextEvent.getServletContext().setAttribute("orderService", orderService);
 
     }
 

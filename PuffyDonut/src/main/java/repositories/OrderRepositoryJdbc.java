@@ -5,6 +5,7 @@ import models.Product;
 import models.User;
 import repositories.interfaces.OrderRepository;
 import repositories.interfaces.RowMapper;
+import services.interfaces.ProductService;
 import services.interfaces.UserService;
 
 import javax.sql.DataSource;
@@ -18,6 +19,7 @@ public class OrderRepositoryJdbc implements OrderRepository {
     private DataSource dataSource;
     private final SimpleJdbcTemplate template;
     private UserService userService;
+    private ProductService productService;
 
     //language=SQL
     final String SQL_CREATE = "INSERT INTO order_table (user_id) VALUES (?);";
@@ -50,7 +52,6 @@ public class OrderRepositoryJdbc implements OrderRepository {
             .user_id(userService.getUserById(row.getInt("user_id")))
             .products_id(productsInBasket(row.getInt("id")))
             .total_price(row.getFloat("total_price"))
-            .payment(row.getInt("payment"))
             .build();
 
     private List<Product> productsInBasket(Integer id) {
@@ -58,22 +59,21 @@ public class OrderRepositoryJdbc implements OrderRepository {
         return !products.isEmpty() ? products : new ArrayList<>();
     }
 
-    public OrderRepositoryJdbc(DataSource dataSource, UserService userService) {
+    public OrderRepositoryJdbc(DataSource dataSource, UserService userService, ProductService productService) {
         this.dataSource = dataSource;
         this.userService = userService;
+        this.productService = productService;
         this.template = new SimpleJdbcTemplate(dataSource);
     }
 
     @Override
     public List<Order> findAll() {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_SELECT_ALL, orderRowMapper);
+        return template.query(SQL_SELECT_ALL, orderRowMapper);
     }
 
     @Override
     public Order findById(Integer id) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<Order> orders = simpleJdbcTemplate.query(SQL_SELECT_BY_ID, orderRowMapper, id);
+        List<Order> orders = template.query(SQL_SELECT_BY_ID, orderRowMapper, id);
         return !orders.isEmpty() ? orders.get(0) : null;
     }
 
