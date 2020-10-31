@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["styles.css", "advantages.css"] title="Преимущества">
+<@base.main css=["styles.css", "advantages.css"] title="Корзина">
     <!--content-->
     <main>
         <div class="container">
@@ -23,12 +23,12 @@
                                             <div class="col-md-5 col-lg-3 col-xl-3">
                                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                                                     <img class="img-fluid w-100"
-                                                         src="../../../frontend/static/donut.png"
+                                                         src="../../../assets/img/donuts/${product.getImage()}"
                                                          alt="Sample">
-                                                    <a href="#!">
+                                                    <a href="#!" target="_blank">
                                                         <div class="mask waves-effect waves-light">
                                                             <img class="img-fluid w-100"
-                                                                 src="../../../frontend/static/donut.png">
+                                                                 src="../../../assets/img/donuts/${product.getImage()}">
                                                             <div class="mask rgba-black-slight waves-effect waves-light"></div>
                                                         </div>
                                                     </a>

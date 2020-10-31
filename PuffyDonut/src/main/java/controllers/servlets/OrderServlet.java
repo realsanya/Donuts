@@ -1,5 +1,7 @@
 package controllers.servlets;
 
+import models.Order;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,6 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        request.getRequestDispatcher("/basket.ftl").forward(request, response);
     }
 }

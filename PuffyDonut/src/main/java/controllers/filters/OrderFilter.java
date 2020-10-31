@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-//
+
 @WebFilter("/catalog")
 public class OrderFilter implements Filter {
     @Override
@@ -59,9 +59,9 @@ public class OrderFilter implements Filter {
     private void setOrder(User user, OrderService orderService, HttpServletRequest request) {
         Order order = orderService.getUserOrder(user);
         if (order == null) {
-            order = Order.builder().products_id(new ArrayList<>()).user_id(user).build();
+            order = Order.builder().user_id(user).products_id(new ArrayList<>()).user_id(user).build();
             orderService.createOrder(order);
         }
-        request.getSession().setAttribute("order", order);
+        request.getSession().setAttribute("order", orderService.getUserOrder(user));
     }
 }

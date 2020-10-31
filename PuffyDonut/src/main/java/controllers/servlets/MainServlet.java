@@ -24,3 +24,4 @@ public class MainServlet extends HttpServlet {
         request.getRequestDispatcher("/main.ftl").forward(request, response);
     }
 }
+

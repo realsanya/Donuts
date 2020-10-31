@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static repositories.ProductRepositoryJdbc.productRowMapper;
+import static repositories.ProductRepositoryJdbc.productRowMapper2;
 
 public class OrderRepositoryJdbc implements OrderRepository {
 
@@ -25,18 +25,21 @@ public class OrderRepositoryJdbc implements OrderRepository {
     final String SQL_CREATE = "INSERT INTO order_table (user_id) VALUES (?);";
 
     //language=SQL
-    private static final String SQL_ADD_PRODUCT = "INSERT INTO order_table (order_id, product_id) VALUES (?, ?);";
+    private static final String SQL_ADD_PRODUCT = "INSERT INTO customer_order (order_id, product_id) VALUES (?, ?);";
 
     //language=SQL
-    private static final String SQL_DELETE_PRODUCT = "DELETE FROM order_table WHERE order_id=? AND product_id=?";
+    private static final String SQL_DELETE_PRODUCT = "DELETE FROM customer_order WHERE order_id=? AND product_id=?";
 
-    //TODO
-    //language=SQL
-    //  private static final String SQL_GET_PRODUCTS = "SELECT p.product_id, p.product_name, p.product_description, p.quantity, p.price, p.image, c.name as ca_name FROM customer_basket inner join basket b on b.id = customer_basket.basket_id inner join product p on p.id = customer_basket.product_id inner join categories c on c.id = p.category_id where basket_id=?;";
-    private static final String SQL_GET_PRODUCTS = "SELECT * from order_table";
+
+//    //language=SQL
+//    private static final String SQL_GET_PRODUCTS = "SELECT (p.product_id, p.product_name, p.product_description, p.price, p.weight, p.availability, p.image) FROM product p inner join customer_order co on `co`.product_id = p.product_id inner join order_table ot on `ot`.order_id = `co`.order_id WHERE `ot`.order_id =?";
 
     //language=SQL
-    private static final String SQL_FIND_BY_USER_ID = "SELECT * FROM order_table where user_id = ?";
+    private static final String SQL_GET_PRODUCTS = "SELECT product_id FROM customer_order WHERE order_id =?";
+
+
+    //language=SQL
+    private static final String SQL_FIND_BY_USER_ID = "SELECT * FROM order_table where (user_id) = ?";
 
     //language=SQL
     private final String SQL_SELECT_BY_ID = "SELECT * FROM order_table WHERE order_id= ?";
@@ -48,15 +51,19 @@ public class OrderRepositoryJdbc implements OrderRepository {
     private final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM order_table WHERE user_id= ? ";
 
     private RowMapper<Order> orderRowMapper = row -> Order.builder()
-            .order_id(row.getLong("product_id"))
+            .order_id(row.getInt("order_id"))
             .user_id(userService.getUserById(row.getInt("user_id")))
-            .products_id(productsInBasket(row.getInt("id")))
+            .products_id(productsInBasket(row.getInt("order_id")))
             .total_price(row.getFloat("total_price"))
             .build();
 
     private List<Product> productsInBasket(Integer id) {
-        List<Product> products = template.query(SQL_GET_PRODUCTS, productRowMapper, id);
-        return !products.isEmpty() ? products : new ArrayList<>();
+        List<Product> products = template.query(SQL_GET_PRODUCTS, productRowMapper2, id);
+        List<Product> result = new ArrayList<>();
+        for (Product p : products) {
+            result.add(productService.getProductById(p.getId()));
+        }
+        return !result.isEmpty() ? result : new ArrayList<>();
     }
 
     public OrderRepositoryJdbc(DataSource dataSource, UserService userService, ProductService productService) {
@@ -87,7 +94,6 @@ public class OrderRepositoryJdbc implements OrderRepository {
         List<Order> baskets = template.query(SQL_FIND_BY_USER_ID, orderRowMapper, user.getId());
         return !baskets.isEmpty() ? baskets.get(0) : null;
     }
-
 
     @Override
     public void addProduct(Order order, Product product) {

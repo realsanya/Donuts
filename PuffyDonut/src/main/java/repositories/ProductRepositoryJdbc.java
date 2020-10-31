@@ -54,6 +54,10 @@ public class ProductRepositoryJdbc implements ProductRepository {
             .tag(Tag.builder().tag("tag").build())
             .build();
 
+    public static RowMapper<Product> productRowMapper2 = row -> Product.builder()
+            .id(row.getInt("product_id"))
+            .build();
+
     @Override
     public void save(Product product) {
         throw new IllegalStateException("Error");

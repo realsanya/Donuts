@@ -30,11 +30,12 @@ public class ReviewsServlet extends HttpServlet {
         this.objectMapper = (ObjectMapper) servletContext.getAttribute("objectMapper");
     }
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = request.getParameter("page");
         String size = request.getParameter("size");
+
+        System.out.println(page + " " + size);
 
         List<ReviewDto> reviews = from(reviewsService.getAllReviews(Integer.parseInt(page), Integer.parseInt(size)));
 

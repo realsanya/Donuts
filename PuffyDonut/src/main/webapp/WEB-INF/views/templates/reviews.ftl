@@ -12,10 +12,10 @@
             <div class="row  mb-5 mt-5" id="results">
             </div>
         </div>
-        <input hidden id="page" value="${page}">
-        <input hidden id="offset" value="${offset}">
+
         <div class="row justify-content-center mt-5">
-            <button class="btn btn-primary btn-lg js-scroll-trigger px-4" type="submit">Смотреть ещё</button>
+            <button class="btn btn-primary btn-lg js-scroll-trigger px-4" type="submit"><a
+                        href="/reviews?page=${page}&offset=${size}"> Смотреть ещё </a></button>
         </div>
     </div>
 </@base.main>

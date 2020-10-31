@@ -23,10 +23,14 @@ public class OrderServiceServlet extends HttpServlet {
         OrderService orderService = (OrderService) request.getServletContext().getAttribute("orderService");
 
         Order order = (Order) request.getSession().getAttribute("order");
+        System.out.println("order" + order);
+
+
 
         String add = request.getParameter("add");
         String delete = request.getParameter("delete");
         System.out.println(add);
+
 
         try {
             if (add != null) {
@@ -35,7 +39,7 @@ public class OrderServiceServlet extends HttpServlet {
                 response.sendRedirect("/catalog");
             } else if (delete != null) {
                 deleteProduct(orderService, order, productService, Integer.parseInt(delete));
-                response.sendRedirect("/basket");
+                response.sendRedirect("/order");
             }
         } catch (NumberFormatException ignored) {
         }
