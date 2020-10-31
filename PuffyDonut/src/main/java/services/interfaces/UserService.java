@@ -1,5 +1,6 @@
 package services.interfaces;
 
+import models.Image;
 import models.User;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface UserService {
     User getUser(String email);
 
     User getUserById(Integer id);
+
+    void update(User user);
 }

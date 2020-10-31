@@ -46,6 +46,11 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9d9f7410-0f6f-4ea1-a0fa-60e7557ff7f7&lang=ru_RU"
             type="text/javascript">
     </script>
+    <script>
+        $('#imageUpload').change(function () {
+            $('#upload-form').submit();
+        });
+    </script>
 
     <#list scripts as script>
         <script src="../../../frontend/js/${script}"

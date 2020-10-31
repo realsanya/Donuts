@@ -16,20 +16,20 @@ import java.util.List;
 public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-//        CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
-
-        ReviewsService reviewsService = (ReviewsService) request.getServletContext().getAttribute("reviewsService");
-
-        List<Review> reviews = reviewsService.getAllReviewsByUserID(user);
-        if (reviews != null)
-            request.setAttribute("reviews", reviews);
-
         request.getRequestDispatcher("/profile.ftl").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        User user = (User) request.getSession().getAttribute("user");
+
+        ReviewsService reviewsService = (ReviewsService) request.getServletContext().getAttribute("reviewsService");
+        List<Review> reviews = reviewsService.getAllReviewsByUserID(user);
+        if (reviews != null)
+            request.setAttribute("reviews", reviews);
+
+        System.out.println(user.getImage().getPath());
+
+        request.getRequestDispatcher("/profile.ftl").forward(request, response);
     }
 }

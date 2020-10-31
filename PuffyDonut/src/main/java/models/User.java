@@ -17,6 +17,5 @@ public class User {
     private String address;
     private String password;
     private String email;
-    @Builder.Default
-    private String image = "default.png";
+    private Image image;
 }

@@ -1,10 +1,17 @@
 package repositories;
 
+import models.Image;
 import models.User;
 import repositories.interfaces.RowMapper;
 import repositories.interfaces.UserRepository;
+import services.interfaces.ImageService;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,9 +19,11 @@ public class UserRepositoryJdbc implements UserRepository {
 
     private DataSource dataSource;
     private SimpleJdbcTemplate template;
+    private ImageService imageService;
 
-    public UserRepositoryJdbc(DataSource dataSource) {
+    public UserRepositoryJdbc(DataSource dataSource, ImageService imageService) {
         this.dataSource = dataSource;
+        this.imageService = imageService;
         this.template = new SimpleJdbcTemplate(dataSource);
     }
 
@@ -31,12 +40,16 @@ public class UserRepositoryJdbc implements UserRepository {
     //language=SQL
     private final String SQL_SELECT_BY_EMAIL = "SELECT * FROM user_table WHERE email= ?";
 
+    //language=SQL
+    private final String SQL_UPDATE_IMAGE = "UPDATE user_table SET image=? WHERE user_id =?";
+
     private RowMapper<User> userRowMapper = row -> User.builder()
             .first_name(row.getString("first_name"))
             .last_name(row.getString("last_name"))
             .address(row.getString("address"))
             .email(row.getString("email"))
             .password(row.getString("password"))
+            .image(imageService.getById(row.getInt("image")))
             .build();
 
     private RowMapper<User> userRowMapper2 = row -> User.builder()
@@ -46,6 +59,7 @@ public class UserRepositoryJdbc implements UserRepository {
             .address(row.getString("address"))
             .email(row.getString("email"))
             .password(row.getString("password"))
+            .image(imageService.getById(row.getInt("image")))
             .build();
 
 
@@ -65,6 +79,42 @@ public class UserRepositoryJdbc implements UserRepository {
     }
 
     @Override
+    public void update(User user) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(SQL_UPDATE_IMAGE);
+            statement.executeUpdate("UPDATE user_table SET image=" + user.getImage().getId() + " WHERE user_id=" + user.getId());
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    //ignore
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    //ignore
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    //ignore
+                }
+            }
+        }
+    }
+
+    @Override
     public void save(User user) {
         template.queryInsert(SQL_INSERT_USERS,
                 user.getFirst_name(),
@@ -72,7 +122,7 @@ public class UserRepositoryJdbc implements UserRepository {
                 user.getAddress(),
                 user.getPassword(),
                 user.getEmail(),
-                user.getImage());
+                user.getImage().getId());
     }
 
 }

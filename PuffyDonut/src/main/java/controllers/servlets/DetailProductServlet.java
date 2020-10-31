@@ -27,7 +27,6 @@ public class DetailProductServlet extends HttpServlet {
             String s = request.getParameter("id");
             Integer id = Integer.parseInt(s);
 
-            //при повторном заходе id = null,  user_id не заносится в бд
             ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
             CommentService commentService = (CommentService) request.getServletContext().getAttribute("commentService");
 
@@ -47,8 +46,6 @@ public class DetailProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        UserService userService = (UserService) request.getSession().getAttribute("userService");
-
         User user = (User) request.getSession().getAttribute("user");
 
         if (user != null) {

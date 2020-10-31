@@ -6,25 +6,30 @@
             <div class="col-lg-4 col-xl-4 ">
                 <div class="card-box text-center " id="imagePreview">
 
+
                     <div class="selector rounded-circle">
-                        <img src="../../../assets/user/${user.getImage()}" id="profile-image"
+                        <img src="../../../assets/data/${user.getImage().getPath()}"
+                             id="profile-image"
                              class="img-fluid"
                              style="border-radius: 50%;object-fit:cover; width: 300px; height: 300px"
                              alt="profile-image">
                     </div>
+
+
                     <div style="alignment: center; horiz-align: center; margin-left: auto;"
                          class="text-center color-dark position-absolute right text-changer">
-                        <input type='file' class="invisible" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                        <form action="upload/db" method="post" enctype="multipart/form-data" id="upload-form">
+                            <input type='file' name="file" class="invisible" id="imageUpload"
+                                   accept=".png, .jpg, .jpeg"/>
+                        </form>
                         <label for="imageUpload">
                             <p class="btn btn-primary btn-lg ">Изменить</p>
                         </label>
-
                     </div>
+
 
                     <h4 class="mb-2">${user.getFirst_name()}</h4>
                     <h5 class="gradient-text"></h5>
-
-
                     <div class="text-left mt-3">
                         <#--                        <h4 class="font-13 text-uppercase">Профиль:</h4>-->
                         <#--                        <p class="text-muted font-13 mb-3">-->
@@ -82,4 +87,5 @@
             </div> <!-- end col -->
         </div>
     </div>
+
 </@base.main>

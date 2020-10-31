@@ -1,6 +1,8 @@
 package controllers.servlets;
 
+import javafx.scene.image.Image;
 import models.User;
+import services.interfaces.ImageService;
 import services.interfaces.UserService;
 import utils.HashPassword;
 import utils.Validator;
@@ -19,6 +21,7 @@ public class RegisterServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         UserService userService = (UserService) request.getServletContext().getAttribute("userService");
+        ImageService imageService = (ImageService) request.getServletContext().getAttribute("imageService");
 
         String first_name = request.getParameter("first_name");
         String last_name = request.getParameter("last_name");
@@ -41,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
                         .address(address)
                         .email(email)
                         .password(password)
-                        .image("default.png")
+                        .image(imageService.getById(2))
                         .build();
                 userService.addUser(user);
 

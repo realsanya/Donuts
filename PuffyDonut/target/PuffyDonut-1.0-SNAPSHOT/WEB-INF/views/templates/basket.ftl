@@ -18,7 +18,7 @@
 
                                 <!-- products -->
                                 <#if order??>
-                                    <#list order.getProducts() as product>
+                                    <#list order.getProducts_id() as product>
                                         <div class="row mb-4">
                                             <div class="col-md-5 col-lg-3 col-xl-3">
                                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
@@ -40,11 +40,7 @@
                                                         <div>
                                                             <h5>${product.getName()}</h5>
                                                             <p class="mb-2 text-muted text-uppercase small">Вес:
-                                                                ${product.getWeight()}</p>
-                                                            <p class="mb-2 text-muted text-uppercase small">Цена:
-                                                                ${product.getPrice()}</p>
-                                                            <p class="mb-2 text-muted text-uppercase small">тэг:
-                                                                ${product.getTag()}</p>
+                                                                ${product.getWeight()}г</p>
                                                         </div>
                                                         <div>
 
@@ -53,14 +49,15 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div>
-                                                            <a href="/basketService?delete=${product.getId()}"
+                                                            <a href="/orderService?delete=${product.getId()}"
                                                                type="button"
                                                                class="card-link-secondary small text-uppercase mr-3"><i
                                                                         class="fas fa-trash-alt mr-1"></i>
                                                                 Удалить с корзины
                                                             </a>
                                                         </div>
-                                                        <p class="mb-0"><span><strong>50.99₽</strong></span></p>
+                                                        <p class="mb-0">
+                                                            <span><strong>${product.getPrice()}₽</strong></span></p>
                                                     </div>
                                                 </div>
                                             </div>

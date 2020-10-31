@@ -1,5 +1,6 @@
 package services;
 
+import models.Image;
 import models.User;
 import repositories.interfaces.UserRepository;
 import services.interfaces.UserService;
@@ -37,6 +38,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Integer id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public void update(User user) {
+        userRepository.update(user);
     }
 
 }

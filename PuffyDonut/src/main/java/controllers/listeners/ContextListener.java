@@ -34,7 +34,12 @@ public class ContextListener implements ServletContextListener {
 
         servletContextEvent.getServletContext().setAttribute("datasource", dataSource);
 
-        UserRepository userRepository = new UserRepositoryJdbc(dataSource);
+
+        ImageRepository imageRepository = new ImageRepositoryJdbc(dataSource);
+        ImageService imageService = new ImageServiceImpl(imageRepository);
+        servletContextEvent.getServletContext().setAttribute("imageService", imageService);
+
+        UserRepository userRepository = new UserRepositoryJdbc(dataSource, imageService);
         UserService userService = new UserServiceImpl(userRepository);
         servletContextEvent.getServletContext().setAttribute("userService", userService);
 
@@ -53,6 +58,7 @@ public class ContextListener implements ServletContextListener {
         OrderRepository orderRepository = new OrderRepositoryJdbc(dataSource, userService, productService);
         OrderService orderService = new OrderServiceImpl(orderRepository);
         servletContextEvent.getServletContext().setAttribute("orderService", orderService);
+
 
     }
 
