@@ -6,6 +6,8 @@ import models.User;
 import repositories.interfaces.OrderRepository;
 import services.interfaces.OrderService;
 
+import java.util.List;
+
 public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
@@ -28,6 +30,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getUserOrder(User user) {
         return orderRepository.getUserOrder(user);
+    }
+
+    @Override
+    public List<Product> getAllProductsInOrder(Order order) {
+        return orderRepository.findProducts(order);
     }
 
     @Override

@@ -13,5 +13,8 @@ public class Order {
     private Integer order_id;
     private User user_id;
     private List<Product> products_id;
-    private Float total_price;
+    @Builder.Default
+    private Float total_price = Float.valueOf(0);
+    @Builder.Default
+    private Integer count = 0;
 }

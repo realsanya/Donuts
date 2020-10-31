@@ -30,10 +30,6 @@ public class OrderRepositoryJdbc implements OrderRepository {
     //language=SQL
     private static final String SQL_DELETE_PRODUCT = "DELETE FROM customer_order WHERE order_id=? AND product_id=?";
 
-
-//    //language=SQL
-//    private static final String SQL_GET_PRODUCTS = "SELECT (p.product_id, p.product_name, p.product_description, p.price, p.weight, p.availability, p.image) FROM product p inner join customer_order co on `co`.product_id = p.product_id inner join order_table ot on `ot`.order_id = `co`.order_id WHERE `ot`.order_id =?";
-
     //language=SQL
     private static final String SQL_GET_PRODUCTS = "SELECT product_id FROM customer_order WHERE order_id =?";
 
@@ -50,14 +46,15 @@ public class OrderRepositoryJdbc implements OrderRepository {
     //language=SQL
     private final String SQL_SELECT_ALL_BY_USER_ID = "SELECT * FROM order_table WHERE user_id= ? ";
 
+
     private RowMapper<Order> orderRowMapper = row -> Order.builder()
             .order_id(row.getInt("order_id"))
             .user_id(userService.getUserById(row.getInt("user_id")))
-            .products_id(productsInBasket(row.getInt("order_id")))
+            .products_id(productsInOrder(row.getInt("order_id")))
             .total_price(row.getFloat("total_price"))
             .build();
 
-    private List<Product> productsInBasket(Integer id) {
+    private List<Product> productsInOrder(Integer id) {
         List<Product> products = template.query(SQL_GET_PRODUCTS, productRowMapper2, id);
         List<Product> result = new ArrayList<>();
         for (Product p : products) {
@@ -71,6 +68,10 @@ public class OrderRepositoryJdbc implements OrderRepository {
         this.userService = userService;
         this.productService = productService;
         this.template = new SimpleJdbcTemplate(dataSource);
+    }
+
+    public List<Product> findProducts(Order order) {
+        return productsInOrder(order.getOrder_id());
     }
 
     @Override
@@ -94,6 +95,7 @@ public class OrderRepositoryJdbc implements OrderRepository {
         List<Order> baskets = template.query(SQL_FIND_BY_USER_ID, orderRowMapper, user.getId());
         return !baskets.isEmpty() ? baskets.get(0) : null;
     }
+
 
     @Override
     public void addProduct(Order order, Product product) {
