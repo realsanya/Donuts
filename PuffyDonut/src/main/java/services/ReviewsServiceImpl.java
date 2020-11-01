@@ -8,6 +8,8 @@ import utils.ReviewDto;
 
 import java.util.List;
 
+import static utils.ReviewDto.from;
+
 public class ReviewsServiceImpl implements ReviewsService {
 
     private ReviewRepository reviewRepository;
@@ -22,8 +24,8 @@ public class ReviewsServiceImpl implements ReviewsService {
     }
 
     @Override
-    public List<Review> getAllReviews(int page, int size) {
-        return reviewRepository.findAll(page, size);
+    public List<ReviewDto> getAllReviews(int page, int size) {
+        return from(reviewRepository.findAll(page, size));
     }
 
     @Override

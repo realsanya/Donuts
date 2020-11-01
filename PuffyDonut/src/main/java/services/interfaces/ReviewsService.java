@@ -11,7 +11,7 @@ public interface ReviewsService {
 
     List<Review> getAllReviews();
 
-    List<Review> getAllReviews(int page, int size);
+    List<ReviewDto> getAllReviews(int page, int size);
 
     List<Review> getAllReviewsByUserID(User user_id);
 

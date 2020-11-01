@@ -1,5 +1,6 @@
 package controllers.listeners;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import repositories.*;
 import repositories.interfaces.*;
 import services.*;
@@ -59,7 +60,8 @@ public class ContextListener implements ServletContextListener {
         OrderService orderService = new OrderServiceImpl(orderRepository);
         servletContextEvent.getServletContext().setAttribute("orderService", orderService);
 
-
+        ObjectMapper objectMapper = new ObjectMapper();
+        servletContextEvent.getServletContext().setAttribute("objectMapper", objectMapper);
     }
 
     @Override

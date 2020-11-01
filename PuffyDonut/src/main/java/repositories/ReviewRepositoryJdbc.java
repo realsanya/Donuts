@@ -23,7 +23,7 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
     private final String SQL_SELECT_ALL = "SELECT * FROM review";
 
     //language=SQL
-    private final String SQL_SELECT_ALL_WITH_PAGINATION = "select * from review order by id limit :limit offset :offset";
+    private final String SQL_SELECT_ALL_WITH_PAGINATION = "select * from review order by id limit ? offset ?";
 
 
     //language=SQL
@@ -58,10 +58,7 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
     @Override
     public List<Review> findAll(int page, int size) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("limit", size);
-        params.put("offset", page * size);
-        return template.query(SQL_SELECT_ALL_WITH_PAGINATION, reviewRowMapper, params);
+        return template.query(SQL_SELECT_ALL_WITH_PAGINATION, reviewRowMapper, page, page * size);
     }
 
     @Override
