@@ -87,8 +87,9 @@
                                 <li class="timeline-sm-item">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img src="../../../assets/user/${comment.getUser_id().getImage()}"
-                                                 class="img-fluid">
+
+                                            <img src="../../../assets/data/${comment.getUser_id().getImage().getPath()}"
+                                                 class="rounded-circle img-responsive">
                                         </div>
                                         <div class="col mt-auto mb-auto">
                                             <span class="timeline-sm-date">${comment.getDate()}</span>

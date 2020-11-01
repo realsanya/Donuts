@@ -24,11 +24,6 @@ public class ReviewsServiceImpl implements ReviewsService {
     }
 
     @Override
-    public List<ReviewDto> getAllReviews(int page, int size) {
-        return from(reviewRepository.findAll(page, size));
-    }
-
-    @Override
     public List<Review> getAllReviewsByUserID(User user_id) {
         return reviewRepository.findAllByUserID(user_id);
     }

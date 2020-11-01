@@ -64,12 +64,12 @@
                                         <li class="timeline-sm-item">
                                             <div class="row">
                                                 <div class="col-2">
-                                                    <img src="../../../assets/user/${review.getUser_id().getImage()}"
-                                                         class="img-fluid">
+                                                    <img src="../../../assets/data/${review.getUser_id().getImage().getPath()}"
+                                                         class="rounded-circle img-responsive">
                                                 </div>
                                                 <div class="col mt-auto mb-auto">
                                                     <span class="timeline-sm-date">${review.getDate()}</span>
-                                                    <h5 class="mt-0 mb-1">Martha Smith</h5>
+                                                    <h5 class="mt-0 mb-1">${review.getUser_id().getFirst_name()}</h5>
                                                 </div>
 
 

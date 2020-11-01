@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
-//TODO
-@WebFilter("/catalogs")
+////TODO
+//@WebFilter("/searchByName")
 public class CatalogFilter implements Filter {
 
     @Override

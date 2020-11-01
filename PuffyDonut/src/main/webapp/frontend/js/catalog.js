@@ -1,13 +1,5 @@
-$.ajax({
-    url: "/catalog",
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-        autocomplete(document.getElementById("search-input"), data);
-    }
-});
-
 function autocomplete(inp, arr) {
+    console.log("ok");
     var currentFocus;
     inp.addEventListener("input", function (e) {
         var a, b, i, val = this.value;

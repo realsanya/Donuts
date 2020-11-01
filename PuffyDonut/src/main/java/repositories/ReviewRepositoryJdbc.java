@@ -35,6 +35,7 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
 
     private RowMapper<Review> reviewRowMapper = row -> Review.builder()
+            .id(row.getLong("id"))
             .user_id(userService.getUserById(row.getInt("user_id")))
             .text(row.getString("review_text"))
             .date(row.getDate("date"))
@@ -48,17 +49,12 @@ public class ReviewRepositoryJdbc implements ReviewRepository {
 
     @Override
     public void save(Review review) {
-        template.queryInsert(SQL_CREATE, review);
+        template.queryInsert(SQL_CREATE, review.getUser_id(), review.getText(), review.getDate());
     }
 
     @Override
     public List<Review> findAll() {
         return template.query(SQL_SELECT_ALL, reviewRowMapper);
-    }
-
-    @Override
-    public List<Review> findAll(int page, int size) {
-        return template.query(SQL_SELECT_ALL_WITH_PAGINATION, reviewRowMapper, page, page * size);
     }
 
     @Override

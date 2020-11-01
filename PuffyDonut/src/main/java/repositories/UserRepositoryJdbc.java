@@ -68,7 +68,7 @@ public class UserRepositoryJdbc implements UserRepository {
     }
 
     public User findById(Integer id) {
-        List<User> users = template.query(SQL_SELECT_BY_ID, userRowMapper, id);
+        List<User> users = template.query(SQL_SELECT_BY_ID, userRowMapper2, id);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
