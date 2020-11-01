@@ -8,14 +8,18 @@
 
             </div>
         </div>
+
         <div class="container">
             <div class="row  mb-5 mt-5" id="results">
             </div>
         </div>
 
-        <div class="row justify-content-center mt-5">
-            <button class="btn btn-primary btn-lg js-scroll-trigger px-4" type="submit"><a
-                        href="/reviews?page=${page}&offset=${size}"> Смотреть ещё </a></button>
-        </div>
+        <form class="btnid" method="get" id="btnid">
+            <div class="row justify-content-center mt-5">
+                <button class="btn btn-primary btn-lg js-scroll-trigger px-4" type="submit">
+                    Смотреть ещё
+                </button>
+            </div>
+        </form>
     </div>
 </@base.main>
