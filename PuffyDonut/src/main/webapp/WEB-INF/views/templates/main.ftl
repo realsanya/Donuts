@@ -172,7 +172,7 @@
                         <div class="card testimonial-card col mx-2">
                             <!-- Avatar -->
                             <div class="avatar mx-auto white">
-                                <img src="../../../assets/img/donuts/donut1.png"
+                                <img src="../../../assets/data/${reviews[y].getUser_id().getImage().getPath()}"
                                      class="rounded-circle img-responsive" alt="woman avatar">
                             </div>
 
