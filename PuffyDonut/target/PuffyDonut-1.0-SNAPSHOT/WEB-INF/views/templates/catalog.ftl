@@ -68,14 +68,12 @@
                                     <p>Сортировать по:</p>
                                     <form action="/search" method="post">
                                         <button type="submit" class="tag-donut">Выбрать</button>
-                                        <label>
                                             <select name="select-form">
                                                 <option value="priceIncrease">цене с дешевых</option>
                                                 <option value="priceDecrease">цене с дорогих</option>
                                                 <option value="weightIncrease">весу с легких</option>
                                                 <option value="weightDecrease">весу с тяжелых</option>
                                             </select>
-                                        </label>
                                     </form>
                                 </div>
                             </div>
