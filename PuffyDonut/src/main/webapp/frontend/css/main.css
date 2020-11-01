@@ -1,0 +1,44 @@
+.card.testimonial-card {
+    border-radius: 40px;
+}
+
+.page-section.own_class {
+    background: url("../assets/img/backgrounds/hr.png") no-repeat;
+    height: 40%;
+}
+
+
+.page-section.bg-primary {
+    background: url("../assets/img/backgrounds/background2.png") no-repeat;
+    height: 70%;
+
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    border: #aa4aac solid 1px !important;
+    color: #aa4aac;
+    background: transparent;
+}
+
+.btn-primary.btn-lg {
+    font-size: 10px;
+    color: white;
+    letter-spacing: 2px;
+    border: 2px transparent;
+    border-radius: 40px;
+    background: transparent linear-gradient(to right, #973b99, #d56ed6);
+    transition: all 0.3s ease 0s;
+}
+
+.card.border-white {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.10), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
