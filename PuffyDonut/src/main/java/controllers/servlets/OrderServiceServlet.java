@@ -15,9 +15,6 @@ import java.io.IOException;
 @WebServlet("/orderService")
 public class OrderServiceServlet extends HttpServlet {
 
-    private Float total_price;
-    private int count;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
@@ -50,23 +47,10 @@ public class OrderServiceServlet extends HttpServlet {
 
     private void addProduct(OrderService orderService, Order order, ProductService productService, Integer id) {
         orderService.addProductInOrder(order, productService.getProductById(id));
-//        for (Product p : orderService.getAllProductsInOrder(order)) {
-//            total_price += p.getPrice();
-//            count++;
-//        }
-//        order.setTotal_price(total_price);
-//        order.setCount(count);
-        //System.out.println(order);
     }
 
     private void deleteProduct(OrderService orderService, Order order, ProductService productService, Integer id) {
         orderService.deleteProductFromOrder(order, productService.getProductById(id));
-//        for (Product p : orderService.getAllProductsInOrder(order)) {
-//            total_price -= p.getPrice();
-//            count--;
-//        }
-//        order.setTotal_price(total_price);
-//        order.setCount(count);
     }
 
     @Override

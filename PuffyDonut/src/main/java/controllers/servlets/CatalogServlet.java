@@ -15,7 +15,6 @@ import java.io.IOException;
 public class CatalogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DataSource dataSource = (DataSource) request.getServletContext().getAttribute("datasource");
 
         ProductService productService = (ProductService) request.getServletContext().getAttribute("productService");
 
